@@ -7,6 +7,7 @@
 
 
 #include "clsPerson.h"
+#include "clsString.h"
 
 using namespace std;
 
