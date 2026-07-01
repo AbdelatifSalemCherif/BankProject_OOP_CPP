@@ -23,12 +23,18 @@ private:
 	string _PinCode;
 	float _Balance;
 
-	clsBankClient _ConvertLineToClient(const string& Line, const string& Separator)
+	static clsBankClient _ConvertLineToClient(const string& Line, const string& Separator)
 	{
-		vector <string> vClient = clsString::Split(Line, Separator);
+		vector <string> vClient = clsString::Split(Line, Separator, false);
 
+		return clsBankClient(UpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
+			, vClient[5], stoi(vClient[6]));
 
+	}
 
+	static clsBankClient _GetEmptyClient()
+	{
+		return clsBankClient(EmptyMode, "", "", "", "", "", "", 0);
 	}
 
 public:
@@ -94,7 +100,7 @@ public:
 
 	}
 
-	clsBankClient Find(const string& AccountNumber, const string& FileName)
+	static clsBankClient Find(const string& AccountNumber, const string& FileName, const string& Separator)
 	{
 		fstream File;
 
@@ -103,10 +109,16 @@ public:
 		if (File.is_open())
 		{
 			string Line = "";
+			clsBankClient Client = _ConvertLineToClient(Line, Separator);
 
 			while (getline(File, Line))
 			{
-				if()
+				if (Client._AccountNumber == AccountNumber)
+				{
+					File.close();
+
+					return Client;
+				}
 			}
 
 
@@ -114,7 +126,37 @@ public:
 
 		}
 
+		return _GetEmptyClient();
 
+	}
+
+	static clsBankClient Find(const string& AccountNumber, const string& PinCode, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Line = "";
+			clsBankClient Client = _ConvertLineToClient(Line, Separator);
+
+			while (getline(File, Line))
+			{
+				if (Client._AccountNumber == AccountNumber && Client._PinCode == PinCode)
+				{
+					File.close();
+
+					return Client;
+				}
+			}
+
+
+			File.close();
+
+		}
+
+		return _GetEmptyClient();
 
 	}
 
