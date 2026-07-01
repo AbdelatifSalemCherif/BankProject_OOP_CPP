@@ -77,7 +77,7 @@ public:
 		return _Balance;
 	}
 
-	__declspec(property(get = GetBalance, put = SetBalance)) string Balance;
+	__declspec(property(get = GetBalance, put = SetBalance)) float Balance;
 
 	bool IsEmpty()
 	{
@@ -87,16 +87,16 @@ public:
 	void Print()
 	{
 		cout << "\nClient Card :" << endl;
-		cout << "-------------------------------" << endl;
-		cout << "First Name :" << endl;
-		cout << "Last Name  :" << endl;
-		cout << "Full Name  : " << endl;
-		cout << "Email      :" << endl;
-		cout << "Phone      :" << endl;
-		cout << "Acc.Number :" << endl;
-		cout << "Password   :" << endl;
-		cout << "Balance    :" << endl;
-		cout << "-------------------------------" << endl;
+		cout << "------------------------------------------------" << endl;
+		cout << "First Name :" << FirstName << endl;
+		cout << "Last Name  :" << LastName << endl;
+		cout << "Full Name  :" << FirstName + " " + LastName << endl;
+		cout << "Email      :" << Email << endl;
+		cout << "Phone      :" << Phone << endl;
+		cout << "Acc.Number :" << _AccountNumber << endl;
+		cout << "Password   :" << _PinCode << endl;
+		cout << "Balance    :" << _Balance << endl;
+		cout << "------------------------------------------------" << endl;
 
 	}
 
@@ -109,10 +109,11 @@ public:
 		if (File.is_open())
 		{
 			string Line = "";
-			clsBankClient Client = _ConvertLineToClient(Line, Separator);
-
+			
 			while (getline(File, Line))
 			{
+				clsBankClient Client = _ConvertLineToClient(Line, Separator);
+
 				if (Client._AccountNumber == AccountNumber)
 				{
 					File.close();
@@ -120,7 +121,6 @@ public:
 					return Client;
 				}
 			}
-
 
 			File.close();
 
@@ -139,10 +139,11 @@ public:
 		if (File.is_open())
 		{
 			string Line = "";
-			clsBankClient Client = _ConvertLineToClient(Line, Separator);
 
 			while (getline(File, Line))
 			{
+				clsBankClient Client = _ConvertLineToClient(Line, Separator);
+
 				if (Client._AccountNumber == AccountNumber && Client._PinCode == PinCode)
 				{
 					File.close();
@@ -159,7 +160,10 @@ public:
 
 	}
 
-
+	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator)
+	{
+		return !Find(AccountNumber, FileName, Separator).IsEmpty();
+	}
 
 
 
