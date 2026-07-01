@@ -23,8 +23,11 @@ private:
 	string _PinCode;
 	float _Balance;
 
-	clsBankClient _ConvertLineToClient(const string& Line)
+	clsBankClient _ConvertLineToClient(const string& Line, const string& Separator)
 	{
+		vector <string> vClient = clsString::Split(Line, Separator);
+
+
 
 	}
 

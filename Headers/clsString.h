@@ -190,73 +190,77 @@ public:
 
 
 
-	static void Split(string Phrase, vector <string>& vPhrase, string Separitor)
+	static void Split(string Phrase, vector <string>& vPhrase, string Separitor, bool IgnoreSpace = true)
 	{
 		vPhrase.clear();
 
 		short SeparitorPosition = Phrase.find(Separitor);
 		string Word = Phrase.substr(0, SeparitorPosition);
 
-		while (SeparitorPosition != Phrase.npos)
+		if (IgnoreSpace == true)
 		{
+			while (SeparitorPosition != Phrase.npos)
+			{
+				if (Word != Separitor && Word != "")
+				{
+					vPhrase.push_back(Word);
+				}
+
+				Phrase.erase(0, SeparitorPosition + Separitor.length());
+
+				SeparitorPosition = Phrase.find(Separitor);
+				Word = Phrase.substr(0, SeparitorPosition);
+			}
+
 			if (Word != Separitor && Word != "")
 			{
 				vPhrase.push_back(Word);
 			}
-
-			Phrase.erase(0, SeparitorPosition + Separitor.length());
-
-			SeparitorPosition = Phrase.find(Separitor);
-			Word = Phrase.substr(0, SeparitorPosition);
 		}
-
-		if (Word != Separitor && Word != "")
+		else
 		{
-			vPhrase.push_back(Word);
+			while (SeparitorPosition != Phrase.npos)
+			{
+				if (Word != Separitor)
+				{
+					vPhrase.push_back(Word);
+				}
+
+				Phrase.erase(0, SeparitorPosition + Separitor.length());
+
+				SeparitorPosition = Phrase.find(Separitor);
+				Word = Phrase.substr(0, SeparitorPosition);
+			}
+
+			if (Word != Separitor)
+			{
+				vPhrase.push_back(Word);
+			}
 		}
 
 
 	};
 
-	void Split(vector <string>& vPhrase, string Separitor = " ")
+	void Split(vector <string>& vPhrase, string Separitor, bool IgnoreSpace = true)
 	{
 		Split(_Value, vPhrase, Separitor);
 	};
 
-	static vector<string> Split(string Phrase, string Separitor)
+	static vector<string> Split(string Phrase, string Separitor, bool IgnoreSpace = true)
 	{
 		vector <string> vPhrase;
 
-		short SeparitorPosition = Phrase.find(Separitor);
-		string Word = Phrase.substr(0, SeparitorPosition);
-
-		while (SeparitorPosition != Phrase.npos)
-		{
-			if (Word != Separitor && Word != "")
-			{
-				vPhrase.push_back(Word);
-			}
-
-			Phrase.erase(0, SeparitorPosition + Separitor.length());
-
-			SeparitorPosition = Phrase.find(Separitor);
-			Word = Phrase.substr(0, SeparitorPosition);
-		}
-
-		if (Word != Separitor && Word != "")
-		{
-			vPhrase.push_back(Word);
-		}
+		Split(Phrase, vPhrase, Separitor);
 
 		return vPhrase;
 	};
 
-	vector<string> Split(string Separitor = " ")
+	vector<string> Split(string Separitor = " ", bool IgnoreSpace = true)
 	{
 		return Split(_Value, Separitor);
 	};
 
-	static string Join(vector <string>& vPhrase, string Separator = " ")
+	static string Join(vector <string>& vPhrase, string Separator)
 	{
 		string Phrase = "";
 
