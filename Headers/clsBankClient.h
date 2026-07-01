@@ -74,6 +74,22 @@ public:
 		return _Mode == EmptyMode;
 	}
 
+	void Print()
+	{
+		cout << "\nClient Card :" << endl;
+		cout << "-------------------------------" << endl;
+		cout << "First Name :" << endl;
+		cout << "Last Name  :" << endl;
+		cout << "Full Name  : " << endl;
+		cout << "Email      :" << endl;
+		cout << "Phone      :" << endl;
+		cout << "Acc.Number :" << endl;
+		cout << "Password   :" << endl;
+		cout << "Balance    :" << endl;
+		cout << "-------------------------------" << endl;
+
+	}
+
 	clsBankClient Find(const string& AccountNumber, const string& FileName)
 	{
 		fstream File;
