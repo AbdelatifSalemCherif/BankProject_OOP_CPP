@@ -39,19 +39,69 @@ private:
 
 	}
 
-	static void _ConvertClientToLine(const clsBankClient& Client, const string& Separator)
+	static string _ConvertClientToLine(const clsBankClient& Client, const string& Separator)
 	{
+		string Line = "";
+
+		Line += Client.FirstName + Separator;
+		Line += Client.LastName + Separator;
+		Line += Client.Email + Separator;
+		Line += Client.Phone + Separator;
+		Line += Client._AccountNumber + Separator;
+		Line += Client._PinCode + Separator;
+		Line += to_string(Client._Balance);
+
+		return Line;
+	}
+
+	static vector <clsBankClient> _LoadAllClientsFromFile(const string& FileName, const string& Separator)
+	{
+		vector <clsBankClient> vClients;
+
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Line = "";
+
+			while (getline(File, Line))
+			{
+
+				vClients.push_back(_ConvertLineToClient(Line, Separator));
+
+			}
+
+			File.close();
+		}
+
+		return vClients;
+	}
+
+	static void _SaveAllClientsToFile(const vector <clsBankClient>& vClients, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::out);
+
+		if (File.is_open())
+		{
+
+			for (const clsBankClient& Client : vClients)
+			{
+				File << _ConvertClientToLine(Client, Separator) + "\n";
+			}
+
+			File.close();
+		}
 
 	}
 
-	static vector <clsBankClient> _LoadAllClientsFromFile(const string& Filename, const string& Separator)
+	void _Update()
 	{
 
 	}
-
-
-
-
 
 
 	static clsBankClient _GetEmptyClient()
@@ -77,7 +127,7 @@ public:
 
 	//Properities
 
-	string GetAccountNumber()
+	string GetAccountNumber() const
 	{
 		return _AccountNumber;
 	}
@@ -87,7 +137,7 @@ public:
 		_PinCode = PinCode;
 	}
 
-	string GetPinCode()
+	string GetPinCode() const
 	{
 		return _PinCode;
 	}
@@ -99,7 +149,7 @@ public:
 		_Balance = Balance;
 	}
 
-	float GetBalance()
+	float GetBalance() const
 	{
 		return _Balance;
 	}
@@ -111,12 +161,12 @@ public:
 
 	//Checks Methods
 
-	bool IsEmpty()
+	bool IsEmpty() const
 	{
 		return _Mode == EmptyMode;
 	}
 
-	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator)
+	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator) 
 	{
 		return !Find(AccountNumber, FileName, Separator).IsEmpty();
 	}
@@ -126,7 +176,7 @@ public:
 
 	//Output methods
 
-	void Print()
+	void Print() const
 	{
 		cout << "\nClient Card :" << endl;
 		cout << "------------------------------------------------" << endl;

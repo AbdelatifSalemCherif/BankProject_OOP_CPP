@@ -28,7 +28,7 @@ public:
 		_FirstName = FirstName;
 	}
 
-	string GetFirstName()
+	string GetFirstName() const
 	{
 		return _FirstName;
 	}
@@ -40,7 +40,7 @@ public:
 		_LastName = LastName;
 	}
 
-	string GetLastName()
+	string GetLastName() const
 	{
 		return _LastName;
 	}
@@ -52,7 +52,7 @@ public:
 		_Email = Email;
 	}
 
-	string GetEmail()
+	string GetEmail() const
 	{
 		return _Email;
 	}
@@ -64,7 +64,7 @@ public:
 		_Phone = Phone;
 	}
 
-	string GetPhone()
+	string GetPhone() const
 	{
 		return _Phone;
 	}
