@@ -17,11 +17,18 @@ private:
 
 	enum enMode {EmptyMode = 0, UpdateMode = 1};
 
-	enMode _Mode;
 
+
+	//Data Memebers
+
+	enMode _Mode;
 	string _AccountNumber;
 	string _PinCode;
 	float _Balance;
+
+
+
+	//Methods help for reading and writing from database
 
 	static clsBankClient _ConvertLineToClient(const string& Line, const string& Separator)
 	{
@@ -31,6 +38,21 @@ private:
 			, vClient[5], stoi(vClient[6]));
 
 	}
+
+	static void _ConvertClientToLine(const clsBankClient& Client, const string& Separator)
+	{
+
+	}
+
+	static vector <clsBankClient> _LoadAllClientsFromFile(const string& Filename, const string& Separator)
+	{
+
+	}
+
+
+
+
+
 
 	static clsBankClient _GetEmptyClient()
 	{
@@ -49,6 +71,11 @@ public:
 		_Balance = Balance;
 
 	}
+
+
+
+
+	//Properities
 
 	string GetAccountNumber()
 	{
@@ -79,10 +106,25 @@ public:
 
 	__declspec(property(get = GetBalance, put = SetBalance)) float Balance;
 
+
+
+
+	//Checks Methods
+
 	bool IsEmpty()
 	{
 		return _Mode == EmptyMode;
 	}
+
+	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator)
+	{
+		return !Find(AccountNumber, FileName, Separator).IsEmpty();
+	}
+
+
+
+
+	//Output methods
 
 	void Print()
 	{
@@ -99,6 +141,12 @@ public:
 		cout << "------------------------------------------------" << endl;
 
 	}
+
+
+
+
+
+	//Core Logic Methods
 
 	static clsBankClient Find(const string& AccountNumber, const string& FileName, const string& Separator)
 	{
@@ -160,13 +208,9 @@ public:
 
 	}
 
-	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator)
-	{
-		return !Find(AccountNumber, FileName, Separator).IsEmpty();
-	}
+	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1};
 
-
-
+	//enSaveResult Save()
 
 
 };
