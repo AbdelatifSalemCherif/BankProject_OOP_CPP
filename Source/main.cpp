@@ -53,7 +53,7 @@ void UpdateClient()
 int main()
 {
 	
-	
+	UpdateClient();
 
 	return 0;
 

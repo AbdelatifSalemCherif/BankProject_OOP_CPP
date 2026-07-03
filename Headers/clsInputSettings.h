@@ -13,32 +13,32 @@ class clsInputSettings
 public:
 
 
-    static bool CheckPostiveNumber(int Number)
+    static bool CheckPostiveInteger(int Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveNumber(short Number)
+    static bool CheckPostiveShort(short Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveNumber(float Number)
+    static bool CheckPostiveFloat(float Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveNumber(double Number)
+    static bool CheckPostiveDouble(double Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveNumber(long long Number)
+    static bool CheckPostiveLongLong(long long Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveNumber(long double Number)
+    static bool CheckPostiveLongDouble(long double Number)
     {
         return Number >= 0;
     }
@@ -49,32 +49,32 @@ public:
 
 
 
-    static bool CheckNumberInRange(int Number, int From, int To)
+    static bool CheckIntegerInRange(int Number, int From, int To)
     {
         return Number >= From && Number <= To;
     }
 
-    static bool CheckNumberInRange(short Number, short From, short To)
+    static bool CheckShortInRange(short Number, short From, short To)
     {
         return Number >= From && Number <= To;
     }
 
-    static bool CheckNumberInRange(long long Number, long long From, long long To)
+    static bool CheckLongLongInRange(long long Number, long long From, long long To)
     {
         return Number >= From && Number <= To;
     }
 
-    static bool CheckNumberInRange(float Number, float From, float To)
+    static bool CheckFloatInRange(float Number, float From, float To)
     {
         return Number >= From && Number <= To;
     }
 
-    static bool CheckNumberInRange(double Number, double From, double To)
+    static bool CheckDoubleInRange(double Number, double From, double To)
     {
         return Number >= From && Number <= To;
     }
 
-    static bool CheckNumberInRange(long double Number, long double From, long double To)
+    static bool CheckLongDoubleInRange(long double Number, long double From, long double To)
     {
         return Number >= From && Number <= To;
     }
@@ -87,7 +87,7 @@ public:
 
 
 
-    static int ValidateNumber(int& Number)
+    static int ValidateInteger(int& Number)
     {
 
         while (cin.fail())
@@ -104,7 +104,7 @@ public:
         return Number;
     }
 
-    static float ValidateNumber(float& Number)
+    static float ValidateFloat(float& Number)
     {
 
         while (cin.fail())
@@ -121,7 +121,7 @@ public:
         return Number;
     }
 
-    static double ValidateNumber(double& Number)
+    static double ValidateDouble(double& Number)
     {
 
         while (cin.fail())
@@ -138,7 +138,7 @@ public:
         return Number;
     }
 
-    static short ValidateNumber(short& Number)
+    static short ValidateShort(short& Number)
     {
 
         while (cin.fail())
@@ -155,7 +155,7 @@ public:
         return Number;
     }
 
-    static long long ValidateNumber(long long& Number)
+    static long long ValidateLongLong(long long& Number)
     {
 
         while (cin.fail())
@@ -172,7 +172,7 @@ public:
         return Number;
     }
 
-    static long double ValidateNumber(long double& Number)
+    static long double ValidateLongDouble(long double& Number)
     {
 
         while (cin.fail())
@@ -209,73 +209,73 @@ public:
 
 
 
-    static int ReadNumber(int TypeFunction = 0, string MessageToUser = "\nPlease enter an Integer Number ?\n")
+    static int ReadInteger(string MessageToUser = "\nPlease enter an Integer Number ?\n")
     {
         int Number = 0;
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateInteger(Number);
 
         return Number;
 
     }
 
-    static float ReadNumber(float TypeFunction = 0, string MessageToUser = "\nPlease enter a float Number ?\n")
+    static float ReadFloat(string MessageToUser = "\nPlease enter a float Number ?\n")
     {
         float Number = 0;
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateFloat(Number);
 
         return Number;
 
     }
 
-    static short ReadNumber(short TypeFunction = 0, string MessageToUser = "\nPlease enter a Short Number ?\n")
+    static short ReadShort(const string& MessageToUser = "\nPlease enter a Short Number ?\n")
     {
         short Number = 0;
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateShort(Number);
 
         return Number;
 
     }
 
-    static long long int ReadNumber(long long TypeFunction = 0, string MessageToUser = "\nPlease enter a Long Integer Number ?\n")
+    static long long int ReadLongLong(string MessageToUser = "\nPlease enter a Long Integer Number ?\n")
     {
         long long int Number = 0;
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateLongLong(Number);
 
         return Number;
 
     }
 
-    static double ReadNumber(double TypeFunction = 0, string MessageToUser = "\nPlease enter a Double Number ?\n")
+    static double ReadDouble(string MessageToUser = "\nPlease enter a Double Number ?\n")
     {
         double Number = 0;
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateDouble(Number);
 
 
         return Number;
     }
 
-    static long double ReadNumber(long double TypeFunction = 0, string MessageToUser = "\nPlease enter a Long Double Number ?\n")
+    static long double ReadLongDouble(string MessageToUser = "\nPlease enter a Long Double Number ?\n")
     {
         long double Number = 0;
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateLongDouble(Number);
 
         return Number;
 
@@ -321,7 +321,7 @@ public:
 
 
 
-    static int ReadPositiveNumber(int TypeFunction = 0, string MessageToUser = "\nPlease enter a positive integer ?\n"
+    static int ReadPositiveInteger(string MessageToUser = "\nPlease enter a positive integer ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         int Number = 0;
@@ -329,21 +329,21 @@ public:
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateInteger(Number);
 
-        while (!CheckPostiveNumber(Number))
+        while (!CheckPostiveInteger(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateInteger(Number);
 
         }
 
         return Number;
     }
 
-    static float ReadPositiveNumber(float TypeFunction = 0, string MessageToUser = "\nPlease enter a positive float ?\n"
+    static float ReadPositiveFloat(string MessageToUser = "\nPlease enter a positive float ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         float Number = 0;
@@ -351,21 +351,21 @@ public:
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateFloat(Number);
 
-        while (!CheckPostiveNumber(Number))
+        while (!CheckPostiveFloat(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateFloat(Number);
 
         }
 
         return Number;
     }
 
-    static short ReadPositiveNumber(short TypeFunction = 0, string MessageToUser = "\nPlease enter a positive short ?\n"
+    static short ReadPositiveShort(string MessageToUser = "\nPlease enter a positive short ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         short Number = 0;
@@ -373,21 +373,21 @@ public:
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateShort(Number);
 
-        while (!CheckPostiveNumber(Number))
+        while (!CheckPostiveShort(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateShort(Number);
 
         }
 
         return Number;
     }
 
-    static double ReadPositiveNumber(double TypeFunction = 0, string MessageToUser = "\nPlease enter a positive double ?\n"
+    static double ReadPositiveDouble(string MessageToUser = "\nPlease enter a positive double ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         double Number = 0;
@@ -395,21 +395,21 @@ public:
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateDouble(Number);
 
-        while (!CheckPostiveNumber(Number))
+        while (!CheckPostiveDouble(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateDouble(Number);
 
         }
 
         return Number;
     }
 
-    static long long ReadPositiveNumber(long long TypeFunction = 0, string MessageToUser = "\nPlease enter a positive long integer ?\n"
+    static long long ReadPositiveLongLong(string MessageToUser = "\nPlease enter a positive long integer ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         long long Number = 0;
@@ -417,20 +417,20 @@ public:
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateLongLong(Number);
 
-        while (!CheckPostiveNumber(Number))
+        while (!CheckPostiveLongLong(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateLongLong(Number);
 
         }
         return Number;
     }
 
-    static long double ReadPositiveNumber(long double TypeFunction = 0, string MessageToUser = "\nPlease enter a positive Long Double ?\n"
+    static long double ReadPositiveLongDouble(string MessageToUser = "\nPlease enter a positive Long Double ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         long double Number = 0;
@@ -438,14 +438,14 @@ public:
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateLongDouble(Number);
 
-        while (!CheckPostiveNumber(Number))
+        while (!CheckPostiveLongDouble(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateLongDouble(Number);
 
         }
 
@@ -460,120 +460,120 @@ public:
 
 
 
-    static int ReadNumberInRange(int From, int To, string MessageToUser)
+    static int ReadIntegerInRange(int From, int To, string MessageToUser)
     {
         int Number = 0;
 
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateInteger(Number);
 
-        while (!CheckNumberInRange(Number, From, To))
+        while (!CheckIntegerInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateInteger(Number);
         }
 
         return Number;
     }
 
-    static float ReadNumberInRange(float From, float To, string MessageToUser)
+    static float ReadFloatInRange(float From, float To, string MessageToUser)
     {
         float Number = 0;
 
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateFloat(Number);
 
-        while (!CheckNumberInRange(Number, From, To))
+        while (!CheckFloatInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateFloat(Number);
         }
 
         return Number;
     }
 
-    static short ReadNumberInRange(short From, short To, string MessageToUser)
+    static short ReadShortInRange(short From, short To, string MessageToUser)
     {
         short Number = 0;
 
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateShort(Number);
 
-        while (!CheckNumberInRange(Number, From, To))
+        while (!CheckShortInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateShort(Number);
         }
 
         return Number;
     }
 
-    static long long ReadNumberInRange(long long From, long long To, string MessageToUser)
+    static long long ReadLongLongInRange(long long From, long long To, string MessageToUser)
     {
         long long Number = 0;
 
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateLongLong(Number);
 
-        while (!CheckNumberInRange(Number, From, To))
+        while (!CheckLongLongInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateLongLong(Number);
         }
 
         return Number;
     }
 
-    static double ReadNumberInRange(double From, double To, string MessageToUser)
+    static double ReadDoubleInRange(double From, double To, string MessageToUser)
     {
         double Number = 0;
 
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateDouble(Number);
 
-        while (!CheckNumberInRange(Number, From, To))
+        while (!CheckDoubleInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateDouble(Number);
         }
         return Number;
     }
 
-    static long double ReadNumberInRange(long double From, long double To, string MessageToUser)
+    static long double ReadLongDoubleInRange(long double From, long double To, string MessageToUser)
     {
         long double Number = 0;
 
         cout << MessageToUser;
         cin >> Number;
 
-        Number = ValidateNumber(Number);
+        Number = ValidateLongDouble(Number);
 
-        while (!CheckNumberInRange(Number, From, To))
+        while (!CheckLongDoubleInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
 
-            Number = ValidateNumber(Number);
+            Number = ValidateLongDouble(Number);
         }
 
         return Number;
@@ -616,21 +616,21 @@ public:
 
 
 
-    static int RandomNumberInRange(int From, int To)
+    static int RandomIntegerInRange(int From, int To)
     {
         int Number = rand();
 
         return (Number % (To - From + 1)) + From;
     }
 
-    static short RandomNumberInRange(short From, short To)
+    static short RandomShortInRange(short From, short To)
     {
         short Number = rand();
 
         return (Number % (To - From + 1)) + From;
     }
 
-    static long long RandomNumberInRange(long long From, long long To)
+    static long long RandomLongLongInRange(long long From, long long To)
     {
         long long Number = rand();
 
@@ -639,13 +639,13 @@ public:
 
     static char RandomCharacterInRange(char From, char To)
     {
-        short Number = RandomNumberInRange((short)0, (short)127);
+        short Number = RandomShortInRange(0, 127);
 
 
         return char((Number % (short(To) - short(From) + 1)) + short(From));
     }
 
-    static string RandomWordInRange(short Length, char From, char To)
+    static string RandomStringInRange(short Length, char From, char To)
     {
         string Word = "";
 
