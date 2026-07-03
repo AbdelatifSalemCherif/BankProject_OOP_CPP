@@ -273,7 +273,22 @@ public:
 
 	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1};
 
-	//enSaveResult Save()
+	enSaveResult Save(const string& FileName, const string& Separator) const
+	{
+		switch (_Mode)
+		{
+
+		case EmptyMode:
+			return svFaildEmptyObject;
+
+
+		case UpdateMode:
+			_Update(FileName, Separator);
+
+			return svSucceeded;
+		}
+
+	}
 
 
 };
