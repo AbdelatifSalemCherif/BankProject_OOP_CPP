@@ -98,8 +98,21 @@ private:
 
 	}
 
-	void _Update()
+	void _Update(const string& FileName, const string& Separator) const
 	{
+		vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
+
+		for (clsBankClient& Client : _vClients)
+		{
+			if (Client._AccountNumber == _AccountNumber)
+			{
+				Client = *this;
+
+				break;
+			}
+		}
+
+		_SaveAllClientsToFile(_vClients, FileName, Separator);
 
 	}
 
