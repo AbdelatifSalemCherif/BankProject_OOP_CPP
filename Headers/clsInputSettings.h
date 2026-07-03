@@ -209,7 +209,7 @@ public:
 
 
 
-    static int ReadInteger(string MessageToUser = "\nPlease enter an Integer Number ?\n")
+    static int ReadInteger(const string& MessageToUser = "\nPlease enter an Integer Number ?\n")
     {
         int Number = 0;
         cout << MessageToUser;
@@ -221,7 +221,7 @@ public:
 
     }
 
-    static float ReadFloat(string MessageToUser = "\nPlease enter a float Number ?\n")
+    static float ReadFloat(const string& MessageToUser = "\nPlease enter a float Number ?\n")
     {
         float Number = 0;
         cout << MessageToUser;
@@ -245,7 +245,7 @@ public:
 
     }
 
-    static long long int ReadLongLong(string MessageToUser = "\nPlease enter a Long Integer Number ?\n")
+    static long long int ReadLongLong(const string& MessageToUser = "\nPlease enter a Long Integer Number ?\n")
     {
         long long int Number = 0;
         cout << MessageToUser;
@@ -257,7 +257,7 @@ public:
 
     }
 
-    static double ReadDouble(string MessageToUser = "\nPlease enter a Double Number ?\n")
+    static double ReadDouble(const string& MessageToUser = "\nPlease enter a Double Number ?\n")
     {
         double Number = 0;
         cout << MessageToUser;
@@ -269,7 +269,7 @@ public:
         return Number;
     }
 
-    static long double ReadLongDouble(string MessageToUser = "\nPlease enter a Long Double Number ?\n")
+    static long double ReadLongDouble(const string& MessageToUser = "\nPlease enter a Long Double Number ?\n")
     {
         long double Number = 0;
         cout << MessageToUser;
@@ -281,7 +281,7 @@ public:
 
     }
 
-    static bool ReadBoolian(string MessageToUser = "\nPlease enter true (1) or false (0) ?\n")
+    static bool ReadBoolian(const string& MessageToUser = "\nPlease enter true (1) or false (0) ?\n")
     {
         bool Bool = true;
         cout << MessageToUser;
@@ -292,7 +292,7 @@ public:
         return Bool;
     }
 
-    static string ReadString(string MessageToUser = "\nPlease enter a String ?\n")
+    static string ReadString(const string& MessageToUser = "\nPlease enter a String ?\n")
     {
         string String = " ";
         cout << MessageToUser;
@@ -304,7 +304,7 @@ public:
 
     }
 
-    static char ReadCharacter(string MessageToUser = "\nPlease enter a Character ?\n")
+    static char ReadCharacter(const string& MessageToUser = "\nPlease enter a Character ?\n")
     {
         char Char = 'A';
         cout << MessageToUser;
@@ -321,7 +321,7 @@ public:
 
 
 
-    static int ReadPositiveInteger(string MessageToUser = "\nPlease enter a positive integer ?\n"
+    static int ReadPositiveInteger(const string& MessageToUser = "\nPlease enter a positive integer ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         int Number = 0;
@@ -343,7 +343,7 @@ public:
         return Number;
     }
 
-    static float ReadPositiveFloat(string MessageToUser = "\nPlease enter a positive float ?\n"
+    static float ReadPositiveFloat(const string& MessageToUser = "\nPlease enter a positive float ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         float Number = 0;
@@ -365,7 +365,7 @@ public:
         return Number;
     }
 
-    static short ReadPositiveShort(string MessageToUser = "\nPlease enter a positive short ?\n"
+    static short ReadPositiveShort(const string& MessageToUser = "\nPlease enter a positive short ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         short Number = 0;
@@ -387,7 +387,7 @@ public:
         return Number;
     }
 
-    static double ReadPositiveDouble(string MessageToUser = "\nPlease enter a positive double ?\n"
+    static double ReadPositiveDouble(const string& MessageToUser = "\nPlease enter a positive double ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         double Number = 0;
@@ -409,7 +409,7 @@ public:
         return Number;
     }
 
-    static long long ReadPositiveLongLong(string MessageToUser = "\nPlease enter a positive long integer ?\n"
+    static long long ReadPositiveLongLong(const string& MessageToUser = "\nPlease enter a positive long integer ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         long long Number = 0;
@@ -430,7 +430,7 @@ public:
         return Number;
     }
 
-    static long double ReadPositiveLongDouble(string MessageToUser = "\nPlease enter a positive Long Double ?\n"
+    static long double ReadPositiveLongDouble(const string& MessageToUser = "\nPlease enter a positive Long Double ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         long double Number = 0;
@@ -460,7 +460,7 @@ public:
 
 
 
-    static int ReadIntegerInRange(int From, int To, string MessageToUser)
+    static int ReadIntegerInRange(int From, int To, const string& MessageToUser)
     {
         int Number = 0;
 
@@ -480,7 +480,7 @@ public:
         return Number;
     }
 
-    static float ReadFloatInRange(float From, float To, string MessageToUser)
+    static float ReadFloatInRange(float From, float To, const string& MessageToUser)
     {
         float Number = 0;
 
@@ -500,7 +500,7 @@ public:
         return Number;
     }
 
-    static short ReadShortInRange(short From, short To, string MessageToUser)
+    static short ReadShortInRange(short From, short To, const string& MessageToUser)
     {
         short Number = 0;
 
@@ -520,7 +520,7 @@ public:
         return Number;
     }
 
-    static long long ReadLongLongInRange(long long From, long long To, string MessageToUser)
+    static long long ReadLongLongInRange(long long From, long long To, const string& MessageToUser)
     {
         long long Number = 0;
 
@@ -540,7 +540,7 @@ public:
         return Number;
     }
 
-    static double ReadDoubleInRange(double From, double To, string MessageToUser)
+    static double ReadDoubleInRange(double From, double To, const string& MessageToUser)
     {
         double Number = 0;
 
@@ -559,7 +559,7 @@ public:
         return Number;
     }
 
-    static long double ReadLongDoubleInRange(long double From, long double To, string MessageToUser)
+    static long double ReadLongDoubleInRange(long double From, long double To, const string& MessageToUser)
     {
         long double Number = 0;
 
@@ -588,7 +588,7 @@ public:
     }
 
 
-    static bool ReadYesOrNo(string MessageToUser, bool CleanConsol = false)
+    static bool ReadYesOrNo(const string& MessageToUser, bool CleanConsol = false)
     {
         bool Yes = false, No = false;
 
