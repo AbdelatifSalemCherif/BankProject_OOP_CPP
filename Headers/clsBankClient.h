@@ -15,7 +15,7 @@ class clsBankClient : public clsPerson
 {
 private:
 
-	enum enMode {EmptyMode = 0, UpdateMode = 1};
+	enum enMode {EmptyMode = 0, UpdateMode = 1, AddNew = 2};
 
 
 
@@ -279,13 +279,16 @@ public:
 		{
 
 		case EmptyMode:
+		{
 			return svFaildEmptyObject;
-
+		}
 
 		case UpdateMode:
+		{
 			_Update(FileName, Separator);
 
 			return svSucceeded;
+		}
 		}
 
 	}

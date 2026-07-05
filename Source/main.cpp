@@ -50,6 +50,18 @@ void UpdateClient()
 
 }
 
+void AddNewClient()
+{
+
+
+
+
+
+
+
+
+}
+
 int main()
 {
 	
