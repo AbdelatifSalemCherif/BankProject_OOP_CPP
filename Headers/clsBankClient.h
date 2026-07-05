@@ -15,7 +15,7 @@ class clsBankClient : public clsPerson
 {
 private:
 
-	enum enMode {EmptyMode = 0, UpdateMode = 1, AddNew = 2};
+	enum enMode {EmptyMode = 0, UpdateMode = 1, AddNewMode = 2};
 
 
 
@@ -117,6 +117,11 @@ private:
 	}
 
 
+
+
+
+	//Get Ready Objects
+
 	static clsBankClient _GetEmptyClient()
 	{
 		return clsBankClient(EmptyMode, "", "", "", "", "", "", 0);
@@ -183,6 +188,18 @@ public:
 	{
 		return !Find(AccountNumber, FileName, Separator).IsEmpty();
 	}
+
+
+
+
+	//Get Ready Objects
+
+	static clsBankClient GetAddNewClientObject(const string& AccountNumber)
+	{
+
+		return clsBankClient(AddNewMode, "", "", "", "", AccountNumber, "", 0);
+	}
+
 
 
 
