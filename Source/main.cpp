@@ -52,11 +52,16 @@ void UpdateClient()
 
 void AddNewClient()
 {
+	string AccountNember = clsInputSettings::ReadString("\nPlease enter the account number : ");
 
+	while (clsBankClient::IsClientExist(AccountNember, FileName, Separator))
+	{
+		AccountNember = clsInputSettings::ReadString("\nThis Account number is exist, Please enter another account number : ");
+	}
 
+	//clsBankClient NewClient = clsBankClient::GetAddNewClient(AccountNember);
 
-
-
+	//ReadClientInfo(NewClient);
 
 
 

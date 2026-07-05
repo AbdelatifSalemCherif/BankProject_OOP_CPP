@@ -271,7 +271,7 @@ public:
 
 	}
 
-	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1};
+	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExist = 2};
 
 	enSaveResult Save(const string& FileName, const string& Separator) const
 	{
