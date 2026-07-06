@@ -422,7 +422,10 @@ public:
 
 	}
 
-
+	static vector <clsBankClient> GetClientsList(const string& FileName, const string& Separator)
+	{
+		return _LoadAllClientsFromFile(FileName, Separator);
+	}
 
 
 
