@@ -93,7 +93,7 @@ void AddNewClient()
 int main()
 {
 	
-	UpdateClient();
+	AddNewClient();
 
 	return 0;
 

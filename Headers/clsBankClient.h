@@ -102,7 +102,7 @@ private:
 	{
 		fstream File;
 
-		File.open(FileName, ios::out && ios::app);
+		File.open(FileName, ios::out | ios::app);
 
 		if (File.is_open())
 		{
