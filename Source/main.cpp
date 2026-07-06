@@ -131,10 +131,10 @@ void PrintClientLineOfList(const clsBankClient& Client)
 {
 	cout << "| " << left << setw(15) << Client.GetAccountNumber();
 	cout << "| " << left << setw(20) << Client.FirstName + " " + Client.LastName;
-	cout << "| " << left << setw(12) << Client.Email;
-	cout << "| " << left << setw(20) << Client.Phone;
+	cout << "| " << left << setw(30) << Client.Email;
+	cout << "| " << left << setw(15) << Client.Phone;
 	cout << "| " << left << setw(10) << Client.PinCode;
-	cout << "| " << left << setw(12) << to_string(Client.Balance) << endl;
+	cout << "| " << left << setw(15) << to_string(Client.Balance) << endl;
 }
 
 void ShowClientsList()
@@ -144,16 +144,16 @@ void ShowClientsList()
 
 	cout << "\n\t\t\t\t\tClient List (" << vClients.size() << ") Clients" << endl;
 
-	cout << "----------------------------------------------------------------------------------------------------" << endl;
+	cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
 	
 	cout << "| " << left << setw(15) << "Account Number";
 	cout << "| " << left << setw(20) << "Client Name";
-	cout << "| " << left << setw(12) << "Email";
-	cout << "| " << left << setw(20) << "Phone";
+	cout << "| " << left << setw(30) << "Email";
+	cout << "| " << left << setw(15) << "Phone";
 	cout << "| " << left << setw(10) << "Pin Code";
-	cout << "| " << left << setw(12) << "Balance" << endl;
+	cout << "| " << left << setw(15) << "Balance" << endl;
 
-	cout << "----------------------------------------------------------------------------------------------------" << endl;
+	cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
 
 
 	if (vClients.size() == 0)
@@ -168,14 +168,14 @@ void ShowClientsList()
 		}
 	}
 
-	cout << "----------------------------------------------------------------------------------------------------" << endl;
+	cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
 
 }
 
 int main()
 {
 	
-	
+	ShowClientsList();
 
 	return 0;
 
