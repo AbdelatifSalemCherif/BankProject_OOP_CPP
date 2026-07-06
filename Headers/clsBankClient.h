@@ -13,9 +13,12 @@ using namespace std;
 
 class clsBankClient : public clsPerson
 {
+
 private:
 
 	enum enMode {EmptyMode = 0, UpdateMode = 1, AddNewMode = 2};
+
+
 
 
 
@@ -26,6 +29,9 @@ private:
 	string _PinCode;
 	float _Balance;
 	bool _MarkedForDelete = false;
+
+
+
 
 
 
@@ -91,7 +97,10 @@ private:
 
 			for (const clsBankClient& Client : vClients)
 			{
-				File << _ConvertClientToLine(Client, Separator) + "\n";
+				if (Client._MarkedForDelete)
+				{
+					File << _ConvertClientToLine(Client, Separator) + "\n";
+				}
 			}
 
 			File.close();
@@ -114,6 +123,10 @@ private:
 		}
 
 	}
+
+
+
+
 
 
 
@@ -159,6 +172,12 @@ private:
 		return clsBankClient(EmptyMode, "", "", "", "", "", "", 0);
 	}
 
+
+
+
+
+
+
 public:
 
 	clsBankClient(enMode Mode, const string& FirstName, const string& LastName, const string& Email, const string& Phone
@@ -171,6 +190,11 @@ public:
 		_Balance = Balance;
 
 	}
+
+
+
+
+
 
 
 
@@ -209,6 +233,12 @@ public:
 
 
 
+
+
+
+
+
+
 	//Checks Methods
 
 	bool IsEmpty() const
@@ -224,6 +254,9 @@ public:
 
 
 
+
+
+
 	//Get Ready Objects
 
 	static clsBankClient GetAddNewClientObject(const string& AccountNumber)
@@ -231,6 +264,9 @@ public:
 
 		return clsBankClient(AddNewMode, "", "", "", "", AccountNumber, "", 0);
 	}
+
+
+
 
 
 
@@ -253,6 +289,9 @@ public:
 		cout << "------------------------------------------------" << endl;
 
 	}
+
+
+
 
 
 
