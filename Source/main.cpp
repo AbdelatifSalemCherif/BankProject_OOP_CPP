@@ -63,7 +63,30 @@ void AddNewClient()
 
 	ReadClientInfo(NewClient);
 
-	//switch(NewClient.Save())
+	switch (NewClient.Save(FileName, Separator))
+	{
+	case clsBankClient::svFaildEmptyObject:
+	{
+		cout << "\nFaild, is an empty client !" << endl;
+
+		break;
+	}
+
+	case clsBankClient::svFaildAccountNumberExist:
+	{
+		cout << "\nFaild, Account number exist !" << endl;
+
+		break;
+	}
+
+	case clsBankClient::svSucceeded:
+	{
+		cout << "\nClient added successfuly :-) " << endl;
+
+		break;
+	}
+
+	}
 
 }
 
