@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Headers\clsBankClient.h" />
     <ClInclude Include="Headers\clsInputSettings.h" />
+    <ClInclude Include="Headers\clsOutputSettings.h" />
     <ClInclude Include="Headers\clsPerson.h" />
     <ClInclude Include="Headers\clsString.h" />
   </ItemGroup>

@@ -126,6 +126,14 @@ void DeleteClient()
 
 }
 
+void ShowClientsList()
+{
+	vector <clsBankClient> vClients = clsBankClient::GetClientsList(FileName, Separator);
+
+	
+
+
+}
 
 int main()
 {

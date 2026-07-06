@@ -13,6 +13,8 @@ class clsInputSettings
 public:
 
 
+    //Check positive numbers
+
     static bool CheckPostiveInteger(int Number)
     {
         return Number >= 0;
@@ -48,6 +50,12 @@ public:
 
 
 
+
+
+
+
+
+    //Check numbers in range
 
     static bool CheckIntegerInRange(int Number, int From, int To)
     {
@@ -86,6 +94,10 @@ public:
 
 
 
+
+
+
+    // number validation
 
     static int ValidateInteger(int& Number)
     {
@@ -209,6 +221,18 @@ public:
 
 
 
+
+
+
+
+
+
+
+
+
+
+    // read variables
+
     static int ReadInteger(const string& MessageToUser = "\nPlease enter an Integer Number ?\n")
     {
         int Number = 0;
@@ -320,6 +344,15 @@ public:
 
 
 
+
+
+
+
+
+
+
+
+    // read positive number
 
     static int ReadPositiveInteger(const string& MessageToUser = "\nPlease enter a positive integer ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
@@ -460,6 +493,14 @@ public:
 
 
 
+
+
+
+
+
+
+    // Read number in range
+
     static int ReadIntegerInRange(int From, int To, const string& MessageToUser)
     {
         int Number = 0;
@@ -581,12 +622,16 @@ public:
 
 
 
-    static void RestScreen()
-    {
-        system("CLS");
-        system("Color 0F");
-    }
+  
 
+
+
+
+
+
+
+
+    // special read for yes or no cases from consol
 
     static bool ReadYesOrNo(const string& MessageToUser, bool CleanConsol = false)
     {
@@ -605,7 +650,10 @@ public:
         } while (UserChoice.length() > 3 || (!Yes && !No));
 
         if (CleanConsol && Yes)
-            RestScreen();
+        {
+            system("CLS");
+            system("Color 0F");
+        }
 
 
         return Yes;
@@ -615,6 +663,19 @@ public:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    // Random number in range
 
     static int RandomIntegerInRange(int From, int To)
     {
