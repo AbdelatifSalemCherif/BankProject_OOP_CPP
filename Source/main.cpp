@@ -127,9 +127,14 @@ void DeleteClient()
 
 }
 
-clsString GetClientLineonList(const clsBankClient& Client)
+void PrintClientLineOfList(const clsBankClient& Client)
 {
-	
+	cout << "| " << left << setw(15) << Client.GetAccountNumber();
+	cout << "| " << left << setw(20) << Client.FirstName + " " + Client.LastName;
+	cout << "| " << left << setw(12) << Client.Email;
+	cout << "| " << left << setw(20) << Client.Phone;
+	cout << "| " << left << setw(10) << Client.PinCode;
+	cout << "| " << left << setw(12) << to_string(Client.Balance) << endl;
 }
 
 void ShowClientsList()
@@ -146,7 +151,7 @@ void ShowClientsList()
 	cout << "| " << left << setw(12) << "Email";
 	cout << "| " << left << setw(20) << "Phone";
 	cout << "| " << left << setw(10) << "Pin Code";
-	cout << "| " << left << setw(12) << "Balance";
+	cout << "| " << left << setw(12) << "Balance" << endl;
 
 	cout << "----------------------------------------------------------------------------------------------------" << endl;
 
@@ -159,7 +164,7 @@ void ShowClientsList()
 	{
 		for (const clsBankClient& Client : vClients)
 		{
-			//PrintClientLineOfList(Client);
+			PrintClientLineOfList(Client);
 		}
 	}
 
