@@ -306,6 +306,10 @@ public:
 
 			return svSucceeded;
 		}
+
+		case AddNewMode:
+
+
 		}
 
 	}

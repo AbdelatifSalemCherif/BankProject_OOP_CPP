@@ -59,9 +59,9 @@ void AddNewClient()
 		AccountNember = clsInputSettings::ReadString("\nThis Account number is exist, Please enter another account number : ");
 	}
 
-	//clsBankClient NewClient = clsBankClient::GetAddNewClientObject(AccountNember);
+	clsBankClient NewClient = clsBankClient::GetAddNewClientObject(AccountNember);
 
-	//ReadClientInfo(NewClient);
+	ReadClientInfo(NewClient);
 
 	//switch(NewClient.Save())
 
