@@ -25,6 +25,7 @@ private:
 	string _AccountNumber;
 	string _PinCode;
 	float _Balance;
+	bool _MarkedForDelete = false;
 
 
 
