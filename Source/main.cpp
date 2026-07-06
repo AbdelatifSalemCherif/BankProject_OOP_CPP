@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 #include "clsBankClient.h"
 #include "clsInputSettings.h"
@@ -126,12 +127,43 @@ void DeleteClient()
 
 }
 
+clsString GetClientLineonList(const clsBankClient& Client)
+{
+	
+}
+
 void ShowClientsList()
 {
 	vector <clsBankClient> vClients = clsBankClient::GetClientsList(FileName, Separator);
 
-	
 
+	cout << "\n\t\t\t\t\tClient List (" << vClients.size() << ") Clients" << endl;
+
+	cout << "----------------------------------------------------------------------------------------------------" << endl;
+	
+	cout << "| " << left << setw(15) << "Account Number";
+	cout << "| " << left << setw(20) << "Client Name";
+	cout << "| " << left << setw(12) << "Email";
+	cout << "| " << left << setw(20) << "Phone";
+	cout << "| " << left << setw(10) << "Pin Code";
+	cout << "| " << left << setw(12) << "Balance";
+
+	cout << "----------------------------------------------------------------------------------------------------" << endl;
+
+
+	if (vClients.size() == 0)
+	{
+		cout << "\t\t\t\tNo Clients Available In System !" << endl;
+	}
+	else
+	{
+		for (const clsBankClient& Client : vClients)
+		{
+			//PrintClientLineOfList(Client);
+		}
+	}
+
+	cout << "----------------------------------------------------------------------------------------------------" << endl;
 
 }
 
