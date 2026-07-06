@@ -112,7 +112,6 @@ private:
 			File.close();
 		}
 
-
 	}
 
 
@@ -141,6 +140,7 @@ private:
 	void _AddNew(const string& FileName, const string& Separator) const
 	{
 		
+		_AddLineToFile(_ConvertClientToLine(*this, Separator), FileName, Separator);
 
 	}
 
