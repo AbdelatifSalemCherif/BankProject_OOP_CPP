@@ -98,6 +98,28 @@ private:
 
 	}
 
+	static void _AddLineToFile(const string& Line, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::out && ios::app);
+
+		if (File.is_open())
+		{
+
+			File << Line + "\n";
+
+			File.close();
+		}
+
+
+	}
+
+
+
+
+	//Core logic
+
 	void _Update(const string& FileName, const string& Separator) const
 	{
 		vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
@@ -115,6 +137,15 @@ private:
 		_SaveAllClientsToFile(_vClients, FileName, Separator);
 
 	}
+
+	void _AddNew(const string& FileName, const string& Separator) const
+	{
+		
+
+	}
+
+
+
 
 
 
@@ -297,7 +328,10 @@ public:
 
 		case EmptyMode:
 		{
-			return svFaildEmptyObject;
+			if (IsEmpty())
+			{
+				return svFaildEmptyObject;
+			}
 		}
 
 		case UpdateMode:
@@ -309,7 +343,17 @@ public:
 
 		case AddNewMode:
 
+			if (IsClientExist(_AccountNumber, FileName, Separator))
+			{
+				return svFaildAccountNumberExist;
+			}
+			else
+			{
 
+				_AddNew(FileName, Separator);
+
+				return svSucceeded;
+			}
 		}
 
 	}
