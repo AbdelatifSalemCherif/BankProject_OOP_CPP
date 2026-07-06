@@ -97,7 +97,7 @@ private:
 
 			for (const clsBankClient& Client : vClients)
 			{
-				if (Client._MarkedForDelete)
+				if (!Client._MarkedForDelete)
 				{
 					File << _ConvertClientToLine(Client, Separator) + "\n";
 				}
@@ -397,6 +397,33 @@ public:
 		}
 
 	}
+
+	bool Delete(const string& FileName, const string& Separator)
+	{
+		vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
+
+
+		for (clsBankClient& Client : _vClients)
+		{
+			if (Client._AccountNumber == _AccountNumber)
+			{
+				Client._MarkedForDelete = true;
+
+				_SaveAllClientsToFile(_vClients, FileName, Separator);
+
+				*this = _GetEmptyClient();
+
+				return true;
+			}
+		}
+
+
+		return false;
+
+	}
+
+
+
 
 
 };
