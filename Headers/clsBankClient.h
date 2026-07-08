@@ -16,7 +16,7 @@ class clsBankClient : public clsPerson
 
 private:
 
-	enum enMode {EmptyMode = 0, UpdateMode = 1, AddNewMode = 2};
+	enum enMode {eEmptyMode = 0, eUpdateMode = 1, eAddNewMode = 2};
 
 
 
@@ -41,7 +41,7 @@ private:
 	{
 		vector <string> vClient = clsString::Split(Line, Separator, false);
 
-		return clsBankClient(UpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
+		return clsBankClient(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
 			, vClient[5], stoi(vClient[6]));
 
 	}
@@ -169,7 +169,7 @@ private:
 
 	static clsBankClient _GetEmptyClient()
 	{
-		return clsBankClient(EmptyMode, "", "", "", "", "", "", 0);
+		return clsBankClient(eEmptyMode, "", "", "", "", "", "", 0);
 	}
 
 
@@ -243,7 +243,7 @@ public:
 
 	bool IsEmpty() const
 	{
-		return _Mode == EmptyMode;
+		return _Mode == eEmptyMode;
 	}
 
 	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator) 
@@ -262,7 +262,7 @@ public:
 	static clsBankClient GetAddNewClientObject(const string& AccountNumber)
 	{
 
-		return clsBankClient(AddNewMode, "", "", "", "", AccountNumber, "", 0);
+		return clsBankClient(eAddNewMode, "", "", "", "", AccountNumber, "", 0);
 	}
 
 
@@ -366,7 +366,7 @@ public:
 		switch (_Mode)
 		{
 
-		case EmptyMode:
+		case eEmptyMode:
 		{
 			if (IsEmpty())
 			{
@@ -374,14 +374,14 @@ public:
 			}
 		}
 
-		case UpdateMode:
+		case eUpdateMode:
 		{
 			_Update(FileName, Separator);
 
 			return svSucceeded;
 		}
 
-		case AddNewMode:
+		case eAddNewMode:
 
 			if (IsClientExist(_AccountNumber, FileName, Separator))
 			{

@@ -4,7 +4,7 @@
 #include "clsBankClient.h"
 #include "clsInputSettings.h"
 #include "clsUtility.h"
-
+#include "clsMainScreen.h"
 
 using namespace std;
 
@@ -53,7 +53,7 @@ void UpdateClient()
 
 }
 
-void AddNewClient()
+void eAddNewClient()
 {
 	string AccountNember = clsInputSettings::ReadString("\nPlease enter the account number : ");
 
@@ -226,7 +226,7 @@ void ShowTotalBalance()
 int main()
 {
 	
-	
+	clsMainScreen::ShowMainMenue();
 
 
 
