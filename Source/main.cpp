@@ -5,6 +5,7 @@
 #include "clsInputSettings.h"
 #include "clsUtility.h"
 
+
 using namespace std;
 
 const string FileName = "BankData/Clients.txt", Separator = "#//#";
@@ -225,7 +226,7 @@ void ShowTotalBalance()
 int main()
 {
 	
-	ShowTotalBalance();
+	
 
 
 

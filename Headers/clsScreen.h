@@ -1,0 +1,36 @@
+#pragma once
+
+#include <iostream>
+#include "iomanip"
+
+using namespace std;
+
+
+class clsScreen
+{
+
+protected:
+
+	static void _DrawScreenHeader(const string& Title, const string& SubTitle = "")
+	{
+		cout << "\t\t\t\t\t----------------------------------------------------------";
+
+		cout << "\n\n\t\t\t\t\t\t\t\t" << Title;
+
+		if (SubTitle != "")
+		{
+			cout << "\n\n\t\t\t\t\t\t\t\t" << SubTitle;
+		}
+
+		cout << "\n\n\t\t\t\t\t----------------------------------------------------------";
+
+	}
+
+
+
+
+
+
+
+
+};
