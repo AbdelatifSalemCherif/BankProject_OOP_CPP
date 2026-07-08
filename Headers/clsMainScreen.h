@@ -2,24 +2,29 @@
 
 #include <iostream>
 #include <iomanip>
+
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
-
-
 #include "clsScreen.h"
 
 using namespace std;
 
 class clsMainScreen : protected clsScreen
 {
+private:
 
+	enum enMainOption { ClientsList, AddNewClient, DeleteClient, UpdateClientInfo, FindClient, Transactions, ManageUsers, Logout };
+
+	static void _PerformMainMenueOption(enMainOption MainOption)
+	{
+
+	}
 
 
 
 public:
 
-	enum enMainOption {ClientsList, AddNewClient, DeleteClient, UpdateClientInfo, FindClient, Transactions, ManageUsers, Logout};
-
+	
 	static void ShowMainSreen()
 	{
 		clsOutputSettings::RestScreen();
@@ -27,9 +32,7 @@ public:
 		_DrawScreenHeader("Main Screen");
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
-
 		cout << setw(37) << left << "" << "\t\t\tMain Menue\n\n";
-
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 		cout << setw(37) << left << "" << "\t[1] Show Client List.\n";
@@ -44,10 +47,7 @@ public:
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 
-		_PerformMainMenueOption(clsInputSettings::ReadShortInRange(1, 8, "Choose What Do You Want To Do ? [1 to 8] ? "));
-
-
-
+		_PerformMainMenueOption((enMainOption)clsInputSettings::ReadShortInRange(1, 8, "Choose What Do You Want To Do ? [1 to 8] ? "));
 
 
 	}
