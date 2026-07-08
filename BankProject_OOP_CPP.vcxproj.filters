@@ -26,6 +26,9 @@
     <ClInclude Include="Headers\clsOutputSettings.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\clsUtility.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

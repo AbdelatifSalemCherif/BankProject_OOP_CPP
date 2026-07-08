@@ -3,6 +3,7 @@
 
 #include "clsBankClient.h"
 #include "clsInputSettings.h"
+#include "clsUtility.h"
 
 using namespace std;
 
@@ -186,7 +187,9 @@ void ShowTotalBalance()
 int main()
 {
 	
-	ShowClientsList();
+	cout << clsUtility::GetNumberText(1471482) << endl;
+
+
 
 	return 0;
 
