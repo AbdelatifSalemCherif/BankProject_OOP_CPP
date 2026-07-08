@@ -427,6 +427,22 @@ public:
 		return _LoadAllClientsFromFile(FileName, Separator);
 	}
 
+	static double GetTotalBalance(const string& FileName, const string& Separator)
+	{
+		const vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
+
+		double TotalBanace = 0;
+
+		for (const clsBankClient& Client : _vClients)
+		{
+			TotalBanace += Client._Balance;
+		}
+
+		return TotalBanace;
+	}
+
+
+
 
 
 };

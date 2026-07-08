@@ -173,6 +173,16 @@ void ShowClientsList()
 		"-------" << endl;
 }
 
+void PrintClientLineOfTotalBalanceTable(const clsBankClient& Client)
+{
+
+}
+
+void ShowTotalBalance()
+{
+
+}
+
 int main()
 {
 	
