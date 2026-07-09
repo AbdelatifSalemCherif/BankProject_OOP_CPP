@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\clsBankClient.h" />
+    <ClInclude Include="Headers\clsClientsListScreen.h" />
     <ClInclude Include="Headers\clsInputSettings.h" />
     <ClInclude Include="Headers\clsMainScreen.h" />
     <ClInclude Include="Headers\clsOutputSettings.h" />
