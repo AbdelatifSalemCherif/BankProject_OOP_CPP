@@ -14,6 +14,7 @@ private:
 
 	static void PrintClientLineOfList(const clsBankClient& Client)
 	{
+		cout << setw(8) << left << "";
 		cout << "| " << left << setw(15) << Client.GetAccountNumber();
 		cout << "| " << left << setw(20) << Client.FirstName + " " + Client.LastName;
 		cout << "| " << left << setw(30) << Client.Email;
@@ -26,16 +27,18 @@ private:
 public:
 
 	
-	static void ShowClientsList(const string& FileName, const string& Separator)
+	static void ShowClientsListScreen(const string& FileName, const string& Separator)
 	{
 		vector <clsBankClient> vClients = clsBankClient::GetClientsList(FileName, Separator);
 
+		_DrawScreenHeader("Clients List Screen", "(" + to_string(vClients.size()) + ") Clients.");
 
-		cout << "\n\t\t\t\t\t\tClient List (" << vClients.size() << ") Clients" << endl;
+		/*cout << "\n\t\t\t\t\t\tClient List (" << vClients.size() << ") Clients" << endl;*/
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
 			"--------------------------- " << endl;
 
+		cout << setw(8) << left << "";
 		cout << "| " << left << setw(15) << "Account Number";
 		cout << "| " << left << setw(20) << "Client Name";
 		cout << "| " << left << setw(30) << "Email";
@@ -54,6 +57,7 @@ public:
 		{
 			for (const clsBankClient& Client : vClients)
 			{
+
 				PrintClientLineOfList(Client);
 			}
 		}
