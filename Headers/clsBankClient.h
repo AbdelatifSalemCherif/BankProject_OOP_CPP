@@ -257,6 +257,8 @@ public:
 
 
 
+
+
 	//Get Ready Objects
 
 	static clsBankClient GetAddNewClientObject(const string& AccountNumber)
@@ -266,29 +268,6 @@ public:
 	}
 
 
-
-
-
-
-
-
-	//Output methods
-
-	void Print() const
-	{
-		cout << "\nClient Card :" << endl;
-		cout << "------------------------------------------------" << endl;
-		cout << "First Name :" << FirstName << endl;
-		cout << "Last Name  :" << LastName << endl;
-		cout << "Full Name  :" << FirstName + " " + LastName << endl;
-		cout << "Email      :" << Email << endl;
-		cout << "Phone      :" << Phone << endl;
-		cout << "Acc.Number :" << _AccountNumber << endl;
-		cout << "Password   :" << _PinCode << endl;
-		cout << "Balance    :" << _Balance << endl;
-		cout << "------------------------------------------------" << endl;
-
-	}
 
 
 

@@ -7,6 +7,8 @@
 #include "clsInputSettings.h"
 #include "clsScreen.h"
 #include "clsClientsListScreen.h"
+#include "clsAddNewClientScreen.h"
+
 
 using namespace std;
 
@@ -32,7 +34,7 @@ private:
 
 	static void _ShowAddNewClientScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\nAdd New Client Screen will be here ...\n";
+		clsAddNewClientScreen::ShowAddNewClientScreen(FileName, Separator);
 	}
 
 	static void _ShowDeleteClientScreen(const string& FileName, const string& Separator)

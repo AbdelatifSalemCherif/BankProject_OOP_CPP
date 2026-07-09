@@ -51,46 +51,6 @@ using namespace std;
 //
 //}
 //
-//void eAddNewClient()
-//{
-//	string AccountNember = clsInputSettings::ReadString("\nPlease enter the account number : ");
-//
-//	while (clsBankClient::IsClientExist(AccountNember, FileName, Separator))
-//	{
-//		AccountNember = clsInputSettings::ReadString("\nThis Account number is exist, Please enter another account number : ");
-//	}
-//
-//	clsBankClient NewClient = clsBankClient::GetAddNewClientObject(AccountNember);
-//
-//	ReadClientInfo(NewClient);
-//
-//	switch (NewClient.Save(FileName, Separator))
-//	{
-//	case clsBankClient::svFaildEmptyObject:
-//	{
-//		cout << "\nFaild, is an empty client !" << endl;
-//
-//		break;
-//	}
-//
-//	case clsBankClient::svFaildAccountNumberExist:
-//	{
-//		cout << "\nFaild, Account number exist !" << endl;
-//
-//		break;
-//	}
-//
-//	case clsBankClient::svSucceeded:
-//	{
-//		cout << "\nClient added successfuly :-) " << endl;
-//
-//		break;
-//	}
-//
-//	}
-//
-//}
-//
 //void DeleteClient()
 //{
 //
