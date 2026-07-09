@@ -51,42 +51,6 @@ using namespace std;
 //
 //}
 //
-//void DeleteClient()
-//{
-//
-//	clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
-//		, FileName, Separator);
-//
-//	while (Client.IsEmpty())
-//	{
-//		Client =
-//			clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
-//				, FileName, Separator);
-//	}
-//
-//	Client.Print();
-//
-//
-//	if (clsInputSettings::ReadYesOrNo("\n\nDo you want to delete this client ? y/n ? "))
-//	{
-//
-//		if(Client.Delete(FileName, Separator))
-//		{
-//			cout << "\n\nClient deleted successfully :-) " << endl;
-//
-//			Client.Print();
-//			
-//		}
-//		else
-//		{
-//			cout << "\n\nClient hasn\'t deleted !" << endl;
-//		}
-//
-//	}
-//
-//
-//}
-//
 //void PrintClientLineOfTotalBalanceTable(const clsBankClient& Client)
 //{
 //	cout << "| " << left << setw(30) << Client.GetAccountNumber();

@@ -8,7 +8,7 @@
 #include "clsScreen.h"
 #include "clsClientsListScreen.h"
 #include "clsAddNewClientScreen.h"
-
+#include "clsDeleteClientScreen.h"
 
 using namespace std;
 
@@ -39,7 +39,7 @@ private:
 
 	static void _ShowDeleteClientScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\nDelete Client Screen will be here ...\n";
+		clsDeleteClientScreen::ShowDeleteClientScreen(FileName, Separator);
 	}
 
 	static void _ShowUpdateClientInfoScreen(const string& FileName, const string& Separator)
