@@ -49,7 +49,7 @@ private:
 		cout << "\nFind Client Screen will be here ...\n";
 	}
 	
-	static void _TransactionsScreen()
+	static void _TransactionsMenue()
 	{
 		cout << "\nTransactions Screen will be here ...\n";
 	}
@@ -127,7 +127,7 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_TransactionsScreen();
+			_TransactionsMenue();
 
 			_GoBackToMainMenue();
 
