@@ -6,6 +6,7 @@
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
 #include "clsScreen.h"
+#include "clsClientsListScreen.h"
 
 using namespace std;
 
@@ -24,9 +25,9 @@ private:
 		ShowMainMenue();
 	}
 
-	static void _ShowClientListScreen()
+	static void _ShowClientListScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\nClient List Screen will be here ...\n";
+		clsClientsListScreen::ShowClientsList(FileName, Separator);
 	}
 
 	static void _ShowAddNewClientScreen()
