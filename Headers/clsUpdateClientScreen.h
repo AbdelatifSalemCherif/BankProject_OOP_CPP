@@ -40,10 +40,9 @@ private:
 
 	}
 
-
 public:
 
-	static void UpdateClient(const string& FileName, const string& Separator)
+	static void UpdateClientScreen(const string& FileName, const string& Separator)
 {
 
 	_DrawScreenHeader("Update Client Screen");
@@ -60,26 +59,27 @@ public:
 
 	_PrintClientCard(Client);
 
-
-	cout << "\n\nUpdating Client Info : " << endl;
-
-	_ReadClientInfo(Client);
-
-
-	if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
+	if (clsInputSettings::ReadYesOrNo("\n\nDo you want to update this client ? y/n ?"))
 	{
-		cout << "\n\nClient was Saved Successfully :-) ";
+		cout << "\n\nUpdating Client Info : " << endl;
+
+		_ReadClientInfo(Client);
+
+		if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
+		{
+			cout << "\n\nClient was Saved Successfully :-) ";
+		}
+		else
+		{
+			cout << "\n\nClient wasn\'t Saved, is an empty client ! ";
+		}
 	}
 	else
 	{
-		cout << "\n\nClient wasn\'t Saved Successfully, is an empty client ! ";
+
+		cout << "\n\nClient wasn\'t Update! ";
 	}
 
 }
-
-
-
-
-
 
 };

@@ -9,11 +9,13 @@
 #include "clsClientsListScreen.h"
 #include "clsAddNewClientScreen.h"
 #include "clsDeleteClientScreen.h"
+#include "clsUpdateClientScreen.h"
 
 using namespace std;
 
 class clsMainScreen : protected clsScreen
 {
+
 private:
 
 	enum enMainMenuOptions { eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClientInfo = 4, eFindClient = 5
@@ -44,7 +46,7 @@ private:
 
 	static void _ShowUpdateClientInfoScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\nUpdate Client Screen will be here ...\n";
+		clsUpdateClientScreen::UpdateClientScreen(FileName, Separator);
 	}
 
 	static void _ShowFindClientScreen(const string& FileName, const string& Separator)
