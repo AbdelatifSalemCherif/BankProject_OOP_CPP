@@ -141,6 +141,7 @@
     <ClInclude Include="Headers\clsPerson.h" />
     <ClInclude Include="Headers\clsScreen.h" />
     <ClInclude Include="Headers\clsString.h" />
+    <ClInclude Include="Headers\clsUpdateClientScreen.h" />
     <ClInclude Include="Headers\clsUtility.h" />
   </ItemGroup>
   <ItemGroup>

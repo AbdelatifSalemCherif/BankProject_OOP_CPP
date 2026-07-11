@@ -44,6 +44,9 @@
     <ClInclude Include="Headers\clsDeleteClientScreen.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\clsUpdateClientScreen.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
