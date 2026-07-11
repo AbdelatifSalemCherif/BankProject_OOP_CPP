@@ -11,8 +11,71 @@ using namespace std;
 class clsUpdateClientScreen : protected clsScreen
 {
 
+private:
+
+	static void _ReadClientInfo(clsBankClient& Client)
+	{
+		Client.FirstName = clsInputSettings::ReadString("\nPlease enter First Name : ");
+		Client.LastName = clsInputSettings::ReadString("\nPlease enter Last Name : ");
+		Client.Email = clsInputSettings::ReadString("\nPlease enter Email : ");
+		Client.Phone = clsInputSettings::ReadString("\nPlease enter Phone : ");
+		Client.PinCode = clsInputSettings::ReadString("\nPlease enter Pin Code : ");
+		Client.Balance = clsInputSettings::ReadFloat("\nPlease enter Balance : ");
+
+	}
+
+	static void _PrintClientCard(const clsBankClient& Client)
+	{
+		cout << "\nClient Card :" << endl;
+		cout << "------------------------------------------------" << endl;
+		cout << "First Name :" << Client.FirstName << endl;
+		cout << "Last Name  :" << Client.LastName << endl;
+		cout << "Full Name  :" << Client.FirstName + " " + Client.LastName << endl;
+		cout << "Email      :" << Client.Email << endl;
+		cout << "Phone      :" << Client.Phone << endl;
+		cout << "Acc.Number :" << Client.GetAccountNumber() << endl;
+		cout << "Password   :" << Client.PinCode << endl;
+		cout << "Balance    :" << Client.Balance << endl;
+		cout << "------------------------------------------------" << endl;
+
+	}
 
 
+public:
+
+	static void UpdateClient(const string& FileName, const string& Separator)
+{
+
+	_DrawScreenHeader("Update Client Screen");
+
+	clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
+		, FileName, Separator);
+
+	while (Client.IsEmpty())
+	{
+		Client = 
+			clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
+			, FileName, Separator);
+	}
+
+	_PrintClientCard(Client);
+
+
+	cout << "\n\nUpdating Client Info : " << endl;
+
+	_ReadClientInfo(Client);
+
+
+	if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
+	{
+		cout << "\n\nClient was Saved Successfully :-) ";
+	}
+	else
+	{
+		cout << "\n\nClient wasn\'t Saved Successfully, is an empty client ! ";
+	}
+
+}
 
 
 

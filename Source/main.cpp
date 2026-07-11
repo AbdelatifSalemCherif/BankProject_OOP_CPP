@@ -19,37 +19,6 @@ using namespace std;
 //
 //}
 //
-//void UpdateClient()
-//{
-//
-//	clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
-//		, FileName, Separator);
-//
-//	while (Client.IsEmpty())
-//	{
-//		Client = 
-//			clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
-//			, FileName, Separator);
-//	}
-//
-//	Client.Print();
-//
-//
-//	cout << "\n\nUpdating Client Info : " << endl;
-//
-//	ReadClientInfo(Client);
-//
-//
-//	if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
-//	{
-//		cout << "\n\nClient was Saved Successfully :-) ";
-//	}
-//	else
-//	{
-//		cout << "\n\nClient wasn\'t Saved Successfully, is an empty client ! ";
-//	}
-//
-//}
 //
 //void PrintClientLineOfTotalBalanceTable(const clsBankClient& Client)
 //{
