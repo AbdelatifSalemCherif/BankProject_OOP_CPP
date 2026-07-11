@@ -42,7 +42,7 @@ private:
 
 public:
 
-	static void UpdateClientScreen(const string& FileName, const string& Separator)
+	static void ShowUpdateClientScreen(const string& FileName, const string& Separator)
 {
 
 	_DrawScreenHeader("Update Client Screen");

@@ -50,6 +50,9 @@
     <ClInclude Include="Headers\clsFindClientScreen.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\clsTransactionsScreen.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

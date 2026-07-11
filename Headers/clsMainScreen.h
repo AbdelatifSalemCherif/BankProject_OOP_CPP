@@ -10,6 +10,7 @@
 #include "clsAddNewClientScreen.h"
 #include "clsDeleteClientScreen.h"
 #include "clsUpdateClientScreen.h"
+#include "clsFindClientScreen.h"
 
 using namespace std;
 
@@ -46,12 +47,12 @@ private:
 
 	static void _ShowUpdateClientInfoScreen(const string& FileName, const string& Separator)
 	{
-		clsUpdateClientScreen::UpdateClientScreen(FileName, Separator);
+		clsUpdateClientScreen::ShowUpdateClientScreen(FileName, Separator);
 	}
 
 	static void _ShowFindClientScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\nFind Client Screen will be here ...\n";
+		clsFindClientScreen::ShowFindClientScreen(FileName, Separator);
 	}
 	
 	static void _TransactionsMenue(const string& FileName, const string& Separator)

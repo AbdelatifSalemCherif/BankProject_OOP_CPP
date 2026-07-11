@@ -29,9 +29,38 @@ private:
 
 	}
 
+public:
+
+	static void ShowFindClientScreen(const string& FileName, const string& Separator)
+	{
+
+		_DrawScreenHeader("Find Client Screen");
+
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
+			, FileName, Separator);
+
+		while (Client.IsEmpty())
+		{
+			Client =
+				clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
+					, FileName, Separator);
+		}
+
+
+		if (Client.IsEmpty())
+		{
+			cout << "\n\nClient was\'t found, is an empty client !" << endl;
+		}
+		else
+		{
+			cout << "\n\nClient was found :-)" << endl;
+
+			_PrintClientCard(Client);
+		}
 
 
 
+	}
 
 
 };
