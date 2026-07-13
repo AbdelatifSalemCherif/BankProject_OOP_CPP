@@ -9,6 +9,7 @@
 #include "clsInputSettings.h"
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
+#include "clsTotalBalanceScreen.h"
 
 using namespace std;
 
@@ -39,7 +40,7 @@ private:
 
 	static void _ShowTotalBalaceScreen(const string& FileName, const string& Separator)
 	{
-		cout << "Total Balance screen will be here" << endl;
+		clsTotalBalanceScreen::ShowTotalBalanceScreen(FileName, Separator);
 	}
 
 	static void _PerformTransactionsMenuOption(enTransactionsMenuOptions Option,const string& FileName, const string& Separator)
