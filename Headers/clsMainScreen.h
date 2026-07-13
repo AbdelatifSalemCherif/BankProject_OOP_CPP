@@ -22,12 +22,12 @@ private:
 	enum enMainMenuOptions { eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClientInfo = 4, eFindClient = 5
 		, eTransactions = 6, eManageUsers = 7, eExit = 8};
 
-	static void _GoBackToMainMenue(const string& FileName, const string& Separator)
+	static void _GoBackToMainMenu(const string& FileName, const string& Separator)
 	{
 		cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
 		system("pause>0");
-		ShowMainMenue(FileName, Separator);
+		ShowMainMenu(FileName, Separator);
 	}
 
 	static void _ShowClientListScreen(const string& FileName, const string& Separator)
@@ -55,12 +55,12 @@ private:
 		clsFindClientScreen::ShowFindClientScreen(FileName, Separator);
 	}
 	
-	static void _TransactionsMenue(const string& FileName, const string& Separator)
+	static void _TransactionsMenu(const string& FileName, const string& Separator)
 	{
 		cout << "\nTransactions Screen will be here ...\n";
 	}
 
-	static void _ShowManageUsersMenue()
+	static void _ShowManageUsersMenu()
 	{
 		cout << "\nManage Users Menue will be here ...\n";
 	}
@@ -80,7 +80,7 @@ private:
 
 			_ShowClientListScreen(FileName, Separator);
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -91,7 +91,7 @@ private:
 
 			_ShowAddNewClientScreen(FileName, Separator);
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -102,7 +102,7 @@ private:
 
 			_ShowDeleteClientScreen(FileName, Separator);
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -113,7 +113,7 @@ private:
 
 			_ShowUpdateClientInfoScreen(FileName, Separator);
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -124,7 +124,7 @@ private:
 
 			_ShowFindClientScreen(FileName, Separator);
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -133,9 +133,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_TransactionsMenue(FileName, Separator);
+			_TransactionsMenu(FileName, Separator);
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -144,9 +144,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowManageUsersMenue();
+			_ShowManageUsersMenu();
 
-			_GoBackToMainMenue(FileName, Separator);
+			_GoBackToMainMenu(FileName, Separator);
 
 			break;
 		}
@@ -170,7 +170,7 @@ private:
 public:
 
 	
-	static void ShowMainMenue(const string& ClientsFileName, const string& ClientsFileSeparator, const string& UsersFileName = "",
+	static void ShowMainMenu(const string& ClientsFileName, const string& ClientsFileSeparator, const string& UsersFileName = "",
 		const string& UsersFileSeparator = "")
 	{
 		clsOutputSettings::RestScreen();
@@ -178,7 +178,7 @@ public:
 		_DrawScreenHeader("Main Screen");
 		
 		cout << setw(37) << left << "" << "===================================================================\n";
-		cout << setw(37) << left << "" << "\t\t\t\tMain Menue\n\n";
+		cout << setw(37) << left << "" << "\t\t\t\tMain Menu\n\n";
 		cout << setw(37) << left << "" << "===================================================================\n";
 
 		cout << setw(37) << left << "" << "\t[1] Show Client List.\n";
