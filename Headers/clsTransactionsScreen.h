@@ -8,6 +8,7 @@
 #include "clsBankClient.h"
 #include "clsInputSettings.h"
 #include "clsDepositScreen.h"
+#include "clsWithdrawScreen.h"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ private:
 
 	static void _ShowWithdrawScreen(const string& FileName, const string& Separator)
 	{
-		cout << "Withdraw screen will be here" << endl;
+		clsWithdrawScreen::ShowWithdrawScreen(FileName, Separator);
 	}
 
 	static void _ShowTotalBalaceScreen(const string& FileName, const string& Separator)
@@ -53,6 +54,8 @@ private:
 			_ShowDespositScreen(FileName, Separator);
 
 			_GoBackToTransactionsMenu(FileName, Separator);
+
+			break;
 		}
 
 		case eWithdraw:
@@ -62,6 +65,8 @@ private:
 			_ShowWithdrawScreen(FileName, Separator);
 
 			_GoBackToTransactionsMenu(FileName, Separator);
+
+			break;
 		}
 
 		case eTotalBalance:
@@ -71,13 +76,14 @@ private:
 			_ShowTotalBalaceScreen(FileName, Separator);
 
 			_GoBackToTransactionsMenu(FileName, Separator);
+
+			break;
 		}
 
 		case eExit:
 		{
-			clsOutputSettings::RestScreen();
 
-			
+			break;
 		}
 
 		}
