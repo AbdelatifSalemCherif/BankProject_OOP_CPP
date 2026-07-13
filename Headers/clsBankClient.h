@@ -338,6 +338,20 @@ public:
 
 	}
 
+	void Deposit(float Amount, const string& FileName, const string& Separator)
+	{
+		_Balance += Amount;
+
+		Save(FileName, Separator);
+	}
+
+	void Withdraw(float Amount, const string& FileName, const string& Separator)
+	{
+		_Balance -= Amount;
+
+		Save(FileName, Separator);
+	}
+
 	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExist = 2};
 
 	enSaveResult Save(const string& FileName, const string& Separator) const
