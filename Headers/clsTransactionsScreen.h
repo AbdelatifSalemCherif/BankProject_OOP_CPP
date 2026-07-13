@@ -7,6 +7,7 @@
 #include "clsScreen.h"
 #include "clsBankClient.h"
 #include "clsInputSettings.h"
+#include "clsDepositScreen.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ private:
 
 	static void _ShowDespositScreen(const string& FileName, const string& Separator)
 	{
-		cout << "Deposit screen will be here" << endl;
+		clsDepositScreen::ShowDepositScreen(FileName, Separator);
 	}
 
 	static void _ShowWithdrawScreen(const string& FileName, const string& Separator)
