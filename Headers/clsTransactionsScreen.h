@@ -17,9 +17,69 @@ private:
 
 	enum enTransactionsMenuOptions { eDeposite = 1, eWithdraw = 2, eTotalBalance = 3, eExit = 4};
 
+	static void _GoBackToTransactionsMenu(const string& FileName, const string& Separator)
+	{
+		cout << setw(37) << left << "" << "\n\tPress any key to go back to Transactions Menue...\n";
+
+		system("pause>0");
+		ShowTransactionsMenu(FileName, Separator);
+	}
+
+	static void _ShowDespositScreen(const string& FileName, const string& Separator)
+	{
+		cout << "Deposit screen will be here" << endl;
+	}
+
+	static void _ShowWithdrawScreen(const string& FileName, const string& Separator)
+	{
+		cout << "Withdraw screen will be here" << endl;
+	}
+
+	static void _ShowTotalBalaceScreen(const string& FileName, const string& Separator)
+	{
+		cout << "Total Balance screen will be here" << endl;
+	}
+
 	static void _PerformTransactionsMenueOption(enTransactionsMenuOptions Option,const string& FileName, const string& Separator)
 	{
-		
+
+		switch(Option)
+		{
+		case eDeposite:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowDespositScreen(FileName, Separator);
+
+			_GoBackToTransactionsMenu(FileName, Separator);
+		}
+
+		case eWithdraw:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowWithdrawScreen(FileName, Separator);
+
+			_GoBackToTransactionsMenu(FileName, Separator);
+		}
+
+		case eTotalBalance:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowTotalBalaceScreen(FileName, Separator);
+
+			_GoBackToTransactionsMenu(FileName, Separator);
+		}
+
+		case eExit:
+		{
+			clsOutputSettings::RestScreen();
+
+			
+		}
+
+		}
 	}
 
 public:

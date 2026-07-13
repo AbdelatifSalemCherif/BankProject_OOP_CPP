@@ -11,6 +11,7 @@
 #include "clsDeleteClientScreen.h"
 #include "clsUpdateClientScreen.h"
 #include "clsFindClientScreen.h"
+#include "clsTransactionsScreen.h"
 
 using namespace std;
 
@@ -57,7 +58,7 @@ private:
 	
 	static void _TransactionsMenu(const string& FileName, const string& Separator)
 	{
-		cout << "\nTransactions Screen will be here ...\n";
+		clsTransactionsScreen::ShowTransactionsMenu(FileName, Separator);
 	}
 
 	static void _ShowManageUsersMenu()
