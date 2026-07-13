@@ -3,7 +3,6 @@
 
 #include "clsBankClient.h"
 #include "clsInputSettings.h"
-#include "clsUtility.h"
 #include "clsMainScreen.h"
 
 using namespace std;
