@@ -345,11 +345,22 @@ public:
 		Save(FileName, Separator);
 	}
 
-	void Withdraw(float Amount, const string& FileName, const string& Separator)
+	bool Withdraw(float Amount, const string& FileName, const string& Separator)
 	{
-		_Balance -= Amount;
+		if (Amount > _Balance)
+		{
+			return false;
+		}
+		else
+		{
+			_Balance -= Amount;
 
-		Save(FileName, Separator);
+			Save(FileName, Separator);
+
+			return true;
+		}
+
+		return false;
 	}
 
 	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExist = 2};
