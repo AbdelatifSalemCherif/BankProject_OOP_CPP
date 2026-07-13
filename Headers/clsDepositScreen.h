@@ -13,11 +13,44 @@ class clsDepositScreen : protected clsScreen
 
 private:
 
+	static void _PrintClientCard(const clsBankClient& Client)
+	{
+		cout << "\nClient Card :" << endl;
+		cout << "------------------------------------------------" << endl;
+		cout << "First Name :" << Client.FirstName << endl;
+		cout << "Last Name  :" << Client.LastName << endl;
+		cout << "Full Name  :" << Client.FirstName + " " + Client.LastName << endl;
+		cout << "Email      :" << Client.Email << endl;
+		cout << "Phone      :" << Client.Phone << endl;
+		cout << "Acc.Number :" << Client.GetAccountNumber() << endl;
+		cout << "Password   :" << Client.PinCode << endl;
+		cout << "Balance    :" << Client.Balance << endl;
+		cout << "------------------------------------------------" << endl;
+
+	}
 
 
 public:
 
+	static void ShowDepositScreen(const string& FileName, const string& Separator)
+	{
+		_DrawScreenHeader("Deposit Screen");
 
+
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter the account number ? ")
+			, FileName, Separator);
+		
+		while (Client.IsEmpty())
+		{
+			Client = clsBankClient::Find(clsInputSettings::ReadString("\nAccount number isn\'t correct, please enter another one ? ")
+				, FileName, Separator);
+		}
+
+
+
+
+
+	}
 
 
 };
