@@ -146,6 +146,7 @@
     <ClInclude Include="Headers\clsTransactionsScreen.h" />
     <ClInclude Include="Headers\clsUpdateClientScreen.h" />
     <ClInclude Include="Headers\clsUtility.h" />
+    <ClInclude Include="Headers\clsWithdrawScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp" />
