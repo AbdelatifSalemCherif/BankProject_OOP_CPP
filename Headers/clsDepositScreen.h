@@ -47,8 +47,22 @@ public:
 		}
 
 
+		_PrintClientCard(Client);
 
 
+		float Amount = clsInputSettings::ReadPositiveFloat("\n\nPlease enter amount ? "
+			, "\n\nAmount should be a positive number, please enter another one ? ");
+
+		if (clsInputSettings::ReadYesOrNo("\n\nAre you sure you want to perfom this transaction ? y/n ?"))
+		{
+			Client.Deposit(Amount, FileName, Separator);
+
+			cout << "\n\nAmount deposited successfully :-)\n";
+		}
+		else
+		{
+			cout << "\n\nNo thing happened !\n";
+		}
 
 	}
 
