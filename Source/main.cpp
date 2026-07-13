@@ -20,12 +20,6 @@ using namespace std;
 //}
 //
 //
-//void PrintClientLineOfTotalBalanceTable(const clsBankClient& Client)
-//{
-//	cout << "| " << left << setw(30) << Client.GetAccountNumber();
-//	cout << "| " << left << setw(30) << Client.FirstName + " " + Client.LastName;
-//	cout << "| " << left << setw(30) << to_string(Client.Balance) << endl;
-//}
 //
 //void ShowTotalBalance()
 //{
