@@ -57,7 +57,9 @@ public:
 		{
 			Client.Deposit(Amount, FileName, Separator);
 
-			cout << "\n\nAmount deposited successfully :-)\n";
+			cout << "\n\nAmount deposited successfully :-)";
+
+			cout << "\n\nNew balance is : " << Client.Balance << endl;
 		}
 		else
 		{
