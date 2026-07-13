@@ -177,10 +177,12 @@ public:
 		clsOutputSettings::RestScreen();
 
 		_DrawScreenHeader("Main Screen");
+
+		cout << endl;
 		
-		cout << setw(37) << left << "" << "===================================================================\n";
+		cout << setw(37) << left << "" << "===================================================================\n\n";
 		cout << setw(37) << left << "" << "\t\t\t\tMain Menu\n\n";
-		cout << setw(37) << left << "" << "===================================================================\n";
+		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 		cout << setw(37) << left << "" << "\t[1] Show Client List.\n";
 		cout << setw(37) << left << "" << "\t[2] Add New Client.\n";
@@ -189,7 +191,7 @@ public:
 		cout << setw(37) << left << "" << "\t[5] Find Client.\n";
 		cout << setw(37) << left << "" << "\t[6] Transactions.\n";
 		cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
-		cout << setw(37) << left << "" << "\t[8] eExit.\n\n";
+		cout << setw(37) << left << "" << "\t[8] Exit.\n\n";
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 

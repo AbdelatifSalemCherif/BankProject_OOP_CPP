@@ -40,7 +40,7 @@ private:
 		cout << "Total Balance screen will be here" << endl;
 	}
 
-	static void _PerformTransactionsMenueOption(enTransactionsMenuOptions Option,const string& FileName, const string& Separator)
+	static void _PerformTransactionsMenuOption(enTransactionsMenuOptions Option,const string& FileName, const string& Separator)
 	{
 
 		switch(Option)
@@ -91,20 +91,22 @@ public:
 
 		_DrawScreenHeader("Transactions Screen");
 
-		cout << setw(37) << left << "" << "===================================================================\n";
+		cout << endl;
+
+		cout << setw(37) << left << "" << "===================================================================\n\n";
 		cout << setw(37) << left << "" << "\t\t\t\tTransactions Menu\n\n";
-		cout << setw(37) << left << "" << "===================================================================\n";
+		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 		cout << setw(37) << left << "" << "\t[1] Deposit.\n";
 		cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
 		cout << setw(37) << left << "" << "\t[3] Total Balace.\n";
-		cout << setw(37) << left << "" << "\t[4] Main Menue.\n";
+		cout << setw(37) << left << "" << "\t[4] Main Menue.\n\n";
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 
 		cout << setw(37) << left << "";
-		_PerformTransactionsMenueOption((enTransactionsMenuOptions)
+		_PerformTransactionsMenuOption((enTransactionsMenuOptions)
 			clsInputSettings::ReadShortInRange(1, 4, "Choose What Do You Want To Do ? [1 to 4] ? "),
 			FileName, Separator);
 	}
