@@ -62,6 +62,63 @@ public:
 
 
 
+
+
+
+
+
+
+
+
+
+	//Properities
+
+	void SetUserName(const string& UserName)
+	{
+		_UserName = UserName;
+	}
+
+	string GetUserName() const
+	{
+		return _UserName;
+	}
+
+	__declspec(property(get = GetUserName, put = SetUserName)) string UserName;
+
+	void SetPassword(const string& Password)
+	{
+		_Password = Password;
+	}
+
+	string GetPassword() const
+	{
+		return _Password;
+	}
+
+	__declspec(property(get = GetPassword, put = SetPassword)) string Password;
+
+	void SetPermissions(int Permissions)
+	{
+		_Permissions = Permissions;
+	}
+
+	int GetPermissions() const
+	{
+		return _Permissions;
+	}
+
+	__declspec(property(get = GetPermissions, put = SetPermissions)) int Permissions;
+
+
+
+
+
+
+
+
+
+
+
 };
 
 
