@@ -23,12 +23,13 @@ private:
 	enum enMainMenuOptions { eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClientInfo = 4, eFindClient = 5
 		, eTransactions = 6, eManageUsers = 7, eExit = 8};
 
-	static void _GoBackToMainMenu(const string& FileName, const string& Separator)
+	static void _GoBackToMainMenu(const string& ClientsFileName, const string& ClientsSeparator,
+		const string& UsersFileName, const string& UsersSeparator)
 	{
 		cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
 		system("pause>0");
-		ShowMainMenu(FileName, Separator);
+		ShowMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 	}
 
 	static void _ShowClientListScreen(const string& FileName, const string& Separator)
@@ -61,7 +62,7 @@ private:
 		clsTransactionsScreen::ShowTransactionsMenu(FileName, Separator);
 	}
 
-	static void _ShowManageUsersMenu()
+	static void _ShowManageUsersMenu(const string& FileName, const string& Separator)
 	{
 		cout << "\nManage Users Menue will be here ...\n";
 	}
@@ -71,7 +72,8 @@ private:
 		cout << "\nEnd Screen Will be here...\n";
 	}
 
-	static void _PerformMainMenueOption(enMainMenuOptions MainOption, const string& FileName, const string& Separator)
+	static void _PerformMainMenueOption(enMainMenuOptions MainOption, const string& ClientsFileName, const string& ClientsSeparator,
+		const string& UsersFileName, const string& UsersSeparator)
 	{
 		switch (MainOption)
 		{
@@ -79,9 +81,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowClientListScreen(FileName, Separator);
+			_ShowClientListScreen(ClientsFileName, ClientsSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -90,9 +92,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowAddNewClientScreen(FileName, Separator);
+			_ShowAddNewClientScreen(ClientsFileName, ClientsSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -101,9 +103,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowDeleteClientScreen(FileName, Separator);
+			_ShowDeleteClientScreen(ClientsFileName, ClientsSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -112,9 +114,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowUpdateClientInfoScreen(FileName, Separator);
+			_ShowUpdateClientInfoScreen(ClientsFileName, ClientsSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -123,9 +125,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowFindClientScreen(FileName, Separator);
+			_ShowFindClientScreen(ClientsFileName, ClientsSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -134,9 +136,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_TransactionsMenu(FileName, Separator);
+			_TransactionsMenu(ClientsFileName, ClientsSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -145,9 +147,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowManageUsersMenu();
+			_ShowManageUsersMenu(UsersFileName, UsersSeparator);
 
-			_GoBackToMainMenu(FileName, Separator);
+			_GoBackToMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 			break;
 		}
@@ -171,8 +173,8 @@ private:
 public:
 
 	
-	static void ShowMainMenu(const string& ClientsFileName, const string& ClientsFileSeparator, const string& UsersFileName = "",
-		const string& UsersFileSeparator = "")
+	static void ShowMainMenu(const string& ClientsFileName, const string& ClientsSeparator, const string& UsersFileName,
+		const string& UsersSeparator)
 	{
 		clsOutputSettings::RestScreen();
 
@@ -199,7 +201,7 @@ public:
 		cout << setw(37) << left << "";
 		_PerformMainMenueOption((enMainMenuOptions)
 			clsInputSettings::ReadShortInRange(1, 8, "Choose What Do You Want To Do ? [1 to 8] ? "), 
-			ClientsFileName, ClientsFileSeparator);
+			ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 
 	}

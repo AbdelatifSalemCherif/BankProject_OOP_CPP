@@ -23,7 +23,7 @@ int main()
 {
 	const string FileName = "BankData/Clients.txt", Separator = "#//#";
 	
-	clsMainScreen::ShowMainMenu(FileName, Separator);
+	//clsMainScreen::ShowMainMenu(FileName, Separator, );
 
 
 
