@@ -29,7 +29,7 @@ private:
 	enMode _Mode;
 	string _UserName;
 	string _Password;
-	int _Permisions;
+	int _Permissions;
 	bool _MarkedForDelete = false;
 
 
@@ -39,6 +39,7 @@ private:
 
 
 
+	
 
 
 
@@ -47,6 +48,17 @@ private:
 
 public:
 
+
+	clsBankUser(enMode Mode, const string& FirstName, const string& LastName, const string& Email, const string& Phone
+		, const string UserName, const string& Password, int Permissions) : clsPerson(FirstName, LastName, Email, Phone)
+	{
+
+		_Mode = Mode;
+		_UserName = UserName;
+		_Password = Password;
+		_Permissions = Permissions;
+
+	}
 
 
 
