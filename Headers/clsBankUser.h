@@ -45,6 +45,111 @@ private:
 
 
 
+	//Methods help for reading and writing from database
+
+	static clsBankUser _ConvertLineToUser(const string& Line, const string& Separator)
+	{
+		vector <string> vClient = clsString::Split(Line, Separator, false);
+
+		return clsBankUser(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
+			, vClient[5], stoi(vClient[6]));
+
+	}
+
+	static string _ConvertUserToLine(const clsBankUser& User, const string& Separator)
+	{
+		string Line = "";
+
+		Line += User.FirstName + Separator;
+		Line += User.LastName + Separator;
+		Line += User.Email + Separator;
+		Line += User.Phone + Separator;
+		Line += User._UserName + Separator;
+		Line += User._Password + Separator;
+		Line += to_string(User._Permissions);
+
+		return Line;
+	}
+
+	static vector <clsBankUser> _LoadAllUsersFromFile(const string& FileName, const string& Separator)
+	{
+		vector <clsBankUser> vUsers;
+
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Line = "";
+
+			while (getline(File, Line))
+			{
+
+				vUsers.push_back(_ConvertLineToUser(Line, Separator));
+
+			}
+
+			File.close();
+		}
+
+		return vUsers;
+	}
+
+	static void _SaveAllClientsToFile(const vector <clsBankUser>& vUsers, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::out);
+
+		if (File.is_open())
+		{
+
+			for (const clsBankUser& User : vUsers)
+			{
+				if (!User._MarkedForDelete)
+				{
+					File << _ConvertUserToLine(User, Separator) + "\n";
+				}
+			}
+
+			File.close();
+		}
+
+	}
+
+	static void _AddLineToFile(const string& Line, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::out | ios::app);
+
+		if (File.is_open())
+		{
+
+			File << Line + "\n";
+
+			File.close();
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 public:
 
@@ -126,6 +231,15 @@ public:
 	{
 		return _Mode == eEmptyMode;
 	}
+
+
+
+
+
+
+
+
+
 
 
 };
