@@ -298,6 +298,35 @@ public:
 
 
 
+
+
+
+	//Get Ready Objects
+
+	static clsBankUser GetAddNewUserObject(const string& UserName)
+	{
+
+		return clsBankUser(eAddNewMode, "", "", "", "", UserName, "", 0);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
 
 
