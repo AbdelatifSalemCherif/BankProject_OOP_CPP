@@ -123,6 +123,8 @@ public:
 	static void ShowManageUsersMenu(const string& FileName, const string& Separator)
 	{
 
+		clsOutputSettings::RestScreen();
+
 		_DrawScreenHeader("Manage Users Screen");
 
 		cout << endl;
