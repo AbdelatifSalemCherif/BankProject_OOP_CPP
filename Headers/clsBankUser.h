@@ -96,7 +96,7 @@ private:
 		return vUsers;
 	}
 
-	static void _SaveAllClientsToFile(const vector <clsBankUser>& vUsers, const string& FileName, const string& Separator)
+	static void _SaveAllUsersToFile(const vector <clsBankUser>& vUsers, const string& FileName, const string& Separator)
 	{
 		fstream File;
 
