@@ -29,7 +29,7 @@ private:
 
 	static void _ShowAddNewUserScreen(const string& FileName, const string& Separator)
 	{
-
+		cout << "\n\nAdd New User Screen Will Be Here...\n\n";
 	}
 
 	static void _ShowDeleteUserScreen(const string& FileName, const string& Separator)
