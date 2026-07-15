@@ -119,6 +119,15 @@ public:
 
 
 
+
+	//Checks Methods
+
+	bool IsEmpty() const
+	{
+		return _Mode == eEmptyMode;
+	}
+
+
 };
 
 
