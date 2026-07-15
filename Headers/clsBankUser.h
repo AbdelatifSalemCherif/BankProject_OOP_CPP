@@ -165,6 +165,36 @@ private:
 
 
 
+	//Core logic
+
+	void _Update(const string& FileName, const string& Separator) const
+	{
+		vector <clsBankUser> _vUsers = _LoadAllUsersFromFile(FileName, Separator);
+
+		for (clsBankUser& User : _vUsers)
+		{
+			if (User._UserName == _UserName)
+			{
+				User = *this;
+
+				break;
+			}
+		}
+
+		_SaveAllUsersToFile(_vUsers, FileName, Separator);
+
+	}
+
+	void _AddNew(const string& FileName, const string& Separator) const
+	{
+
+		_AddLineToFile(_ConvertUserToLine(*this, Separator), FileName, Separator);
+
+	}
+
+
+
+
 
 
 
