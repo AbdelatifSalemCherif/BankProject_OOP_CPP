@@ -126,6 +126,30 @@ private:
 
 
 
+	
+
+
+
+
+
+
+	//Get Ready Objects
+
+	static clsBankClient _GetEmptyClient()
+	{
+		return clsBankClient(eEmptyMode, "", "", "", "", "", "", 0);
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -161,16 +185,6 @@ private:
 
 
 
-
-
-
-
-	//Get Ready Objects
-
-	static clsBankClient _GetEmptyClient()
-	{
-		return clsBankClient(eEmptyMode, "", "", "", "", "", "", 0);
-	}
 
 
 

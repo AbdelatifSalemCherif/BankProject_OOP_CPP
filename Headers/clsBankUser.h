@@ -144,6 +144,32 @@ private:
 
 
 
+	//Get Ready Objects
+
+	static clsBankUser _GetEmptyUser()
+	{
+		return clsBankUser(eEmptyMode, "", "", "", "", "", "", 0);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
