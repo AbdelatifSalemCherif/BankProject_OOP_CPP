@@ -326,6 +326,153 @@ public:
 
 
 
+	//Core Logic Methods
+
+	static clsBankUser Find(const string& UserName, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Line = "";
+
+			while (getline(File, Line))
+			{
+				clsBankUser User = _ConvertLineToUser(Line, Separator);
+
+				if (User._UserName == UserName)
+				{
+					File.close();
+
+					return User;
+				}
+			}
+
+			File.close();
+
+		}
+
+		return _GetEmptyUser();
+
+	}
+
+	static clsBankUser Find(const string& UserName, const string& Password, const string& FileName, const string& Separator)
+	{
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Line = "";
+
+			while (getline(File, Line))
+			{
+				clsBankUser User = _ConvertLineToUser(Line, Separator);
+
+				if (User._UserName == UserName && User._Password == Password)
+				{
+					File.close();
+
+					return User;
+				}
+			}
+
+			File.close();
+
+		}
+
+		return _GetEmptyUser();
+
+	}
+
+	enum enSaveResult { svFaildEmptyObject = 0, svSucceeded = 1, svFaildUserNameExist = 2 };
+
+	enSaveResult Save(const string& FileName, const string& Separator) const
+	{
+		switch (_Mode)
+		{
+
+		case eEmptyMode:
+		{
+			if (IsEmpty())
+			{
+				return svFaildEmptyObject;
+			}
+		}
+
+		case eUpdateMode:
+		{
+			_Update(FileName, Separator);
+
+			return svSucceeded;
+		}
+
+		case eAddNewMode:
+
+			if (IsUserExist(_UserName, FileName, Separator))
+			{
+				return svFaildUserNameExist;
+			}
+			else
+			{
+
+				_AddNew(FileName, Separator);
+
+				return svSucceeded;
+			}
+		}
+
+	}
+
+	bool Delete(const string& FileName, const string& Separator)
+	{
+		vector <clsBankUser> _vUsers = _LoadAllUsersFromFile(FileName, Separator);
+
+
+		for (clsBankUser& User : _vUsers)
+		{
+			if (User._UserName == _UserName)
+			{
+				User._MarkedForDelete = true;
+
+				_SaveAllUsersToFile(_vUsers, FileName, Separator);
+
+				*this = _GetEmptyUser();
+
+				return true;
+			}
+		}
+
+
+		return false;
+
+	}
+
+	static vector <clsBankUser> GetUsersList(const string& FileName, const string& Separator)
+	{
+		return _LoadAllUsersFromFile(FileName, Separator);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
