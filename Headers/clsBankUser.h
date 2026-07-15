@@ -16,7 +16,7 @@ class clsBankUser : public clsPerson
 
 private:
 
-
+	enum enMode { eEmptyMode = 0, eUpdateMode = 1, eAddNewMode = 2 };
 
 public:
 
