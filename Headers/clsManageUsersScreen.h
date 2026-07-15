@@ -14,9 +14,104 @@ private:
 
 	enum enManageUsersMenuOptions {eUsersList = 1, eAddNewUser = 2, eDeleteUser = 3, eUpdateUser = 4, eFindUser = 5, eExit = 6};
 
-	static void _PerformManageUsersMenuOption(enManageUsersMenuOptions Option, const string& FileName, const string& Separator)
+	static void _GoBackToManageUsersScreen(const string& FileName, const string& Separator)
 	{
 
+	}
+
+	static void _ShowUsersListScreen(const string& FileName, const string& Separator)
+	{
+
+	}
+
+	static void _ShowAddNewUserScreen(const string& FileName, const string& Separator)
+	{
+
+	}
+
+	static void _ShowDeleteUserScreen(const string& FileName, const string& Separator)
+	{
+
+	}
+
+	static void _ShowUpdateUserScreen(const string& FileName, const string& Separator)
+	{
+
+	}
+
+	static void _ShowFindUserScreen(const string& FileName, const string& Separator)
+	{
+
+	}
+
+	static void _PerformManageUsersMenuOption(enManageUsersMenuOptions Option, const string& FileName, const string& Separator)
+	{
+		switch (Option)
+		{
+
+		case eUsersList:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowUsersListScreen(FileName, Separator);
+
+			_GoBackToManageUsersScreen(FileName, Separator);
+
+			break;
+		}
+
+		case eAddNewUser:
+		{
+
+			clsOutputSettings::RestScreen();
+
+			_ShowAddNewUserScreen(FileName, Separator);
+
+			_GoBackToManageUsersScreen(FileName, Separator);
+
+			break;
+		}
+
+		case eDeleteUser:
+		{
+
+			clsOutputSettings::RestScreen();
+
+			_ShowDeleteUserScreen(FileName, Separator);
+
+			_GoBackToManageUsersScreen(FileName, Separator);
+
+			break;
+		}
+
+		case eUpdateUser:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowUpdateUserScreen(FileName, Separator);
+
+			_GoBackToManageUsersScreen(FileName, Separator);
+
+			break;
+		}
+
+		case eFindUser:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowFindUserScreen(FileName, Separator);
+
+			_GoBackToManageUsersScreen(FileName, Separator);
+
+			break;
+		}
+
+		case eExit:
+		{
+
+		}
+
+		}
 
 
 

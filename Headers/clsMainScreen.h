@@ -72,7 +72,7 @@ private:
 		cout << "\nEnd Screen Will be here...\n";
 	}
 
-	static void _PerformMainMenueOption(enMainMenuOptions MainOption, const string& ClientsFileName, const string& ClientsSeparator,
+	static void _PerformMainMenuOption(enMainMenuOptions MainOption, const string& ClientsFileName, const string& ClientsSeparator,
 		const string& UsersFileName, const string& UsersSeparator)
 	{
 		switch (MainOption)
@@ -199,7 +199,7 @@ public:
 
 
 		cout << setw(37) << left << "";
-		_PerformMainMenueOption((enMainMenuOptions)
+		_PerformMainMenuOption((enMainMenuOptions)
 			clsInputSettings::ReadShortInRange(1, 8, "Choose What Do You Want To Do ? [1 to 8] ? "), 
 			ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
