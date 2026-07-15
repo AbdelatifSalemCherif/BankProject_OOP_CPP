@@ -16,7 +16,10 @@ private:
 
 	static void _GoBackToManageUsersScreen(const string& FileName, const string& Separator)
 	{
+		cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
+		system("pause>0");
+		ShowManageUsersMenu(FileName, Separator);
 	}
 
 	static void _ShowUsersListScreen(const string& FileName, const string& Separator)
