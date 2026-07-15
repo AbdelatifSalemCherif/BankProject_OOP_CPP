@@ -44,7 +44,7 @@ private:
 
 	static void _ShowFindUserScreen(const string& FileName, const string& Separator)
 	{
-
+		cout << "\n\nFind User Screen Will Be Here...\n\n";
 	}
 
 	static void _PerformManageUsersMenuOption(enManageUsersMenuOptions Option, const string& FileName, const string& Separator)
