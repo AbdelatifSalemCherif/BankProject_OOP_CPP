@@ -288,6 +288,16 @@ public:
 		return _Mode == eEmptyMode;
 	}
 
+	static bool IsUserExist(const string& UserName, const string& FileName, const string& Separator)
+	{
+		return !Find(UserName, FileName, Separator).IsEmpty();
+	}
+
+
+
+
+
+
 
 
 
