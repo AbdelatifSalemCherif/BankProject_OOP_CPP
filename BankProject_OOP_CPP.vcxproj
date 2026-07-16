@@ -137,6 +137,7 @@
     <ClInclude Include="Headers\clsBankUser.h" />
     <ClInclude Include="Headers\clsClientsListScreen.h" />
     <ClInclude Include="Headers\clsDeleteClientScreen.h" />
+    <ClInclude Include="Headers\clsDeleteUserScreen.h" />
     <ClInclude Include="Headers\clsDepositScreen.h" />
     <ClInclude Include="Headers\clsFindClientScreen.h" />
     <ClInclude Include="Headers\clsInputSettings.h" />

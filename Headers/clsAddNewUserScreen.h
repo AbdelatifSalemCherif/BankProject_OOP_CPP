@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <iomanip>
 
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
@@ -20,7 +19,7 @@ private:
 
 		if (clsInputSettings::ReadYesOrNo("\n\nDo you want to give full access ? y/n ? "))
 		{
-			return -1;
+			return clsBankUser::eAll;
 		}
 
 		int Permissions = 0;
@@ -62,6 +61,7 @@ private:
 			Permissions += clsBankUser::eManageUsers;
 		}
 
+		return Permissions;
 	}
 
 	static void _ReadUserInfo(clsBankUser& User)
@@ -79,14 +79,14 @@ private:
 	{
 		cout << "\nUser Card :" << endl;
 		cout << "------------------------------------------------" << endl;
-		cout << "First Name :" << User.FirstName << endl;
-		cout << "Last Name  :" << User.LastName << endl;
-		cout << "Full Name  :" << User.GetFullName() << endl;
-		cout << "Email      :" << User.Email << endl;
-		cout << "Phone      :" << User.Phone << endl;
-		cout << "UserName :" << User.UserName << endl;
-		cout << "Password   :" << User.Password << endl;
-		cout << "Balance    :" << User.Permissions << endl;
+		cout << "First Name  :" << User.FirstName << endl;
+		cout << "Last Name   :" << User.LastName << endl;
+		cout << "Full Name   :" << User.GetFullName() << endl;
+		cout << "Email       :" << User.Email << endl;
+		cout << "Phone       :" << User.Phone << endl;
+		cout << "UserName    :" << User.UserName << endl;
+		cout << "Password    :" << User.Password << endl;
+		cout << "Permissions :" << User.Permissions << endl;
 		cout << "------------------------------------------------" << endl;
 
 	}
