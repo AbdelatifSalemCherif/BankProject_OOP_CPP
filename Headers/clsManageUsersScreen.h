@@ -9,6 +9,7 @@
 #include "clsUsersListScreen.h"
 #include "clsAddNewUserScreen.h"
 #include "clsDeleteUserScreen.h"
+#include "clsUpdateUserScreen.h"
 
 using namespace std;
 
@@ -44,7 +45,7 @@ private:
 
 	static void _ShowUpdateUserScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\n\nUpdate User Screen Will Be Here...\n\n";
+		clsUpdateUserScreen::ShowUpdateUserScreen(FileName, Separator);
 	}
 
 	static void _ShowFindUserScreen(const string& FileName, const string& Separator)
