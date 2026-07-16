@@ -47,6 +47,11 @@ public:
 
 	__declspec(property(get = GetLastName, put = SetLastName)) string LastName;
 
+	string GetFullName() const
+	{
+		return _FirstName + " " + _LastName;
+	}
+
 	void SetEmail(const string& Email)
 	{
 		_Email = Email;
@@ -70,5 +75,7 @@ public:
 	}
 
 	__declspec(property(get = GetPhone, put = SetPhone)) string Phone;
+
+
 
 };
