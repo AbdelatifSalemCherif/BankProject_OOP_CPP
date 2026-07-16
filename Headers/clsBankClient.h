@@ -42,7 +42,7 @@ private:
 		vector <string> vClient = clsString::Split(Line, Separator, false);
 
 		return clsBankClient(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
-			, vClient[5], stoi(vClient[6]));
+			, vClient[5], stof(vClient[6]));
 
 	}
 
