@@ -80,6 +80,9 @@
     <ClInclude Include="Headers\clsUpdateUserScreen.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\clsFindUserScreen.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
