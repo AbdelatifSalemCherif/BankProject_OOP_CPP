@@ -16,7 +16,7 @@ private:
 	{
 		cout << setw(8) << left << "";
 		cout << "| " << left << setw(15) << Client.GetAccountNumber();
-		cout << "| " << left << setw(20) << Client.FirstName + " " + Client.LastName;
+		cout << "| " << left << setw(20) << Client.GetFullName();
 		cout << "| " << left << setw(30) << Client.Email;
 		cout << "| " << left << setw(15) << Client.Phone;
 		cout << "| " << left << setw(10) << Client.PinCode;
