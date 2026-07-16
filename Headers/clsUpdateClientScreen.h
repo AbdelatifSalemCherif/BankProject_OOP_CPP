@@ -43,43 +43,43 @@ private:
 public:
 
 	static void ShowUpdateClientScreen(const string& FileName, const string& Separator)
-{
-
-	_DrawScreenHeader("Update Client Screen");
-
-	clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
-		, FileName, Separator);
-
-	while (Client.IsEmpty())
 	{
-		Client = 
-			clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
+
+		_DrawScreenHeader("Update Client Screen");
+
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
 			, FileName, Separator);
-	}
 
-	_PrintClientCard(Client);
-
-	if (clsInputSettings::ReadYesOrNo("\n\nDo you want to update this client ? y/n ?"))
-	{
-		cout << "\n\nUpdating Client Info : " << endl;
-
-		_ReadClientInfo(Client);
-
-		if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
+		while (Client.IsEmpty())
 		{
-			cout << "\n\nClient was Saved Successfully :-) ";
+			Client =
+				clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
+					, FileName, Separator);
+		}
+
+		_PrintClientCard(Client);
+
+		if (clsInputSettings::ReadYesOrNo("\n\nDo you want to update this client ? y/n ?"))
+		{
+			cout << "\n\nUpdating Client Info : " << endl;
+
+			_ReadClientInfo(Client);
+
+			if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
+			{
+				cout << "\n\nClient was Saved Successfully :-) ";
+			}
+			else
+			{
+				cout << "\n\nClient wasn\'t Saved, is an empty client ! ";
+			}
 		}
 		else
 		{
-			cout << "\n\nClient wasn\'t Saved, is an empty client ! ";
+
+			cout << "\n\nClient wasn\'t Update! ";
 		}
-	}
-	else
-	{
 
-		cout << "\n\nClient wasn\'t Update! ";
 	}
-
-}
 
 };
