@@ -228,6 +228,16 @@ public:
 
 
 
+	// Permissions
+
+	enum enPermissions { eAll = -1, eClientsList = 0x00000001, eAddNewClient = 0x00000010, eDeleteClient = 0x00000100
+		, eUpdateClient = 0x00001000, eFindClient = 0x00010000, eTransactions = 0x00100000, eManageUsers = 0x01000000};
+
+
+
+
+
+
 
 
 
