@@ -6,6 +6,7 @@
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
 #include "clsScreen.h"
+#include "clsUsersListScreen.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ private:
 
 	static void _ShowUsersListScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\n\nUsers List Screen Will Be Here...\n\n";
+		clsUsersListScreen::ShowUsersListScreen(FileName, Separator);
 	}
 
 	static void _ShowAddNewUserScreen(const string& FileName, const string& Separator)
