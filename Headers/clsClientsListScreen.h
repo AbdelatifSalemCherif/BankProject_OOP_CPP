@@ -12,7 +12,7 @@ class clsClientsListScreen : protected clsScreen
 {
 private:
 
-	static void PrintClientLineOfList(const clsBankClient& Client)
+	static void _PrintClientLineOfList(const clsBankClient& Client)
 	{
 		cout << setw(8) << left << "";
 		cout << "| " << left << setw(15) << Client.GetAccountNumber();
@@ -58,7 +58,7 @@ public:
 			for (const clsBankClient& Client : vClients)
 			{
 
-				PrintClientLineOfList(Client);
+				_PrintClientLineOfList(Client);
 			}
 		}
 
