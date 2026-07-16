@@ -7,6 +7,8 @@
 #include "clsInputSettings.h"
 #include "clsScreen.h"
 
+using namespace std;
+
 class clsManageUsersScreen : protected clsScreen
 {
 
