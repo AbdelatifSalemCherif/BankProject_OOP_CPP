@@ -7,6 +7,7 @@
 #include "clsInputSettings.h"
 #include "clsScreen.h"
 #include "clsUsersListScreen.h"
+#include "clsAddNewUserScreen.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ private:
 
 	static void _ShowAddNewUserScreen(const string& FileName, const string& Separator)
 	{
-		cout << "\n\nAdd New User Screen Will Be Here...\n\n";
+		clsAddNewUserScreen::ShowAddNewUserScreen(FileName, Separator);
 	}
 
 	static void _ShowDeleteUserScreen(const string& FileName, const string& Separator)
