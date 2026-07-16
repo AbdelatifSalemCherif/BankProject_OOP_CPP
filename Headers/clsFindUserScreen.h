@@ -14,10 +14,54 @@ class clsFindUserScreen : protected clsScreen
 
 private:
 
+	static void _PrintUserCard(const clsBankUser& User)
+	{
+		cout << "\nUser Card :" << endl;
+		cout << "------------------------------------------------" << endl;
+		cout << "First Name  :" << User.FirstName << endl;
+		cout << "Last Name   :" << User.LastName << endl;
+		cout << "Full Name   :" << User.GetFullName() << endl;
+		cout << "Email       :" << User.Email << endl;
+		cout << "Phone       :" << User.Phone << endl;
+		cout << "UserName    :" << User.UserName << endl;
+		cout << "Password    :" << User.Password << endl;
+		cout << "Permissions :" << User.Permissions << endl;
+		cout << "------------------------------------------------" << endl;
+
+	}
 
 
 public:
 
+	static void ShowFindUserScreen(const string& FileName, const string& Separator)
+	{
 
+		_DrawScreenHeader("Find User Screen");
+
+		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? ")
+			, FileName, Separator);
+
+		while (User.IsEmpty())
+		{
+			User =
+				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? ")
+					, FileName, Separator);
+		}
+
+
+		if (User.IsEmpty())
+		{
+			cout << "\n\nUser was\'t found, is an empty user !" << endl;
+		}
+		else
+		{
+			cout << "\n\nUser was found :-)" << endl;
+
+			_PrintUserCard(User);
+		}
+
+
+
+	}
 
 };
