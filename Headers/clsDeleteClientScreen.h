@@ -13,17 +13,6 @@ class clsDeleteClientScreen : protected clsScreen
 
 private:
 
-	static void _ReadClientInfo(clsBankClient& Client)
-	{
-		Client.FirstName = clsInputSettings::ReadString("\nPlease enter First Name : ");
-		Client.LastName = clsInputSettings::ReadString("\nPlease enter Last Name : ");
-		Client.Email = clsInputSettings::ReadString("\nPlease enter Email : ");
-		Client.Phone = clsInputSettings::ReadString("\nPlease enter Phone : ");
-		Client.PinCode = clsInputSettings::ReadString("\nPlease enter Pin Code : ");
-		Client.Balance = clsInputSettings::ReadFloat("\nPlease enter Balance : ");
-
-	}
-
 	static void _PrintClientCard(const clsBankClient& Client)
 	{
 		cout << "\nClient Card :" << endl;
