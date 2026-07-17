@@ -43,7 +43,7 @@ private:
 
 public:
 
-	static void ShowAddNewClientScreen(const string& FileName , const string& Separator)
+	static void ShowAddNewClientScreen()
 	{
 
 		if (!_CheckAccessRights(clsBankUser::eAddNewClient))
@@ -55,7 +55,7 @@ public:
 
 		string AccountNember = clsInputSettings::ReadString("\nPlease enter the account number : ");
 
-		while (clsBankClient::IsClientExist(AccountNember, FileName, Separator))
+		while (clsBankClient::IsClientExist(AccountNember))
 		{
 			AccountNember = clsInputSettings::ReadString("\nThis Account number is exist, Please enter another account number : ");
 		}
@@ -64,7 +64,7 @@ public:
 
 		_ReadClientInfo(NewClient);
 
-		switch (NewClient.Save(FileName, Separator))
+		switch (NewClient.Save())
 		{
 		case clsBankClient::svFaildEmptyObject:
 		{

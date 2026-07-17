@@ -21,40 +21,40 @@ private:
 
 	enum enManageUsersMenuOptions {eUsersList = 1, eAddNewUser = 2, eDeleteUser = 3, eUpdateUser = 4, eFindUser = 5, eExit = 6};
 
-	static void _GoBackToManageUsersScreen(const string& FileName, const string& Separator)
+	static void _GoBackToManageUsersScreen()
 	{
 		cout << setw(37) << left << "" << "\n\tPress any key to go back to Main Menue...\n";
 
 		system("pause>0");
-		ShowManageUsersMenu(FileName, Separator);
+		ShowManageUsersMenu();
 	}
 
-	static void _ShowUsersListScreen(const string& FileName, const string& Separator)
+	static void _ShowUsersListScreen()
 	{
-		clsUsersListScreen::ShowUsersListScreen(FileName, Separator);
+		clsUsersListScreen::ShowUsersListScreen();
 	}
 
-	static void _ShowAddNewUserScreen(const string& FileName, const string& Separator)
+	static void _ShowAddNewUserScreen()
 	{
-		clsAddNewUserScreen::ShowAddNewUserScreen(FileName, Separator);
+		clsAddNewUserScreen::ShowAddNewUserScreen();
 	}
 
-	static void _ShowDeleteUserScreen(const string& FileName, const string& Separator)
+	static void _ShowDeleteUserScreen()
 	{
-		clsDeleteUserScreen::ShowDeleteUserScreen(FileName, Separator);
+		clsDeleteUserScreen::ShowDeleteUserScreen();
 	}
 
-	static void _ShowUpdateUserScreen(const string& FileName, const string& Separator)
+	static void _ShowUpdateUserScreen()
 	{
-		clsUpdateUserScreen::ShowUpdateUserScreen(FileName, Separator);
+		clsUpdateUserScreen::ShowUpdateUserScreen();
 	}
 
-	static void _ShowFindUserScreen(const string& FileName, const string& Separator)
+	static void _ShowFindUserScreen()
 	{
-		clsFindUserScreen::ShowFindUserScreen(FileName, Separator);
+		clsFindUserScreen::ShowFindUserScreen();
 	}
 
-	static void _PerformManageUsersMenuOption(enManageUsersMenuOptions Option, const string& FileName, const string& Separator)
+	static void _PerformManageUsersMenuOption(enManageUsersMenuOptions Option)
 	{
 		switch (Option)
 		{
@@ -63,9 +63,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowUsersListScreen(FileName, Separator);
+			_ShowUsersListScreen();
 
-			_GoBackToManageUsersScreen(FileName, Separator);
+			_GoBackToManageUsersScreen();
 
 			break;
 		}
@@ -75,9 +75,9 @@ private:
 
 			clsOutputSettings::RestScreen();
 
-			_ShowAddNewUserScreen(FileName, Separator);
+			_ShowAddNewUserScreen();
 
-			_GoBackToManageUsersScreen(FileName, Separator);
+			_GoBackToManageUsersScreen();
 
 			break;
 		}
@@ -87,9 +87,9 @@ private:
 
 			clsOutputSettings::RestScreen();
 
-			_ShowDeleteUserScreen(FileName, Separator);
+			_ShowDeleteUserScreen();
 
-			_GoBackToManageUsersScreen(FileName, Separator);
+			_GoBackToManageUsersScreen();
 
 			break;
 		}
@@ -98,9 +98,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowUpdateUserScreen(FileName, Separator);
+			_ShowUpdateUserScreen();
 
-			_GoBackToManageUsersScreen(FileName, Separator);
+			_GoBackToManageUsersScreen();
 
 			break;
 		}
@@ -109,9 +109,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowFindUserScreen(FileName, Separator);
+			_ShowFindUserScreen();
 
-			_GoBackToManageUsersScreen(FileName, Separator);
+			_GoBackToManageUsersScreen();
 
 			break;
 		}
@@ -127,7 +127,7 @@ private:
 
 public:
 
-	static void ShowManageUsersMenu(const string& FileName, const string& Separator)
+	static void ShowManageUsersMenu()
 	{
 
 		clsOutputSettings::RestScreen();
@@ -157,8 +157,7 @@ public:
 
 		cout << setw(37) << left << "";
 		_PerformManageUsersMenuOption((enManageUsersMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 6, "Choose What Do You Want To Do ? [1 to 6] ? "),
-			FileName, Separator);
+			clsInputSettings::ReadShortInRange(1, 6, "Choose What Do You Want To Do ? [1 to 6] ? "));
 
 
 	}

@@ -37,37 +37,37 @@ private:
 
 	//Methods help for reading and writing from database
 
-	static clsBankClient _ConvertLineToClient(const string& Line, const string& Separator)
+	static clsBankClient _ConvertLineToClient(const string& Line)
 	{
-		vector <string> vClient = clsString::Split(Line, Separator, false);
+		vector <string> vClient = clsString::Split(Line, "#//#", false);
 
 		return clsBankClient(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
 			, vClient[5], stof(vClient[6]));
 
 	}
 
-	static string _ConvertClientToLine(const clsBankClient& Client, const string& Separator)
+	static string _ConvertClientToLine(const clsBankClient& Client)
 	{
 		string Line = "";
 
-		Line += Client.FirstName + Separator;
-		Line += Client.LastName + Separator;
-		Line += Client.Email + Separator;
-		Line += Client.Phone + Separator;
-		Line += Client._AccountNumber + Separator;
-		Line += Client._PinCode + Separator;
+		Line += Client.FirstName + "#//#";
+		Line += Client.LastName + "#//#";
+		Line += Client.Email + "#//#";
+		Line += Client.Phone + "#//#";
+		Line += Client._AccountNumber + "#//#";
+		Line += Client._PinCode + "#//#";
 		Line += to_string(Client._Balance);
 
 		return Line;
 	}
 
-	static vector <clsBankClient> _LoadAllClientsFromFile(const string& FileName, const string& Separator)
+	static vector <clsBankClient> _LoadAllClientsFromFile()
 	{
 		vector <clsBankClient> vClients;
 
 		fstream File;
 
-		File.open(FileName, ios::in);
+		File.open("BankData/Clients.txt", ios::in);
 
 		if (File.is_open())
 		{
@@ -76,7 +76,7 @@ private:
 			while (getline(File, Line))
 			{
 
-				vClients.push_back(_ConvertLineToClient(Line, Separator));
+				vClients.push_back(_ConvertLineToClient(Line));
 
 			}
 
@@ -86,11 +86,11 @@ private:
 		return vClients;
 	}
 
-	static void _SaveAllClientsToFile(const vector <clsBankClient>& vClients, const string& FileName, const string& Separator)
+	static void _SaveAllClientsToFile(const vector <clsBankClient>& vClients)
 	{
 		fstream File;
 
-		File.open(FileName, ios::out);
+		File.open("BankData/Clients.txt", ios::out);
 
 		if (File.is_open())
 		{
@@ -99,7 +99,7 @@ private:
 			{
 				if (!Client._MarkedForDelete)
 				{
-					File << _ConvertClientToLine(Client, Separator) + "\n";
+					File << _ConvertClientToLine(Client) + "\n";
 				}
 			}
 
@@ -108,11 +108,11 @@ private:
 
 	}
 
-	static void _AddLineToFile(const string& Line, const string& FileName, const string& Separator)
+	static void _AddLineToFile(const string& Line)
 	{
 		fstream File;
 
-		File.open(FileName, ios::out | ios::app);
+		File.open("BankData/Clients.txt", ios::out | ios::app);
 
 		if (File.is_open())
 		{
@@ -157,9 +157,9 @@ private:
 
 	//Core logic
 
-	void _Update(const string& FileName, const string& Separator) const
+	void _Update() const
 	{
-		vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
+		vector <clsBankClient> _vClients = _LoadAllClientsFromFile();
 
 		for (clsBankClient& Client : _vClients)
 		{
@@ -171,14 +171,14 @@ private:
 			}
 		}
 
-		_SaveAllClientsToFile(_vClients, FileName, Separator);
+		_SaveAllClientsToFile(_vClients);
 
 	}
 
-	void _AddNew(const string& FileName, const string& Separator) const
+	void _AddNew() const
 	{
 		
-		_AddLineToFile(_ConvertClientToLine(*this, Separator), FileName, Separator);
+		_AddLineToFile(_ConvertClientToLine(*this));
 
 	}
 
@@ -260,9 +260,9 @@ public:
 		return _Mode == eEmptyMode;
 	}
 
-	static bool IsClientExist(const string& AccountNumber, const string& FileName, const string& Separator) 
+	static bool IsClientExist(const string& AccountNumber) 
 	{
-		return !Find(AccountNumber, FileName, Separator).IsEmpty();
+		return !Find(AccountNumber).IsEmpty();
 	}
 
 
@@ -292,11 +292,11 @@ public:
 
 	//Core Logic Methods
 
-	static clsBankClient Find(const string& AccountNumber, const string& FileName, const string& Separator)
+	static clsBankClient Find(const string& AccountNumber)
 	{
 		fstream File;
 
-		File.open(FileName, ios::in);
+		File.open("BankData/Clients.txt", ios::in);
 
 		if (File.is_open())
 		{
@@ -304,7 +304,7 @@ public:
 			
 			while (getline(File, Line))
 			{
-				clsBankClient Client = _ConvertLineToClient(Line, Separator);
+				clsBankClient Client = _ConvertLineToClient(Line);
 
 				if (Client._AccountNumber == AccountNumber)
 				{
@@ -322,11 +322,11 @@ public:
 
 	}
 
-	static clsBankClient Find(const string& AccountNumber, const string& PinCode, const string& FileName, const string& Separator)
+	static clsBankClient Find(const string& AccountNumber, const string& PinCode)
 	{
 		fstream File;
 
-		File.open(FileName, ios::in);
+		File.open("BankData/Clients.txt", ios::in);
 
 		if (File.is_open())
 		{
@@ -334,7 +334,7 @@ public:
 
 			while (getline(File, Line))
 			{
-				clsBankClient Client = _ConvertLineToClient(Line, Separator);
+				clsBankClient Client = _ConvertLineToClient(Line);
 
 				if (Client._AccountNumber == AccountNumber && Client._PinCode == PinCode)
 				{
@@ -352,14 +352,14 @@ public:
 
 	}
 
-	void Deposit(float Amount, const string& FileName, const string& Separator)
+	void Deposit(float Amount)
 	{
 		_Balance += Amount;
 
-		Save(FileName, Separator);
+		Save();
 	}
 
-	bool Withdraw(float Amount, const string& FileName, const string& Separator)
+	bool Withdraw(float Amount)
 	{
 		if (Amount > _Balance)
 		{
@@ -369,7 +369,7 @@ public:
 		{
 			_Balance -= Amount;
 
-			Save(FileName, Separator);
+			Save();
 
 			return true;
 		}
@@ -379,7 +379,7 @@ public:
 
 	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExist = 2};
 
-	enSaveResult Save(const string& FileName, const string& Separator) const
+	enSaveResult Save() const
 	{
 		switch (_Mode)
 		{
@@ -394,21 +394,21 @@ public:
 
 		case eUpdateMode:
 		{
-			_Update(FileName, Separator);
+			_Update();
 
 			return svSucceeded;
 		}
 
 		case eAddNewMode:
 
-			if (IsClientExist(_AccountNumber, FileName, Separator))
+			if (IsClientExist(_AccountNumber))
 			{
 				return svFaildAccountNumberExist;
 			}
 			else
 			{
 
-				_AddNew(FileName, Separator);
+				_AddNew();
 
 				return svSucceeded;
 			}
@@ -416,9 +416,9 @@ public:
 
 	}
 
-	bool Delete(const string& FileName, const string& Separator)
+	bool Delete()
 	{
-		vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
+		vector <clsBankClient> _vClients = _LoadAllClientsFromFile();
 
 
 		for (clsBankClient& Client : _vClients)
@@ -427,7 +427,7 @@ public:
 			{
 				Client._MarkedForDelete = true;
 
-				_SaveAllClientsToFile(_vClients, FileName, Separator);
+				_SaveAllClientsToFile(_vClients);
 
 				*this = _GetEmptyClient();
 
@@ -440,14 +440,14 @@ public:
 
 	}
 
-	static vector <clsBankClient> GetClientsList(const string& FileName, const string& Separator)
+	static vector <clsBankClient> GetClientsList()
 	{
-		return _LoadAllClientsFromFile(FileName, Separator);
+		return _LoadAllClientsFromFile();
 	}
 
-	static double GetTotalBalance(const string& FileName, const string& Separator)
+	static double GetTotalBalance()
 	{
-		const vector <clsBankClient> _vClients = _LoadAllClientsFromFile(FileName, Separator);
+		const vector <clsBankClient> _vClients = _LoadAllClientsFromFile();
 
 		double TotalBanace = 0;
 

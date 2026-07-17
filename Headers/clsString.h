@@ -190,7 +190,7 @@ public:
 
 
 
-	static void Split(string Phrase, vector <string>& vPhrase, string Separitor, bool IgnoreSpace = true)
+	static void Split(string Phrase, vector <string>& vPhrase, const string& Separitor, bool IgnoreSpace = true)
 	{
 		vPhrase.clear();
 
@@ -241,26 +241,26 @@ public:
 
 	};
 
-	void Split(vector <string>& vPhrase, string Separitor, bool IgnoreSpace = true)
+	void Split(vector <string>& vPhrase, const string& Separitor, bool IgnoreSpace = true)
 	{
-		Split(_Value, vPhrase, Separitor);
+		Split(_Value, vPhrase, Separitor, IgnoreSpace);
 	};
 
-	static vector<string> Split(string Phrase, string Separitor, bool IgnoreSpace = true)
+	static vector<string> Split(string Phrase, const string& Separitor, bool IgnoreSpace = true)
 	{
 		vector <string> vPhrase;
 
-		Split(Phrase, vPhrase, Separitor);
+		Split(Phrase, vPhrase, Separitor, IgnoreSpace);
 
 		return vPhrase;
 	};
 
-	vector<string> Split(string Separitor = " ", bool IgnoreSpace = true)
+	vector<string> Split(const string& Separitor, bool IgnoreSpace = true)
 	{
-		return Split(_Value, Separitor);
+		return Split(_Value, Separitor, IgnoreSpace);
 	};
 
-	static string Join(vector <string>& vPhrase, string Separator)
+	static string Join(vector <string>& vPhrase, const string& Separator)
 	{
 		string Phrase = "";
 

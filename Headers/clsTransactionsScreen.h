@@ -20,30 +20,30 @@ private:
 
 	enum enTransactionsMenuOptions { eDeposite = 1, eWithdraw = 2, eTotalBalance = 3, eExit = 4};
 
-	static void _GoBackToTransactionsMenu(const string& FileName, const string& Separator)
+	static void _GoBackToTransactionsMenu()
 	{
 		cout << setw(37) << left << "" << "\n\tPress any key to go back to Transactions Menue...\n";
 
 		system("pause>0");
-		ShowTransactionsMenu(FileName, Separator);
+		ShowTransactionsMenu();
 	}
 
-	static void _ShowDespositScreen(const string& FileName, const string& Separator)
+	static void _ShowDespositScreen()
 	{
-		clsDepositScreen::ShowDepositScreen(FileName, Separator);
+		clsDepositScreen::ShowDepositScreen();
 	}
 
-	static void _ShowWithdrawScreen(const string& FileName, const string& Separator)
+	static void _ShowWithdrawScreen()
 	{
-		clsWithdrawScreen::ShowWithdrawScreen(FileName, Separator);
+		clsWithdrawScreen::ShowWithdrawScreen();
 	}
 
-	static void _ShowTotalBalaceScreen(const string& FileName, const string& Separator)
+	static void _ShowTotalBalaceScreen()
 	{
-		clsTotalBalanceScreen::ShowTotalBalanceScreen(FileName, Separator);
+		clsTotalBalanceScreen::ShowTotalBalanceScreen();
 	}
 
-	static void _PerformTransactionsMenuOption(enTransactionsMenuOptions Option,const string& FileName, const string& Separator)
+	static void _PerformTransactionsMenuOption(enTransactionsMenuOptions Option)
 	{
 
 		switch(Option)
@@ -52,9 +52,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowDespositScreen(FileName, Separator);
+			_ShowDespositScreen();
 
-			_GoBackToTransactionsMenu(FileName, Separator);
+			_GoBackToTransactionsMenu();
 
 			break;
 		}
@@ -63,9 +63,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowWithdrawScreen(FileName, Separator);
+			_ShowWithdrawScreen();
 
-			_GoBackToTransactionsMenu(FileName, Separator);
+			_GoBackToTransactionsMenu();
 
 			break;
 		}
@@ -74,9 +74,9 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowTotalBalaceScreen(FileName, Separator);
+			_ShowTotalBalaceScreen();
 
-			_GoBackToTransactionsMenu(FileName, Separator);
+			_GoBackToTransactionsMenu();
 
 			break;
 		}
@@ -92,7 +92,7 @@ private:
 
 public:
 
-	static void ShowTransactionsMenu(const string& FileName, const string& Separator)
+	static void ShowTransactionsMenu()
 	{
 
 		clsOutputSettings::RestScreen();
@@ -119,9 +119,8 @@ public:
 
 
 		cout << setw(37) << left << "";
-		_PerformTransactionsMenuOption((enTransactionsMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 4, "Choose What Do You Want To Do ? [1 to 4] ? "),
-			FileName, Separator);
+		_PerformTransactionsMenuOption((enTransactionsMenuOptions)clsInputSettings::
+			ReadShortInRange(1, 4, "Choose What Do You Want To Do ? [1 to 4] ? "));
 	}
 
 

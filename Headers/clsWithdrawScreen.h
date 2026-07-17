@@ -32,18 +32,16 @@ private:
 
 public:
 
-	static void ShowWithdrawScreen(const string& FileName, const string& Separator)
+	static void ShowWithdrawScreen()
 	{
 		_DrawScreenHeader("Withdraw Screen");
 
 
-		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter the account number ? ")
-			, FileName, Separator);
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter the account number ? "));
 
 		while (Client.IsEmpty())
 		{
-			Client = clsBankClient::Find(clsInputSettings::ReadString("\nAccount number isn\'t correct, please enter another one ? ")
-				, FileName, Separator);
+			Client = clsBankClient::Find(clsInputSettings::ReadString("\nAccount number isn\'t correct, please enter another one ? "));
 		}
 
 
@@ -55,7 +53,7 @@ public:
 
 		if (clsInputSettings::ReadYesOrNo("\n\nAre you sure you want to perfom this transaction ? y/n ?"))
 		{
-			if (Client.Withdraw(Amount, FileName, Separator))
+			if (Client.Withdraw(Amount))
 			{
 				cout << "\n\nAmount withdrew successfully :-)";
 

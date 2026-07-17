@@ -27,10 +27,10 @@ private:
 
 public:
 
-	static void ShowTotalBalanceScreen(const string& FileName, const string& Separator)
+	static void ShowTotalBalanceScreen()
 	{
 
-		vector <clsBankClient> vClients = clsBankClient::GetClientsList(FileName, Separator);
+		vector <clsBankClient> vClients = clsBankClient::GetClientsList();
 
 		_DrawScreenHeader("Total Balance Screen", "(" + to_string(vClients.size()) + ") Clients");
 
@@ -61,7 +61,7 @@ public:
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
 			"--------------------------- " << endl;
 
-		const double TotalBalace = clsBankClient::GetTotalBalance(FileName, Separator);
+		const double TotalBalace = clsBankClient::GetTotalBalance();
 
 		cout << "\t\t\t\t\tTotal Balance = " << TotalBalace << endl;
 

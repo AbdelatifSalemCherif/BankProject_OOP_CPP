@@ -33,19 +33,17 @@ private:
 
 public:
 
-	static void ShowFindUserScreen(const string& FileName, const string& Separator)
+	static void ShowFindUserScreen()
 	{
 
 		_DrawScreenHeader("Find User Screen");
 
-		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? ")
-			, FileName, Separator);
+		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? "));
 
 		while (User.IsEmpty())
 		{
 			User =
-				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? ")
-					, FileName, Separator);
+				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? "));
 		}
 
 

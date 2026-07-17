@@ -31,7 +31,7 @@ private:
 
 public:
 
-	static void ShowFindClientScreen(const string& FileName, const string& Separator)
+	static void ShowFindClientScreen()
 	{
 
 		if (!_CheckAccessRights(clsBankUser::eFindClient))
@@ -41,14 +41,13 @@ public:
 
 		_DrawScreenHeader("Find Client Screen");
 
-		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
-			, FileName, Separator);
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? "));
 
 		while (Client.IsEmpty())
 		{
 			Client =
-				clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
-					, FileName, Separator);
+				clsBankClient::Find(
+					clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? "));
 		}
 
 

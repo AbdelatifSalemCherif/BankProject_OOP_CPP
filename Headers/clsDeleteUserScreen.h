@@ -33,19 +33,17 @@ private:
 
 public:
 
-	static void ShowDeleteUserScreen(const string& FileName, const string& Separator)
+	static void ShowDeleteUserScreen()
 	{
 
 		_DrawScreenHeader("Delete User Screen");
 
-		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? ")
-			, FileName, Separator);
+		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? "));
 
 		while (User.IsEmpty())
 		{
 			User =
-				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? ")
-					, FileName, Separator);
+				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? "));
 		}
 
 		_PrintUserCard(User);
@@ -54,7 +52,7 @@ public:
 		if (clsInputSettings::ReadYesOrNo("\n\nDo you want to delete this user ? y/n ? "))
 		{
 
-			if (User.Delete(FileName, Separator))
+			if (User.Delete())
 			{
 				cout << "\n\nUser deleted successfully :-) " << endl;
 

@@ -94,13 +94,13 @@ private:
 
 public:
 
-	static void ShowAddNewUserScreen(const string& FileName, const string& Separator)
+	static void ShowAddNewUserScreen()
 	{
 		_DrawScreenHeader("Add New User Screen");
 
 		string UserName = clsInputSettings::ReadString("\nPlease enter UserName : ");
 
-		while (clsBankUser::IsUserExist(UserName, FileName, Separator))
+		while (clsBankUser::IsUserExist(UserName))
 		{
 			UserName = clsInputSettings::ReadString("\nThis UserName is exist, Please enter another UserName : ");
 		}
@@ -109,7 +109,7 @@ public:
 
 		_ReadUserInfo(NewUser);
 
-		switch (NewUser.Save(FileName, Separator))
+		switch (NewUser.Save())
 		{
 		case clsBankUser::svFaildEmptyObject:
 		{

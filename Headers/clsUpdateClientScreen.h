@@ -42,7 +42,7 @@ private:
 
 public:
 
-	static void ShowUpdateClientScreen(const string& FileName, const string& Separator)
+	static void ShowUpdateClientScreen()
 	{
 
 		if (!_CheckAccessRights(clsBankUser::eUpdateClient))
@@ -52,14 +52,13 @@ public:
 
 		_DrawScreenHeader("Update Client Screen");
 
-		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
-			, FileName, Separator);
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? "));
 
 		while (Client.IsEmpty())
 		{
 			Client =
-				clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
-					, FileName, Separator);
+				clsBankClient::Find(
+					clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? "));
 		}
 
 		_PrintClientCard(Client);
@@ -70,7 +69,7 @@ public:
 
 			_ReadClientInfo(Client);
 
-			if (Client.Save(FileName, Separator) == clsBankClient::svSucceeded)
+			if (Client.Save() == clsBankClient::svSucceeded)
 			{
 				cout << "\n\nClient was Saved Successfully :-) ";
 			}

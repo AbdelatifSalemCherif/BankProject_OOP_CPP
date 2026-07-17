@@ -94,19 +94,18 @@ private:
 
 public:
 
-	static void ShowUpdateUserScreen(const string& FileName, const string& Separator)
+	static void ShowUpdateUserScreen()
 	{
 
 		_DrawScreenHeader("Update User Screen");
 
-		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? ")
-			, FileName, Separator);
+		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? "));
 
 		while (User.IsEmpty())
 		{
 			User =
-				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? ")
-					, FileName, Separator);
+				clsBankUser::Find(
+					clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? "));
 		}
 
 		_PrintUserCard(User);
@@ -117,7 +116,7 @@ public:
 
 			_ReadUserInfo(User);
 
-			if (User.Save(FileName, Separator) == clsBankUser::svSucceeded)
+			if (User.Save() == clsBankUser::svSucceeded)
 			{
 				cout << "\n\nUser was Saved Successfully :-) ";
 			}

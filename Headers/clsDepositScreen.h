@@ -32,18 +32,17 @@ private:
 
 public:
 
-	static void ShowDepositScreen(const string& FileName, const string& Separator)
+	static void ShowDepositScreen()
 	{
 		_DrawScreenHeader("Deposit Screen");
 
 
-		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter the account number ? ")
-			, FileName, Separator);
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter the account number ? "));
 		
 		while (Client.IsEmpty())
 		{
-			Client = clsBankClient::Find(clsInputSettings::ReadString("\nAccount number isn\'t correct, please enter another one ? ")
-				, FileName, Separator);
+			Client = clsBankClient::Find(
+				clsInputSettings::ReadString("\nAccount number isn\'t correct, please enter another one ? "));
 		}
 
 
@@ -55,7 +54,7 @@ public:
 
 		if (clsInputSettings::ReadYesOrNo("\n\nAre you sure you want to perfom this transaction ? y/n ?"))
 		{
-			Client.Deposit(Amount, FileName, Separator);
+			Client.Deposit(Amount);
 
 			cout << "\n\nAmount deposited successfully :-)";
 

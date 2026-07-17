@@ -31,7 +31,7 @@ private:
 
 public:
 
-	static void ShowDeleteClientScreen(const string& FileName, const string& Separator)
+	static void ShowDeleteClientScreen()
 	{
 
 		if (!_CheckAccessRights(clsBankUser::eDeleteClient))
@@ -41,14 +41,13 @@ public:
 
 		_DrawScreenHeader("Delete Client Screen");
 
-		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")
-			, FileName, Separator);
+		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? "));
 
 		while (Client.IsEmpty())
 		{
 			Client =
-				clsBankClient::Find(clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? ")
-					, FileName, Separator);
+				clsBankClient::Find(
+					clsInputSettings::ReadString("\nAccount number don\'t exist, Please enter another account number ? "));
 		}
 
 		_PrintClientCard(Client);
@@ -57,7 +56,7 @@ public:
 		if (clsInputSettings::ReadYesOrNo("\n\nDo you want to delete this client ? y/n ? "))
 		{
 
-			if (Client.Delete(FileName, Separator))
+			if (Client.Delete())
 			{
 				cout << "\n\nClient deleted successfully :-) " << endl;
 			

@@ -30,9 +30,9 @@ private:
 public:
 
 
-	static void ShowUsersListScreen(const string& FileName, const string& Separator)
+	static void ShowUsersListScreen()
 	{
-		vector <clsBankUser> vUsers = clsBankUser::GetUsersList(FileName, Separator);
+		vector <clsBankUser> vUsers = clsBankUser::GetUsersList();
 
 		_DrawScreenHeader("Users List Screen", "(" + to_string(vUsers.size()) + ") Users.");
 

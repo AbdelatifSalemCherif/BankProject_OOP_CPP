@@ -15,8 +15,7 @@ class clsLoginScreen : protected clsScreen
 
 private:
 
-	static bool _Login(const string& ClientsFileName, const string& ClientsSeparator
-		, const string& UsersFileName, const string& UsersSeparator)
+	static bool _Login()
 	{
 
 		short TrialsCounter = 2;
@@ -24,7 +23,7 @@ private:
 		string UserName = clsInputSettings::ReadString("\n\nPlease enter UserName : "),
 			Password = clsInputSettings::ReadString("\nPlease enter Password : ");
 
-		CurrentUser = clsBankUser::Find(UserName, Password, UsersFileName, UsersSeparator);
+		CurrentUser = clsBankUser::Find(UserName, Password);
 
 		while (CurrentUser.IsEmpty())
 		{
@@ -41,11 +40,11 @@ private:
 			UserName = clsInputSettings::ReadString("\n\nPlease enter UserName : ");
 			Password = clsInputSettings::ReadString("\nPlease enter Password : ");
 
-			CurrentUser = clsBankUser::Find(UserName, Password, UsersFileName, UsersSeparator);
+			CurrentUser = clsBankUser::Find(UserName, Password);
 
 		}
 
-		clsMainScreen::ShowMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
+		clsMainScreen::ShowMainMenu();
 
 		return true;
 
@@ -53,8 +52,7 @@ private:
 
 public:
 
-	static bool ShowLoginScreen(const string& ClientsFileName, const string& ClientsSeparator
-		, const string& UsersFileName, const string& UsersSeparator)
+	static bool ShowLoginScreen()
 	{
 
 		clsOutputSettings::RestScreen();
@@ -62,7 +60,7 @@ public:
 		_DrawScreenHeader("Login Screen");
 
 
-		return _Login(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
+		return _Login();
 
 	}
 
