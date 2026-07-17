@@ -303,6 +303,13 @@ public:
 		return !Find(UserName, FileName, Separator).IsEmpty();
 	}
 
+	bool CheckAccessPermission(enPermissions Permission)
+	{
+		return (_Permissions & Permission) == Permission;
+
+	}
+
+
 
 
 
