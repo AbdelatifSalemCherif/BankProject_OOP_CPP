@@ -86,6 +86,9 @@
     <ClInclude Include="Headers\Global.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\clsLoginScreen.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
