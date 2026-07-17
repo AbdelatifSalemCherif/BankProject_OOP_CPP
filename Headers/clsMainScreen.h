@@ -5,6 +5,7 @@
 
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
+#include "Global.h"
 #include "clsScreen.h"
 #include "clsClientsListScreen.h"
 #include "clsAddNewClientScreen.h"
@@ -68,9 +69,9 @@ private:
 		clsManageUsersScreen::ShowManageUsersMenu(FileName, Separator);
 	}
 
-	static void _ShowEndScreen()
+	static void _Logout(const string& FileName, const string& Separator)
 	{
-		cout << "\nEnd Screen Will be here...\n";
+		CurrentUser = clsBankUser::Find("", "", FileName, Separator);
 	}
 
 	static void _PerformMainMenuOption(enMainMenuOptions MainOption, const string& ClientsFileName, const string& ClientsSeparator,
@@ -159,9 +160,7 @@ private:
 		{
 			clsOutputSettings::RestScreen();
 
-			_ShowEndScreen();
-
-			//_LoginScreen();
+			_Logout(UsersFileName, UsersSeparator);
 
 			break;
 		}
