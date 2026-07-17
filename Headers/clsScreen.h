@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+#include "Global.h"
+#include "clsBankUser.h"
+
 using namespace std;
 
 
@@ -25,7 +28,21 @@ protected:
 
 	}
 
+	static bool _CheckAccessRights(clsBankUser::enPermissions Permission)
+	{
 
+		if (CurrentUser.CheckAccessPermission(Permission))
+		{
+			return true;
+		}
+		else
+		{
+			_DrawScreenHeader("Access Dinied ! Contact Your Admin,");
+
+			return false;
+		}
+
+	}
 
 
 
