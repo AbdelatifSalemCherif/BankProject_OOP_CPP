@@ -9,8 +9,10 @@ int main()
 {
 	
 
-	clsLoginScreen::ShowLoginScreen(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
-
+	while (true)
+	{
+		clsLoginScreen::ShowLoginScreen(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
+	}
 
 
 	return 0;
