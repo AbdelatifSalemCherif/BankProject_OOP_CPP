@@ -34,6 +34,11 @@ public:
 	static void ShowDeleteClientScreen(const string& FileName, const string& Separator)
 	{
 
+		if (!_CheckAccessRights(clsBankUser::eDeleteClient))
+		{
+			return;
+		}
+
 		_DrawScreenHeader("Delete Client Screen");
 
 		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")

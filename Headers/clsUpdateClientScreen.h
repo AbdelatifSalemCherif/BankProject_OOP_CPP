@@ -45,6 +45,11 @@ public:
 	static void ShowUpdateClientScreen(const string& FileName, const string& Separator)
 	{
 
+		if (!_CheckAccessRights(clsBankUser::eUpdateClient))
+		{
+			return;
+		}
+
 		_DrawScreenHeader("Update Client Screen");
 
 		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")

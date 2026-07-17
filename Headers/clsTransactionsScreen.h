@@ -97,6 +97,11 @@ public:
 
 		clsOutputSettings::RestScreen();
 
+		if (!_CheckAccessRights(clsBankUser::eTransactions))
+		{
+			return;
+		}
+
 		_DrawScreenHeader("Transactions Screen");
 
 		cout << endl;

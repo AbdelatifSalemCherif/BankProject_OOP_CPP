@@ -132,6 +132,11 @@ public:
 
 		clsOutputSettings::RestScreen();
 
+		if (!_CheckAccessRights(clsBankUser::eManageUsers))
+		{
+			return;
+		}
+
 		_DrawScreenHeader("Manage Users Screen");
 
 		cout << endl;

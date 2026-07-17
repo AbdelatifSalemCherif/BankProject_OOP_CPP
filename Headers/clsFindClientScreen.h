@@ -34,6 +34,11 @@ public:
 	static void ShowFindClientScreen(const string& FileName, const string& Separator)
 	{
 
+		if (!_CheckAccessRights(clsBankUser::eFindClient))
+		{
+			return;
+		}
+
 		_DrawScreenHeader("Find Client Screen");
 
 		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString("\nPlease enter account number ? ")

@@ -29,6 +29,12 @@ public:
 	
 	static void ShowClientsListScreen(const string& FileName, const string& Separator)
 	{
+
+		if (!_CheckAccessRights(clsBankUser::eClientsList))
+		{
+			return;
+		}
+
 		vector <clsBankClient> vClients = clsBankClient::GetClientsList(FileName, Separator);
 
 		_DrawScreenHeader("Clients List Screen", "(" + to_string(vClients.size()) + ") Clients.");

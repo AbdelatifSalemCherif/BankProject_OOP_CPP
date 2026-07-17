@@ -45,6 +45,12 @@ public:
 
 	static void ShowAddNewClientScreen(const string& FileName , const string& Separator)
 	{
+
+		if (!_CheckAccessRights(clsBankUser::eAddNewClient))
+		{
+			return;
+		}
+
 		_DrawScreenHeader("Add New Client Screen");
 
 		string AccountNember = clsInputSettings::ReadString("\nPlease enter the account number : ");
