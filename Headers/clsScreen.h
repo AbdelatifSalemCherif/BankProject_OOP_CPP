@@ -4,6 +4,7 @@
 
 #include "Global.h"
 #include "clsBankUser.h"
+#include "clsDate.h"
 
 using namespace std;
 
@@ -25,6 +26,13 @@ protected:
 		}
 
 		cout << "\n\n\t\t\t\t\t----------------------------------------------------------\n";
+
+		cout << "\n\t\t\t\t\tUser : " << CurrentUser.GetFullName();
+
+		clsDate().PrintDate("\n\t\t\t\t\tDate : ", "\n");
+
+
+
 
 	}
 
