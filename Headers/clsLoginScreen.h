@@ -19,8 +19,18 @@ private:
 
 public:
 
+	static void ShowLoginScreen(const string& ClientsFileName, const string& ClientsSeparator
+		, const string& UsersFileName, const string& UsersSeparator)
+	{
+
+		clsOutputSettings::RestScreen();
+
+		_DrawScreenHeader("Login Screen");
 
 
+		//_Login(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
+
+	}
 };
 
 
