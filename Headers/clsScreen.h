@@ -37,7 +37,7 @@ protected:
 		}
 		else
 		{
-			_DrawScreenHeader("Access Dinied ! Contact Your Admin,");
+			_DrawScreenHeader("Access Dinied !", "Contact Your Admin");
 
 			return false;
 		}
