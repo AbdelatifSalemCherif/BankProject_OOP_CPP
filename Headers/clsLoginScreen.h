@@ -15,9 +15,11 @@ class clsLoginScreen : protected clsScreen
 
 private:
 
-	static void _Login(const string& ClientsFileName, const string& ClientsSeparator
+	static bool _Login(const string& ClientsFileName, const string& ClientsSeparator
 		, const string& UsersFileName, const string& UsersSeparator)
 	{
+
+		short TrialsCounter = 2;
 
 		string UserName = clsInputSettings::ReadString("\n\nPlease enter UserName : "),
 			Password = clsInputSettings::ReadString("\nPlease enter Password : ");
@@ -26,7 +28,15 @@ private:
 
 		while (CurrentUser.IsEmpty())
 		{
+
+			if (TrialsCounter == 0)
+			{
+				return false;
+			}
+
 			cout << "\n\nInvalid UserName/Passwor !";
+
+			cout << "\n\nYou have " << TrialsCounter-- << " trials to login.";
 
 			UserName = clsInputSettings::ReadString("\n\nPlease enter UserName : ");
 			Password = clsInputSettings::ReadString("\nPlease enter Password : ");
@@ -37,11 +47,13 @@ private:
 
 		clsMainScreen::ShowMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
+		return true;
+
 	}
 
 public:
 
-	static void ShowLoginScreen(const string& ClientsFileName, const string& ClientsSeparator
+	static bool ShowLoginScreen(const string& ClientsFileName, const string& ClientsSeparator
 		, const string& UsersFileName, const string& UsersSeparator)
 	{
 
@@ -50,7 +62,7 @@ public:
 		_DrawScreenHeader("Login Screen");
 
 
-		_Login(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
+		return _Login(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 	}
 
