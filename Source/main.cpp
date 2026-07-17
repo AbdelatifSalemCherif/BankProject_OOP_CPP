@@ -6,10 +6,9 @@ using namespace std;
 
 int main()
 {
-	const string ClientsFileName = "BankData/Clients.txt", ClientsSeparator = "#//#"
-		, UsersFileName = "BankData/Users.txt", UsersSeparator = "#//#";
 	
-	clsMainScreen::ShowMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
+	
+	//clsMainScreen::ShowMainMenu(ClientsFileName, ClientsSeparator, UsersFileName, UsersSeparator);
 
 
 

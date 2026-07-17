@@ -155,6 +155,7 @@
     <ClInclude Include="Headers\clsUsersListScreen.h" />
     <ClInclude Include="Headers\clsUtility.h" />
     <ClInclude Include="Headers\clsWithdrawScreen.h" />
+    <ClInclude Include="Headers\Global.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp" />

@@ -83,6 +83,9 @@
     <ClInclude Include="Headers\clsFindUserScreen.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Global.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
