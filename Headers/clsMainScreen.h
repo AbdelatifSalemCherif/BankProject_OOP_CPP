@@ -14,6 +14,7 @@
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
+#include "clsLoginRegisterScreen.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ class clsMainScreen : protected clsScreen
 private:
 
 	enum enMainMenuOptions { eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClientInfo = 4, eFindClient = 5
-		, eTransactions = 6, eManageUsers = 7, eExit = 8};
+		, eTransactions = 6, eManageUsers = 7, eLoginRegister = 8, eExit = 9};
 
 	static void _GoBackToMainMenu()
 	{
@@ -190,14 +191,15 @@ public:
 		cout << setw(37) << left << "" << "\t[5] Find Client.\n";
 		cout << setw(37) << left << "" << "\t[6] Transactions.\n";
 		cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
-		cout << setw(37) << left << "" << "\t[8] Exit.\n\n";
+		cout << setw(37) << left << "" << "\t[8] Login Register.\n";
+		cout << setw(37) << left << "" << "\t[9] Exit.\n\n";
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 
 		cout << setw(37) << left << "";
 		_PerformMainMenuOption((enMainMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 8, "Choose What Do You Want To Do ? [1 to 8] ? "));
+			clsInputSettings::ReadShortInRange(1, 9, "Choose What Do You Want To Do ? [1 to 9] ? "));
 
 
 	}
