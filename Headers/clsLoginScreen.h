@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
 
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
@@ -43,6 +44,8 @@ private:
 			CurrentUser = clsBankUser::Find(UserName, Password);
 
 		}
+
+		CurrentUser.SaveLogin();
 
 		clsMainScreen::ShowMainMenu();
 

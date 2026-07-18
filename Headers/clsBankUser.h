@@ -8,6 +8,7 @@
 #include "Global.h"
 #include "clsPerson.h"
 #include "clsString.h"
+#include "clsDate.h"
 
 
 using namespace std;
@@ -119,11 +120,11 @@ private:
 
 	}
 
-	static void _AddLineToFile(const string& Line)
+	static void _AddLineToFile(const string& Line, const string& FileName = "BankData/Users.txt")
 	{
 		fstream File;
 
-		File.open("BankData/Users.txt", ios::out | ios::app);
+		File.open(FileName, ios::out | ios::app);
 
 		if (File.is_open())
 		{
@@ -134,6 +135,9 @@ private:
 		}
 
 	}
+
+
+
 
 
 
@@ -193,7 +197,20 @@ private:
 
 	}
 
+	string _GetLoginLine() const
+	{
+		string Line = "";
 
+		Line += clsDate::GetNowDateWithTime() + "#//#";
+		Line += _UserName + "#//#";
+		Line += GetFullName() + "#//#";
+		Line += Email + "#//#";
+		Line += Phone + "#//#";
+		Line += _Password + "#//#";
+		Line += to_string(_Permissions);
+
+		return Line;
+	}
 
 
 
@@ -483,6 +500,30 @@ public:
 	{
 		return _LoadAllUsersFromFile();
 	}
+
+	void SaveLogin()
+	{
+
+		_AddLineToFile(_GetLoginLine(), "BankData/LoginRegister.txt");
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

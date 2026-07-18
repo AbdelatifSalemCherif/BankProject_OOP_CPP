@@ -498,6 +498,16 @@ public:
 
     }
 
+    static string GetNowDateWithTime()
+    {
+        time_t t = time(0);
+
+        tm* Time = localtime(&t);
+
+        return  to_string(Time->tm_mday) + "/" + to_string(Time->tm_mon + 1) + "/" + to_string(Time->tm_year + 1900) + " - "
+            + to_string(Time->tm_hour) + ":" + to_string(Time->tm_min) + ":" + to_string(Time->tm_sec);
+    }
+
     static void PrintDate(short Year, short Month, short Day, string MessageBefore = "\n", string MessageAfter = "\n")
     {
         cout << MessageBefore << Day << "/" << Month << "/" << Year << MessageAfter;
