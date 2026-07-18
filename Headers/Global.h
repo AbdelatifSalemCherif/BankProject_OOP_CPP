@@ -6,5 +6,5 @@
 
 using namespace std;
 
-clsBankUser CurrentUser = clsBankUser::Find("", "");
+clsBankUser CurrentUser = clsBankUser::FindByUserNameAndPassword("", "");
 

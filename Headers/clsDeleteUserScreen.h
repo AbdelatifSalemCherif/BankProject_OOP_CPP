@@ -38,12 +38,12 @@ public:
 
 		_DrawScreenHeader("Delete User Screen");
 
-		clsBankUser User = clsBankUser::Find(clsInputSettings::ReadString("\nPlease enter UserName ? "));
+		clsBankUser User = clsBankUser::FindByUserName(clsInputSettings::ReadString("\nPlease enter UserName ? "));
 
 		while (User.IsEmpty())
 		{
 			User =
-				clsBankUser::Find(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? "));
+				clsBankUser::FindByUserName(clsInputSettings::ReadString("\nUserName don\'t exist, Please enter another UserName ? "));
 		}
 
 		_PrintUserCard(User);

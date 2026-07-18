@@ -49,46 +49,46 @@ private:
 
 	//Methods help for reading and writing from database
 
-	static clsBankUser _ConvertLineToUser(const string& Line)
+	static clsBankUser _ConvertRecordToUser(const string& Record, const string& Separator = "#//#")
 	{
-		vector <string> vClient = clsString::Split(Line, "#//#", false);
+		vector <string> vClient = clsString::Split(Record, Separator, false);
 
 		return clsBankUser(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
 			, vClient[5], stoi(vClient[6]));
 
 	}
 
-	static string _ConvertUserToLine(const clsBankUser& User)
+	static string _ConvertUserToRecord(const clsBankUser& User, const string& Separator = "#//#")
 	{
-		string Line = "";
+		string Record = "";
 
-		Line += User.FirstName + "#//#";
-		Line += User.LastName + "#//#";
-		Line += User.Email + "#//#";
-		Line += User.Phone + "#//#";
-		Line += User._UserName + "#//#";
-		Line += User._Password + "#//#";
-		Line += to_string(User._Permissions);
+		Record += User.FirstName + Separator;
+		Record += User.LastName + Separator;
+		Record += User.Email + Separator;
+		Record += User.Phone + Separator;
+		Record += User._UserName + Separator;
+		Record += User._Password + Separator;
+		Record += to_string(User._Permissions);
 
-		return Line;
+		return Record;
 	}
 
-	static vector <clsBankUser> _LoadAllUsersFromFile()
+	static vector <clsBankUser> _LoadAllUsersFromFile(const string& FileName = "BankData/Users.txt", const string& Separator = "#//#")
 	{
 		vector <clsBankUser> vUsers;
 
 		fstream File;
 
-		File.open("BankData/Users.txt", ios::in);
+		File.open(FileName, ios::in);
 
 		if (File.is_open())
 		{
-			string Line = "";
+			string Record = "";
 
-			while (getline(File, Line))
+			while (getline(File, Record))
 			{
 
-				vUsers.push_back(_ConvertLineToUser(Line));
+				vUsers.push_back(_ConvertRecordToUser(Record, Separator));
 
 			}
 
@@ -98,11 +98,12 @@ private:
 		return vUsers;
 	}
 
-	static void _SaveAllUsersToFile(const vector <clsBankUser>& vUsers)
+	static void _SaveAllUsersToFile(const vector <clsBankUser>& vUsers, const string& FileName = "BankData/Users.txt"
+	, const string& Separator = "#//#")
 	{
 		fstream File;
 
-		File.open("BankData/Users.txt", ios::out);
+		File.open(FileName, ios::out);
 
 		if (File.is_open())
 		{
@@ -111,7 +112,7 @@ private:
 			{
 				if (!User._MarkedForDelete)
 				{
-					File << _ConvertUserToLine(User) + "\n";
+					File << _ConvertUserToRecord(User, Separator) + "\n";
 				}
 			}
 
@@ -120,7 +121,7 @@ private:
 
 	}
 
-	static void _AddLineToFile(const string& Line, const string& FileName = "BankData/Users.txt")
+	static void _AddRecordToFile(const string& Line, const string& FileName = "BankData/Users.txt")
 	{
 		fstream File;
 
@@ -193,7 +194,7 @@ private:
 	void _AddNew() const
 	{
 
-		_AddLineToFile(_ConvertUserToLine(*this));
+		_AddRecordToFile(_ConvertUserToRecord(*this));
 
 	}
 
@@ -221,26 +222,35 @@ private:
 
 
 
-	// Save and extract Login Logic 
 
-	string _MakeLoginRecord() const
+
+	// Login Register Logic 
+
+	string _ConvertUserInfoToLoginRecord(const string& Separator = "#//#") const
 	{
 		string Line = "";
 
-		Line += clsDate::GetNowDateWithTime() + "#//#";
-		Line += _UserName + "#//#";
-		Line += GetFullName() + "#//#";
-		Line += Email + "#//#";
-		Line += Phone + "#//#";
-		Line += _Password + "#//#";
+		Line += clsDate::GetNowDateWithTime() + Separator;
+		Line += _UserName + Separator;
+		Line += GetFullName() + Separator;
+		Line += Email + Separator;
+		Line += Phone + Separator;
+		Line += _Password + Separator;
 		Line += to_string(_Permissions);
 
 		return Line;
 	}
 
-	static vector <string> _LoadAllLoginRecordsFromFile(const string& FileName = "BankData/LoginRegister.txt")
+	static vector <string> _ConvertLoginRecordToUserInfo(string& Record, const string& Separator = "#//#")
 	{
-		vector <string> vLogins ;
+
+		return clsString::Split(Record, Separator);
+
+	}
+
+	static vector <string> _LoadAllRecordsFromFile(const string& FileName = "BankData/LoginRegister.txt")
+	{
+		vector <string> vRecords ;
 
 		fstream File;
 
@@ -253,14 +263,14 @@ private:
 			while (getline(File, Record))
 			{
 
-				vLogins.push_back(Record);
+				vRecords.push_back(Record);
 
 			}
 
 			File.close();
 		}
 
-		return vLogins;
+		return vRecords;
 
 	}
 
@@ -296,10 +306,21 @@ public:
 
 
 
+
+
+
+
 	// Permissions
 
 	enum enPermissions { eAll = 0xFFFFFFFF, eClientsList = 0x01, eAddNewClient = 0x02, eDeleteClient = 0x04
 		, eUpdateClient = 0x08, eFindClient = 0x10, eTransactions = 0x20, eManageUsers = 0x40};
+
+
+
+
+
+
+
 
 
 
@@ -359,6 +380,11 @@ public:
 
 
 
+
+
+
+
+
 	//Checks Methods
 
 	bool IsEmpty() const
@@ -368,7 +394,7 @@ public:
 
 	static bool IsUserExist(const string& UserName)
 	{
-		return !Find(UserName).IsEmpty();
+		return !FindByUserName(UserName).IsEmpty();
 	}
 
 	bool CheckAccessPermission(enPermissions Permission)
@@ -376,6 +402,9 @@ public:
 		return (_Permissions & Permission) == Permission;
 
 	}
+
+
+
 
 
 
@@ -421,21 +450,25 @@ public:
 
 
 
+
+
+
 	//Core Logic Methods
 
-	static clsBankUser Find(const string& UserName)
+	static clsBankUser FindByUserName(const string& UserName, const string& FileName = "BankData/Users.txt"
+		, const string& Separator = "#//#")
 	{
 		fstream File;
 
-		File.open("BankData/Users.txt", ios::in);
+		File.open(FileName, ios::in);
 
 		if (File.is_open())
 		{
-			string Line = "";
+			string Record = "";
 
-			while (getline(File, Line))
+			while (getline(File, Record))
 			{
-				clsBankUser User = _ConvertLineToUser(Line);
+				clsBankUser User = _ConvertRecordToUser(Record, Separator);
 
 				if (User._UserName == UserName)
 				{
@@ -453,19 +486,20 @@ public:
 
 	}
 
-	static clsBankUser Find(const string& UserName, const string& Password)
+	static clsBankUser FindByUserNameAndPassword(const string& UserName, const string& Password
+		, const string& FileName = "BankData/Users.txt", const string& Separator = "#//#")
 	{
 		fstream File;
 
-		File.open("BankData/Users.txt", ios::in);
+		File.open(FileName, ios::in);
 
 		if (File.is_open())
 		{
-			string Line = "";
+			string Record = "";
 
-			while (getline(File, Line))
+			while (getline(File, Record))
 			{
-				clsBankUser User = _ConvertLineToUser(Line);
+				clsBankUser User = _ConvertRecordToUser(Record, Separator);
 
 				if (User._UserName == UserName && User._Password == Password)
 				{
@@ -551,18 +585,56 @@ public:
 		return _LoadAllUsersFromFile();
 	}
 
-	void SaveLogin()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// Login Register Logic
+
+	void SaveLogin(const string& FileName = "BankData/LoginRegister.txt", const string& Separator = "#//#") const
 	{
 
-		_AddLineToFile(_MakeLoginRecord(), "BankData/LoginRegister.txt");
+		_AddRecordToFile(_ConvertUserInfoToLoginRecord(Separator), FileName);
 
 
 
 	}
 
+	static vector <string> GetAllLoginRecords(const string& FileName = "BankData/LoginRegister.txt")
+	{
 
+		return _LoadAllRecordsFromFile(FileName);
 
+	}
 
+	static vector <string> SplitLoginRecord(string& Record, const string& Separator = "#//#")
+	{
+		return _ConvertLoginRecordToUserInfo(Record, Separator);
+	}
 
 
 

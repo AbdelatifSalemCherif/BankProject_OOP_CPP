@@ -70,7 +70,7 @@ private:
 
 	static void _Logout()
 	{
-		CurrentUser = clsBankUser::Find("", "");
+		CurrentUser = clsBankUser::FindByUserNameAndPassword("", "");
 	}
 
 	static void _PerformMainMenuOption(enMainMenuOptions MainOption)

@@ -24,7 +24,7 @@ private:
 		string UserName = clsInputSettings::ReadString("\n\nPlease enter UserName : "),
 			Password = clsInputSettings::ReadString("\nPlease enter Password : ");
 
-		CurrentUser = clsBankUser::Find(UserName, Password);
+		CurrentUser = clsBankUser::FindByUserNameAndPassword(UserName, Password);
 
 		while (CurrentUser.IsEmpty())
 		{
@@ -41,7 +41,7 @@ private:
 			UserName = clsInputSettings::ReadString("\n\nPlease enter UserName : ");
 			Password = clsInputSettings::ReadString("\nPlease enter Password : ");
 
-			CurrentUser = clsBankUser::Find(UserName, Password);
+			CurrentUser = clsBankUser::FindByUserNameAndPassword(UserName, Password);
 
 		}
 
