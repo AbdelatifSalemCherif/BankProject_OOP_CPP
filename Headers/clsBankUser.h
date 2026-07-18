@@ -263,7 +263,10 @@ private:
 			while (getline(File, Record))
 			{
 
-				vRecords.push_back(Record);
+				if (Record != "")
+				{
+					vRecords.push_back(Record);
+				}
 
 			}
 

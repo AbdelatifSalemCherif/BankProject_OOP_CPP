@@ -21,13 +21,13 @@ private:
 		vector <string> vRecord = clsBankUser::SplitLoginRecord(Record);
 
 		cout << setw(8) << left << "";
-		cout << "| " << left << setw(15) << vRecord[0];
-		cout << "| " << left << setw(20) << vRecord[1];
-		cout << "| " << left << setw(30) << vRecord[2];
-		cout << "| " << left << setw(15) << vRecord[3];
+		cout << "| " << left << setw(25) << vRecord[0];
+		cout << "| " << left << setw(10) << vRecord[1];
+		cout << "| " << left << setw(25) << vRecord[2];
+		cout << "| " << left << setw(30) << vRecord[3];
 		cout << "| " << left << setw(10) << vRecord[4];
 		cout << "| " << left << setw(10) << vRecord[5];
-		cout << "| " << left << setw(15) << vRecord[6] << endl;
+		cout << "| " << left << setw(5)  << vRecord[6] << endl;
 	}
 
 
@@ -42,19 +42,19 @@ public:
 
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
-			"--------------------------- " << endl;
+			"------------------------------------------- " << endl;
 
 		cout << setw(8) << left << "";
-		cout << "| " << left << setw(15) << "Time";
-		cout << "| " << left << setw(20) << "UserName";
-		cout << "| " << left << setw(30) << "Full Name";
-		cout << "| " << left << setw(15) << "Email";
+		cout << "| " << left << setw(25) << "Time";
+		cout << "| " << left << setw(10) << "UserName";
+		cout << "| " << left << setw(25) << "Full Name";
+		cout << "| " << left << setw(30) << "Email";
 		cout << "| " << left << setw(10) << "Phone";
 		cout << "| " << left << setw(10) << "Password";
-		cout << "| " << left << setw(15) << "Permissions" << endl;
+		cout << "| " << left << setw(5)  << "Permissions" << endl;
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
-			"--------------------------- " << endl;
+			"------------------------------------------- " << endl;
 
 		for (string& Record : vRecords)
 		{
@@ -63,7 +63,7 @@ public:
 		}
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
-			"--------------------------- " << endl;
+			"------------------------------------------- " << endl;
 	}
 
 };

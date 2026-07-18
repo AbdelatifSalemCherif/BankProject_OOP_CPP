@@ -69,6 +69,11 @@ private:
 		clsManageUsersScreen::ShowManageUsersMenu();
 	}
 
+	static void _ShowLoginRegisterScreen()
+	{
+		clsLoginRegisterScreen::ShowLoginRegisterScreen();
+	}
+
 	static void _Logout()
 	{
 		CurrentUser = clsBankUser::FindByUserNameAndPassword("", "");
@@ -149,6 +154,17 @@ private:
 			clsOutputSettings::RestScreen();
 
 			_ShowManageUsersMenu();
+
+			_GoBackToMainMenu();
+
+			break;
+		}
+
+		case eLoginRegister:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowLoginRegisterScreen();
 
 			_GoBackToMainMenu();
 
