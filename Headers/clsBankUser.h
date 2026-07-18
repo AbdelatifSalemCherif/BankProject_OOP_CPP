@@ -197,7 +197,33 @@ private:
 
 	}
 
-	string _GetLoginLine() const
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// Save and extract Login Logic 
+
+	string _MakeLoginRecord() const
 	{
 		string Line = "";
 
@@ -212,7 +238,31 @@ private:
 		return Line;
 	}
 
+	static vector <string> _LoadAllLoginRecordsFromFile(const string& FileName = "BankData/LoginRegister.txt")
+	{
+		vector <string> vLogins ;
 
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Record = "";
+
+			while (getline(File, Record))
+			{
+
+				vLogins.push_back(Record);
+
+			}
+
+			File.close();
+		}
+
+		return vLogins;
+
+	}
 
 
 
@@ -504,7 +554,7 @@ public:
 	void SaveLogin()
 	{
 
-		_AddLineToFile(_GetLoginLine(), "BankData/LoginRegister.txt");
+		_AddLineToFile(_MakeLoginRecord(), "BankData/LoginRegister.txt");
 
 
 
