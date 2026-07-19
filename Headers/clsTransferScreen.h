@@ -36,21 +36,6 @@ private:
 		return Client;
 	}
 
-	static clsBankClient _ReadClient(const clsBankClient& ExptionClient, const string& MessageToUser, const string& ErrorMessage)
-	{
-
-	
-		clsBankClient Client = clsBankClient::Find(clsInputSettings::ReadString(MessageToUser));
-
-		while (Client.IsEmpty() || Client.GetAccountNumber() == ExptionClient.GetAccountNumber())
-		{
-			Client = clsBankClient::Find(clsInputSettings::ReadString(ErrorMessage));
-		}
-
-		return Client;
-	}
-
-
 
 public:
 
@@ -61,23 +46,23 @@ public:
 
 
 
-		clsBankClient ClientTransferFrom = _ReadClient("\nPlease Enter Account Number To Transfer From : "
+		clsBankClient SourceClient = _ReadClient("\nPlease Enter Account Number To Transfer From : "
 			, "\nAccount Number Isn\'t Correct, Please Enter Another One : ");
 
-		_PrintClientCard(ClientTransferFrom);
+		_PrintClientCard(SourceClient);
 
 
 
-		clsBankClient ClientTransferTo = _ReadClient(ClientTransferFrom, "\nPlease Enter Account Number To Transfer To : ",
-			"\nAccount Number Isn\'t Correct, Or You Entered The Same Account Number To Transform From, Please Enter Another One : ");
+		clsBankClient DestionationClient = _ReadClient("\nPlease Enter Account Number To Transfer To : ",
+			"\nAccount Number Isn\'t Correct, Please Enter Another One : ");
 
-		_PrintClientCard(ClientTransferTo);
-
-
+		_PrintClientCard(DestionationClient);
 
 
-		float Amount = clsInputSettings::ReadFloatInRange(0, ClientTransferFrom.Balance,
-			"\n\nPlease Enter Transfer Amount ? It Must Be Less Than " + to_string(ClientTransferFrom.Balance) + " ? ");
+
+
+		float Amount = clsInputSettings::ReadFloatInRange(0, SourceClient.Balance,
+			"\n\nPlease Enter Transfer Amount ? It Must Be Less Than " + to_string(SourceClient.Balance) + " ? ");
 
 
 
@@ -85,26 +70,18 @@ public:
 		if (clsInputSettings::ReadYesOrNo("\n\nAre You Sure You Want To Perform This Transaction ? y/n ?"))
 		{
 
-			if (ClientTransferFrom.Withdraw(Amount))
+			if (SourceClient.Transfer(Amount, DestionationClient))
 			{
-
-				ClientTransferTo.Deposit(Amount);
-
+		
 				cout << "\n\nTransfer Done Successfully :-) :\n\n";
-				_PrintClientCard(ClientTransferFrom);
-
-
-				cout << "\n\n";
-				_PrintClientCard(ClientTransferTo);
 
 			}
 			else
 			{
 
-				cout << "\n\nTransfer FAILD ! Try again";
+				cout << "\a\n\nTransfer FAILD ! Or Is The Same Client ! Try again.";
 
 			}
-
 
 		}
 		else
@@ -112,6 +89,12 @@ public:
 			cout << "\n\nNothing Hapenned ! ";
 
 		}
+
+		cout << "\n\n";
+		_PrintClientCard(SourceClient);
+
+		cout << "\n\n";
+		_PrintClientCard(DestionationClient);
 		
 
 
