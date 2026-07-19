@@ -34,7 +34,7 @@ public:
 	static void ShowFindClientScreen()
 	{
 
-		if (!_CheckAccessRights(clsBankUser::eFindClient))
+		if (!_CheckAccessRights(clsBankUser::prmFindClient))
 		{
 			return;
 		}

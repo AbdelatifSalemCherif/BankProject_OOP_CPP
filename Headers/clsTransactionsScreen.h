@@ -97,7 +97,7 @@ public:
 
 		clsOutputSettings::RestScreen();
 
-		if (!_CheckAccessRights(clsBankUser::eTransactions))
+		if (!_CheckAccessRights(clsBankUser::prmTransactions))
 		{
 			return;
 		}

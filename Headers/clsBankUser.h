@@ -276,8 +276,8 @@ public:
 
 	// -------------------------------------------------- Permissions -----------------------------------------------------------
 
-	enum enPermissions { eAll = 0xFFFFFFFF, eClientsList = 0x01, eAddNewClient = 0x02, eDeleteClient = 0x04
-		, eUpdateClient = 0x08, eFindClient = 0x10, eTransactions = 0x20, eManageUsers = 0x40};
+	enum enPermissions { eAll = 0xFFFFFFFF, prmClientsList = 0x01, prmAddNewClient = 0x02, prmDeleteClient = 0x04
+		, prmUpdateClient = 0x08, prmFindClient = 0x10, prmTransactions = 0x20, prmManageUsers = 0x40, prmLoginRegister = 0x08};
 
 
 

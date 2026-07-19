@@ -34,7 +34,7 @@ public:
 	static void ShowDeleteClientScreen()
 	{
 
-		if (!_CheckAccessRights(clsBankUser::eDeleteClient))
+		if (!_CheckAccessRights(clsBankUser::prmDeleteClient))
 		{
 			return;
 		}

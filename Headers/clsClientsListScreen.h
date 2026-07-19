@@ -30,7 +30,7 @@ public:
 	static void ShowClientsListScreen()
 	{
 
-		if (!_CheckAccessRights(clsBankUser::eClientsList))
+		if (!_CheckAccessRights(clsBankUser::prmClientsList))
 		{
 			return;
 		}

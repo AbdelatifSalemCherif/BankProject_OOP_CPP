@@ -28,37 +28,37 @@ private:
 
 		if (clsInputSettings::ReadYesOrNo("\n\nShow Clients List ? y/n ? "))
 		{
-			Permissions += clsBankUser::eClientsList;
+			Permissions += clsBankUser::prmClientsList;
 		}
 
 		if (clsInputSettings::ReadYesOrNo("\n\nAdd New Client ? y/n ? "))
 		{
-			Permissions += clsBankUser::eAddNewClient;
+			Permissions += clsBankUser::prmAddNewClient;
 		}
 
 		if (clsInputSettings::ReadYesOrNo("\n\nDelete Client ? y/n ? "))
 		{
-			Permissions += clsBankUser::eDeleteClient;
+			Permissions += clsBankUser::prmDeleteClient;
 		}
 
 		if (clsInputSettings::ReadYesOrNo("\n\nUpdate Client ? y/n ? "))
 		{
-			Permissions += clsBankUser::eUpdateClient;
+			Permissions += clsBankUser::prmUpdateClient;
 		}
 
 		if (clsInputSettings::ReadYesOrNo("\n\nFind Client ? y/n ? "))
 		{
-			Permissions += clsBankUser::eFindClient;
+			Permissions += clsBankUser::prmFindClient;
 		}
 
 		if (clsInputSettings::ReadYesOrNo("\n\nTransactions ? y/n ? "))
 		{
-			Permissions += clsBankUser::eTransactions;
+			Permissions += clsBankUser::prmTransactions;
 		}
 
 		if (clsInputSettings::ReadYesOrNo("\n\nManage Users ? y/n ? "))
 		{
-			Permissions += clsBankUser::eManageUsers;
+			Permissions += clsBankUser::prmManageUsers;
 		}
 
 		return Permissions;

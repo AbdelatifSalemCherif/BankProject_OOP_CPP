@@ -46,7 +46,7 @@ public:
 	static void ShowAddNewClientScreen()
 	{
 
-		if (!_CheckAccessRights(clsBankUser::eAddNewClient))
+		if (!_CheckAccessRights(clsBankUser::prmAddNewClient))
 		{
 			return;
 		}

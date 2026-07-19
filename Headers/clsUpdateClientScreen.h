@@ -45,7 +45,7 @@ public:
 	static void ShowUpdateClientScreen()
 	{
 
-		if (!_CheckAccessRights(clsBankUser::eUpdateClient))
+		if (!_CheckAccessRights(clsBankUser::prmUpdateClient))
 		{
 			return;
 		}

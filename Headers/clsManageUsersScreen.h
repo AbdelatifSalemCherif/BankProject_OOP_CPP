@@ -132,7 +132,7 @@ public:
 
 		clsOutputSettings::RestScreen();
 
-		if (!_CheckAccessRights(clsBankUser::eManageUsers))
+		if (!_CheckAccessRights(clsBankUser::prmManageUsers))
 		{
 			return;
 		}
