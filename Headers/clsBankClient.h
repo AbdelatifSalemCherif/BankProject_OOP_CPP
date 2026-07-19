@@ -157,7 +157,22 @@ private:
 
 	// ------------------------------------------------ Transfer Register -------------------------------------------------------------- 
 
-	struct stTransferRegister;
+	struct stTransferRegister
+	{
+		string Time, SourceAccountNumber, DestinationAccountNumber, UserName;
+
+		float SourceNewBalance, DestinationNewBalance, Amount;
+
+	};
+
+	void _SaveNewTransferRegister(float Amount, const clsBankClient& DestinationClient,
+		const string& FileName = "BankData/TransferRegister.txt", const string& Separator = "#//#") const
+	{
+
+		_AddRecordToFile(_ConvertTransferRegisterToRecord(_GetNewTransferRegister(Amount, DestinationClient), Separator), FileName);
+
+
+	}
 
 	stTransferRegister _GetNewTransferRegister(float Amount, const clsBankClient& DestinastionClient) const
 	{
@@ -403,15 +418,17 @@ public:
 		return false;
 	}
 
-	bool Transfer(float Amount, clsBankClient& DistinationClient)
+	bool Transfer(float Amount, clsBankClient& DestinationClient)
 	{
 
-		if (_AccountNumber == DistinationClient._AccountNumber || !Withdraw(Amount))
+		if (_AccountNumber == DestinationClient._AccountNumber || !Withdraw(Amount))
 		{
 			return false;
 		}
 
-		DistinationClient.Deposit(Amount);
+		DestinationClient.Deposit(Amount);
+
+		_SaveNewTransferRegister(Amount, DestinationClient);
 
 		return true;
 
@@ -499,34 +516,7 @@ public:
 		return TotalBanace;
 	}
 
-
-
-	// ------------------------------------------------ Transfer Register -------------------------------------------------------------- 
-
-	struct stTransferRegister
-	{
-		string Time, SourceAccountNumber, DestinationAccountNumber, UserName;
-
-		float SourceNewBalance, DestinationNewBalance, Amount;
-
-	};
-
-	void SaveNewTransferRegister(float Amount, const clsBankClient& DestinationClient, 
-		const string& FileName = "BankData/TransferRegister.txt", const string& Separator = "#//#") const
-	{
-
-		_AddRecordToFile(_ConvertTransferRegisterToRecord(_GetNewTransferRegister(Amount, DestinationClient), Separator), FileName);
-
-
-	}
-
-	static vector <stTransferRegister> GetAllTransferRegisterList(const string& FileName = "BankData/TransferRegister.txt")
-	{
-
-		return _LoadAllTransferRegisterFromFile(FileName);
-
-	}
-
+	
 
 
 
