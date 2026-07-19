@@ -157,13 +157,7 @@ private:
 
 	// ------------------------------------------------ Transfer Register -------------------------------------------------------------- 
 
-	struct stTransferRegister
-	{
-		string Time, SourceAccountNumber, DestinationAccountNumber, UserName;
-
-		float SourceNewBalance, DestinationNewBalance, Amount;
-
-	};
+	struct stTransferRegister;
 
 	void _SaveNewTransferRegister(float Amount, const clsBankClient& DestinationClient,
 		const string& FileName = "BankData/TransferRegister.txt", const string& Separator = "#//#") const
@@ -519,6 +513,14 @@ public:
 	
 
 	// ---------------------------------------------------- Transfer Register Logic ----------------------------------------------------
+
+	struct stTransferRegister
+	{
+		string Time, SourceAccountNumber, DestinationAccountNumber, UserName;
+
+		float SourceNewBalance, DestinationNewBalance, Amount;
+
+	};
 
 	static vector <stTransferRegister> GetAllTransferRegisterList()
 	{
