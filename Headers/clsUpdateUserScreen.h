@@ -61,6 +61,11 @@ private:
 			Permissions += clsBankUser::prmManageUsers;
 		}
 
+		if (clsInputSettings::ReadYesOrNo("\n\nLogin Register ? y/n ? "))
+		{
+			Permissions += clsBankUser::prmLoginRegister;
+		}
+
 		return Permissions;
 	}
 

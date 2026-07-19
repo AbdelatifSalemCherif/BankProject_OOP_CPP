@@ -35,6 +35,12 @@ public:
 
 	static void ShowLoginRegisterScreen()
 	{
+
+		if (!_CheckAccessRights(clsBankUser::prmLoginRegister))
+		{
+			return;
+		}
+
 		vector <clsBankUser::stLoginRegister> vLoginRegister = clsBankUser::GetAllLoginReristerList();
 
 		_DrawScreenHeader("Login Register Screen", "(" + to_string(vLoginRegister.size()) + ") Logins.");
