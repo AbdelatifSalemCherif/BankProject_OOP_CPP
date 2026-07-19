@@ -377,6 +377,20 @@ public:
 		return false;
 	}
 
+	bool Transfer(float Amount, clsBankClient& DistinationClient)
+	{
+
+		if (Amount > _Balance || _AccountNumber == DistinationClient._AccountNumber || !Withdraw(Amount))
+		{
+			return false;
+		}
+
+		DistinationClient.Deposit(Amount);
+
+		return true;
+
+	}
+
 	enum enSaveResult{ svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExist = 2};
 
 	enSaveResult Save() const
