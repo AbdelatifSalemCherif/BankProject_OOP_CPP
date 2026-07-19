@@ -16,18 +16,17 @@ class clsLoginRegisterScreen : protected clsScreen
 
 private:
 
-	static void _PrintLoginRecord(string& Record)
+	static void _PrintLoginRegisterLineOfTable(clsBankUser::stLoginRegister& LoginRegister)
 	{
-		vector <string> vRecord = clsBankUser::SplitLoginRecord(Record);
-
+		
 		cout << setw(8) << left << "";
-		cout << "| " << left << setw(25) << vRecord[0];
-		cout << "| " << left << setw(10) << vRecord[1];
-		cout << "| " << left << setw(25) << vRecord[2];
-		cout << "| " << left << setw(30) << vRecord[3];
-		cout << "| " << left << setw(10) << vRecord[4];
-		cout << "| " << left << setw(10) << vRecord[5];
-		cout << "| " << left << setw(5)  << vRecord[6] << endl;
+		cout << "| " << left << setw(25) << LoginRegister.Time;
+		cout << "| " << left << setw(10) << LoginRegister.UserName;
+		cout << "| " << left << setw(25) << LoginRegister.FullName;
+		cout << "| " << left << setw(30) << LoginRegister.Email;
+		cout << "| " << left << setw(10) << LoginRegister.Phone;
+		cout << "| " << left << setw(10) << LoginRegister.Password;
+		cout << "| " << left << setw(5)  << LoginRegister.Permissions << endl;
 	}
 
 
@@ -36,9 +35,9 @@ public:
 
 	static void ShowLoginRegisterScreen()
 	{
-		vector <string> vRecords = clsBankUser::GetAllLoginRecords();
+		vector <clsBankUser::stLoginRegister> vLoginRegister = clsBankUser::GetAllLoginReristerList();
 
-		_DrawScreenHeader("Login Register Screen", "(" + to_string(vRecords.size()) + ") Logins.");
+		_DrawScreenHeader("Login Register Screen", "(" + to_string(vLoginRegister.size()) + ") Logins.");
 
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
@@ -56,10 +55,10 @@ public:
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
 			"------------------------------------------- " << endl;
 
-		for (string& Record : vRecords)
+		for (clsBankUser::stLoginRegister& LoginRegister : vLoginRegister)
 		{
 
-			_PrintLoginRecord(Record);
+			_PrintLoginRegisterLineOfTable(LoginRegister);
 		}
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
