@@ -618,6 +618,17 @@ public:
 
 	// Login Register Logic
 
+	struct stLoginRegister
+	{
+		string Time;
+		string UserName;
+		string FullName;
+		string Email;
+		string Phone;
+		string Password;
+		int Permissions;
+	};
+
 	void SaveLogin(const string& FileName = "BankData/LoginRegister.txt", const string& Separator = "#//#") const
 	{
 
