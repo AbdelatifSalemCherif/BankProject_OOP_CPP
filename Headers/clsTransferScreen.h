@@ -59,10 +59,13 @@ public:
 
 		_DrawScreenHeader("Transfer Screen");
 
+
+
 		clsBankClient ClientTransferFrom = _ReadClient("\nPlease Enter Account Number To Transfer From : "
 			, "\nAccount Number Isn\'t Correct, Please Enter Another One : ");
 
 		_PrintClientCard(ClientTransferFrom);
+
 
 
 		clsBankClient ClientTransferTo = _ReadClient(ClientTransferFrom, "\nPlease Enter Account Number To Transfer To : ",
@@ -71,24 +74,27 @@ public:
 		_PrintClientCard(ClientTransferTo);
 
 
+
+
 		float Amount = clsInputSettings::ReadFloatInRange(0, ClientTransferFrom.Balance,
 			"\n\nPlease Enter Transfer Amount ? It Must Be Less Than " + to_string(ClientTransferFrom.Balance));
+
+
 
 
 		if (clsInputSettings::ReadYesOrNo("\n\nAre You Sure You Want To Perform This Transaction ? y/n ?"))
 		{
 
 			if (ClientTransferTo.Withdraw(Amount))
-
 			{
+
 				ClientTransferFrom.Deposit(Amount);
 
 				cout << "\n\nTransfer Done Successfully :-) :\n\n";
-
 				_PrintClientCard(ClientTransferFrom);
 
-				cout << "\n\n";
 
+				cout << "\n\n";
 				_PrintClientCard(ClientTransferTo);
 
 			}
