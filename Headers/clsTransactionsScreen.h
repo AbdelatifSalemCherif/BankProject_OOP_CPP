@@ -10,6 +10,7 @@
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalanceScreen.h"
+#include "clsTransferScreen.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class clsTransactionsScreen : protected clsScreen
 
 private:
 
-	enum enTransactionsMenuOptions { eDeposite = 1, eWithdraw = 2, eTotalBalance = 3, eExit = 4};
+	enum enTransactionsMenuOptions { optDeposite = 1, optWithdraw = 2, optTotalBalance = 3, optTransfer = 4, optExit = 5};
 
 	static void _GoBackToTransactionsMenu()
 	{
@@ -43,12 +44,17 @@ private:
 		clsTotalBalanceScreen::ShowTotalBalanceScreen();
 	}
 
+	static void _ShowTransferScreen()
+	{
+		clsTransferScreen::ShowTransferScreen();
+	}
+
 	static void _PerformTransactionsMenuOption(enTransactionsMenuOptions Option)
 	{
 
 		switch(Option)
 		{
-		case eDeposite:
+		case optDeposite:
 		{
 			clsOutputSettings::RestScreen();
 
@@ -59,7 +65,7 @@ private:
 			break;
 		}
 
-		case eWithdraw:
+		case optWithdraw:
 		{
 			clsOutputSettings::RestScreen();
 
@@ -70,7 +76,7 @@ private:
 			break;
 		}
 
-		case eTotalBalance:
+		case optTotalBalance:
 		{
 			clsOutputSettings::RestScreen();
 
@@ -81,7 +87,18 @@ private:
 			break;
 		}
 
-		case eExit:
+		case optTransfer:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowTransferScreen();
+
+			_GoBackToTransactionsMenu();
+
+			break;
+		}
+
+		case optExit:
 		{
 
 			break;
@@ -113,14 +130,15 @@ public:
 		cout << setw(37) << left << "" << "\t[1] Deposit.\n";
 		cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
 		cout << setw(37) << left << "" << "\t[3] Total Balace.\n";
-		cout << setw(37) << left << "" << "\t[4] Main Menue.\n\n";
+		cout << setw(37) << left << "" << "\t[4] Transfer.\n";
+		cout << setw(37) << left << "" << "\t[5] Main Menue.\n\n";
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 
 		cout << setw(37) << left << "";
 		_PerformTransactionsMenuOption((enTransactionsMenuOptions)clsInputSettings::
-			ReadShortInRange(1, 4, "Choose What Do You Want To Do ? [1 to 4] ? "));
+			ReadShortInRange(1, 5, "Choose What Do You Want To Do ? [1 to 5] ? "));
 	}
 
 

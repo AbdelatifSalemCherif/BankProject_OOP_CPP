@@ -77,7 +77,7 @@ public:
 
 
 		float Amount = clsInputSettings::ReadFloatInRange(0, ClientTransferFrom.Balance,
-			"\n\nPlease Enter Transfer Amount ? It Must Be Less Than " + to_string(ClientTransferFrom.Balance));
+			"\n\nPlease Enter Transfer Amount ? It Must Be Less Than " + to_string(ClientTransferFrom.Balance) + " ? ");
 
 
 
@@ -85,10 +85,10 @@ public:
 		if (clsInputSettings::ReadYesOrNo("\n\nAre You Sure You Want To Perform This Transaction ? y/n ?"))
 		{
 
-			if (ClientTransferTo.Withdraw(Amount))
+			if (ClientTransferFrom.Withdraw(Amount))
 			{
 
-				ClientTransferFrom.Deposit(Amount);
+				ClientTransferTo.Deposit(Amount);
 
 				cout << "\n\nTransfer Done Successfully :-) :\n\n";
 				_PrintClientCard(ClientTransferFrom);
