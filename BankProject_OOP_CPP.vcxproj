@@ -153,6 +153,7 @@
     <ClInclude Include="Headers\clsString.h" />
     <ClInclude Include="Headers\clsTotalBalanceScreen.h" />
     <ClInclude Include="Headers\clsTransactionsScreen.h" />
+    <ClInclude Include="Headers\clsTransferRegisterScreen.h" />
     <ClInclude Include="Headers\clsTransferScreen.h" />
     <ClInclude Include="Headers\clsUpdateClientScreen.h" />
     <ClInclude Include="Headers\clsUpdateUserScreen.h" />
