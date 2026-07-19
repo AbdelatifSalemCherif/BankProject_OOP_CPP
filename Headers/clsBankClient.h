@@ -16,15 +16,12 @@ class clsBankClient : public clsPerson
 
 private:
 
-	enum enMode {eEmptyMode = 0, eUpdateMode = 1, eAddNewMode = 2};
 
+	// ------------------------------------------------ Data Memebers ----------------------------------------------------------------
 
-
-
-
-	//Data Memebers
-
+	enum enMode { eEmptyMode = 0, eUpdateMode = 1, eAddNewMode = 2 };
 	enMode _Mode;
+
 	string _AccountNumber;
 	string _PinCode;
 	float _Balance;
@@ -32,51 +29,48 @@ private:
 
 
 
+	// --------------------------------- Methods help for reading and writing from database -------------------------------------------
 
-
-
-	//Methods help for reading and writing from database
-
-	static clsBankClient _ConvertLineToClient(const string& Line)
+	static clsBankClient _ConvertRecordToClient(const string& Record, const string& Separator = "#//#")
 	{
-		vector <string> vClient = clsString::Split(Line, "#//#", false);
+		vector <string> vClient = clsString::Split(Record, Separator, false);
 
 		return clsBankClient(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
 			, vClient[5], stof(vClient[6]));
 
 	}
 
-	static string _ConvertClientToLine(const clsBankClient& Client)
+	static string _ConvertClientToRecord(const clsBankClient& Client, const string& Separator = "#//#")
 	{
-		string Line = "";
+		string Record = "";
 
-		Line += Client.FirstName + "#//#";
-		Line += Client.LastName + "#//#";
-		Line += Client.Email + "#//#";
-		Line += Client.Phone + "#//#";
-		Line += Client._AccountNumber + "#//#";
-		Line += Client._PinCode + "#//#";
-		Line += to_string(Client._Balance);
+		Record += Client.FirstName + Separator;
+		Record += Client.LastName + Separator;
+		Record += Client.Email + Separator;
+		Record += Client.Phone + Separator;
+		Record += Client._AccountNumber + Separator;
+		Record += Client._PinCode + Separator;
+		Record += to_string(Client._Balance);
 
-		return Line;
+		return Record;
 	}
 
-	static vector <clsBankClient> _LoadAllClientsFromFile()
+	static vector <clsBankClient> _LoadAllClientsFromFile(const string& FileName = "BankData/Clients.txt")
 	{
 		vector <clsBankClient> vClients;
 
 		fstream File;
 
-		File.open("BankData/Clients.txt", ios::in);
+		File.open(FileName, ios::in);
 
 		if (File.is_open())
 		{
-			string Line = "";
+			string Record = "";
 
-			while (getline(File, Line))
+			while (getline(File, Record))
 			{
 
-				vClients.push_back(_ConvertLineToClient(Line));
+				vClients.push_back(_ConvertRecordToClient(Record));
 
 			}
 
@@ -86,11 +80,11 @@ private:
 		return vClients;
 	}
 
-	static void _SaveAllClientsToFile(const vector <clsBankClient>& vClients)
+	static void _SaveAllClientsToFile(const vector <clsBankClient>& vClients, const string& FileName = "BankData/Clients.txt")
 	{
 		fstream File;
 
-		File.open("BankData/Clients.txt", ios::out);
+		File.open(FileName, ios::out);
 
 		if (File.is_open())
 		{
@@ -99,7 +93,7 @@ private:
 			{
 				if (!Client._MarkedForDelete)
 				{
-					File << _ConvertClientToLine(Client) + "\n";
+					File << _ConvertClientToRecord(Client) + "\n";
 				}
 			}
 
@@ -108,16 +102,16 @@ private:
 
 	}
 
-	static void _AddLineToFile(const string& Line)
+	static void _AddRecordToFile(const string& Record, const string& FileName = "BankData/Clients.txt")
 	{
 		fstream File;
 
-		File.open("BankData/Clients.txt", ios::out | ios::app);
+		File.open(FileName, ios::out | ios::app);
 
 		if (File.is_open())
 		{
 
-			File << Line + "\n";
+			File << Record + "\n";
 
 			File.close();
 		}
@@ -125,15 +119,7 @@ private:
 	}
 
 
-
-	
-
-
-
-
-
-
-	//Get Ready Objects
+	// ------------------------------------------------ Get Ready Objects --------------------------------------------------------------
 
 	static clsBankClient _GetEmptyClient()
 	{
@@ -141,21 +127,7 @@ private:
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//Core logic
+	// --------------------------------------------------- Core logic ------------------------------------------------------------------
 
 	void _Update() const
 	{
@@ -178,21 +150,102 @@ private:
 	void _AddNew() const
 	{
 		
-		_AddLineToFile(_ConvertClientToLine(*this));
+		_AddRecordToFile(_ConvertClientToRecord(*this));
+
+	}
+
+
+	// ------------------------------------------------ Transfer Register -------------------------------------------------------------- 
+
+	struct stTransferRegister;
+
+	stTransferRegister _GetNewTransferRegister(float Amount, const clsBankClient& DestinastionClient) const
+	{
+		stTransferRegister TransferRegister;
+
+		TransferRegister.Time = clsDate::GetNowDateWithTime();
+		TransferRegister.SourceAccountNumber = _AccountNumber;
+		TransferRegister.DestinationAccountNumber = DestinastionClient._AccountNumber;
+		TransferRegister.Amount = Amount;
+		TransferRegister.SourceNewBalance = _Balance;
+		TransferRegister.DestinationNewBalance = DestinastionClient._Balance;
+		TransferRegister.UserName = CurrentUser.UserName;
+
+
+		return TransferRegister;
+
+	}
+
+	static stTransferRegister _ConvertRecordToTransferRegister(string& Record, const string& Separator = "#//#")
+	{
+		vector <string> vRecord = clsString::Split(Record, Separator);
+
+		stTransferRegister TransferRegister;
+
+		TransferRegister.Time = vRecord[0];
+		TransferRegister.SourceAccountNumber = vRecord[1];
+		TransferRegister.DestinationAccountNumber = vRecord[2];
+		TransferRegister.Amount = stof(vRecord[3]);
+		TransferRegister.SourceNewBalance = stof(vRecord[4]);
+		TransferRegister.DestinationNewBalance = stof(vRecord[5]);
+		TransferRegister.UserName = Record[6];
+
+		return TransferRegister;
+
+	}
+
+	static string _ConvertTransferRegisterToRecord(const stTransferRegister& TransferRegister, const string& Separator = "#//#")
+	{
+		string Record = "";
+
+		Record += TransferRegister.Time + Separator;
+		Record += TransferRegister.SourceAccountNumber + Separator;
+		Record += TransferRegister.DestinationAccountNumber + Separator;
+		Record += to_string(TransferRegister.Amount) + Separator;
+		Record += to_string(TransferRegister.SourceNewBalance) + Separator;
+		Record += to_string(TransferRegister.DestinationNewBalance) + Separator;
+		Record += TransferRegister.UserName;
+
+		return Record;
+	}
+
+	static vector <stTransferRegister> _LoadAllTransferRegisterFromFile(const string& FileName = "BankData/TransferRegister.txt")
+	{
+		vector <stTransferRegister> vTransferRegisters;
+
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+			string Record = "";
+
+			while (getline(File, Record))
+			{
+
+				if (Record != "")
+				{
+					vTransferRegisters.push_back(_ConvertRecordToTransferRegister(Record));
+				}
+
+			}
+
+			File.close();
+		}
+
+		return vTransferRegisters;
 
 	}
 
 
 
 
-
-
-
-
-
-
-
 public:
+
+
+
+	// --------------------------------------------------- Constructors ----------------------------------------------------------------
 
 	clsBankClient(enMode Mode, const string& FirstName, const string& LastName, const string& Email, const string& Phone
 		, const string AccountNumber, const string& PinCode, float Balance) : clsPerson(FirstName, LastName, Email, Phone)
@@ -206,14 +259,7 @@ public:
 	}
 
 
-
-
-
-
-
-
-
-	//Properities
+	// ---------------------------------------------------- Properities ----------------------------------------------------------------
 
 	string GetAccountNumber() const
 	{
@@ -246,14 +292,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-	//Checks Methods
+	// ---------------------------------------------------- Checks Methods -------------------------------------------------------------
 
 	bool IsEmpty() const
 	{
@@ -267,13 +306,7 @@ public:
 
 
 
-
-
-
-
-
-
-	//Get Ready Objects
+	// --------------------------------------------------- Get Ready Objects -----------------------------------------------------------
 
 	static clsBankClient GetAddNewClientObject(const string& AccountNumber)
 	{
@@ -283,28 +316,21 @@ public:
 
 
 
+	// --------------------------------------------------- Core Logic Methods ----------------------------------------------------------
 
-
-
-
-
-
-
-	//Core Logic Methods
-
-	static clsBankClient Find(const string& AccountNumber)
+	static clsBankClient Find(const string& AccountNumber, const string& FileName = "BankData/Clients.txt")
 	{
 		fstream File;
 
-		File.open("BankData/Clients.txt", ios::in);
+		File.open(FileName, ios::in);
 
 		if (File.is_open())
 		{
-			string Line = "";
+			string Record = "";
 			
-			while (getline(File, Line))
+			while (getline(File, Record))
 			{
-				clsBankClient Client = _ConvertLineToClient(Line);
+				clsBankClient Client = _ConvertRecordToClient(Record);
 
 				if (Client._AccountNumber == AccountNumber)
 				{
@@ -322,19 +348,19 @@ public:
 
 	}
 
-	static clsBankClient Find(const string& AccountNumber, const string& PinCode)
+	static clsBankClient Find(const string& AccountNumber, const string& PinCode, const string& FileName = "BankData/Clients.txt")
 	{
 		fstream File;
 
-		File.open("BankData/Clients.txt", ios::in);
+		File.open(FileName, ios::in);
 
 		if (File.is_open())
 		{
-			string Line = "";
+			string Record = "";
 
-			while (getline(File, Line))
+			while (getline(File, Record))
 			{
-				clsBankClient Client = _ConvertLineToClient(Line);
+				clsBankClient Client = _ConvertRecordToClient(Record);
 
 				if (Client._AccountNumber == AccountNumber && Client._PinCode == PinCode)
 				{
@@ -472,6 +498,35 @@ public:
 
 		return TotalBanace;
 	}
+
+
+
+	// ------------------------------------------------ Transfer Register -------------------------------------------------------------- 
+
+	struct stTransferRegister
+	{
+		string Time, SourceAccountNumber, DestinationAccountNumber, UserName;
+
+		float SourceNewBalance, DestinationNewBalance, Amount;
+
+	};
+
+	void SaveNewTransferRegister(float Amount, const clsBankClient& DestinationClient, 
+		const string& FileName = "BankData/TransferRegister.txt", const string& Separator = "#//#") const
+	{
+
+		_AddRecordToFile(_ConvertTransferRegisterToRecord(_GetNewTransferRegister(Amount, DestinationClient), Separator), FileName);
+
+
+	}
+
+	static vector <stTransferRegister> GetAllTransferRegisterList(const string& FileName = "BankData/TransferRegister.txt")
+	{
+
+		return _LoadAllTransferRegisterFromFile(FileName);
+
+	}
+
 
 
 

@@ -203,7 +203,7 @@ private:
 
 	}
 
-	static string _ConvertLoginRegisterToRecord(stLoginRegister LoginRegister, const string& Separator = "#//#") 
+	static string _ConvertLoginRegisterToRecord(const stLoginRegister& LoginRegister, const string& Separator = "#//#") 
 	{
 		string Record = "";
 
