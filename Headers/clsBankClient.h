@@ -518,8 +518,12 @@ public:
 
 	
 
+	// ---------------------------------------------------- Transfer Register Logic ----------------------------------------------------
 
-
+	static vector <stTransferRegister> GetAllTransferRegisterList()
+	{
+		return _LoadAllTransferRegisterFromFile();
+	}
 
 
 };
