@@ -380,7 +380,7 @@ public:
 	bool Transfer(float Amount, clsBankClient& DistinationClient)
 	{
 
-		if (Amount > _Balance || _AccountNumber == DistinationClient._AccountNumber || !Withdraw(Amount))
+		if (_AccountNumber == DistinationClient._AccountNumber || !Withdraw(Amount))
 		{
 			return false;
 		}
