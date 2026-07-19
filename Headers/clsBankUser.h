@@ -18,17 +18,12 @@ class clsBankUser : public clsPerson
 
 private:
 
+
+	//----------------------------------------------- Data Memebers ------------------------------------------------------------------
+
 	enum enMode { eEmptyMode = 0, eUpdateMode = 1, eAddNewMode = 2 };
-
-
-
-
-
-
-
-	//Data Memebers
-
 	enMode _Mode;
+
 	string _UserName;
 	string _Password;
 	int _Permissions;
@@ -36,18 +31,7 @@ private:
 
 
 
-
-
-
-
-
-	
-
-
-
-
-
-	//Methods help for reading and writing from database
+	// ------------------------------ Methods help for reading and writing from database ---------------------------------------------
 
 	static clsBankUser _ConvertRecordToUser(const string& Record, const string& Separator = "#//#")
 	{
@@ -121,7 +105,7 @@ private:
 
 	}
 
-	static void _AddRecordToFile(const string& Line, const string& FileName = "BankData/Users.txt")
+	static void _AddRecordToFile(const string& Record, const string& FileName = "BankData/Users.txt")
 	{
 		fstream File;
 
@@ -130,7 +114,7 @@ private:
 		if (File.is_open())
 		{
 
-			File << Line + "\n";
+			File << Record + "\n";
 
 			File.close();
 		}
@@ -140,17 +124,7 @@ private:
 
 
 
-
-
-
-
-
-
-
-
-
-
-	//Get Ready Objects
+	// -------------------------------------------- Get Ready Objects ---------------------------------------------------------
 
 	static clsBankUser _GetEmptyUser()
 	{
@@ -160,18 +134,7 @@ private:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-	//Core logic
+	// ------------------------------------------------ Core logic -------------------------------------------------------------
 
 	void _Update() const
 	{
@@ -201,56 +164,63 @@ private:
 
 
 
+	// ------------------------------------------- Login Register Logic ---------------------------------------------------------
 
+	struct stLoginRegister;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// Login Register Logic 
-
-	string _ConvertUserInfoToLoginRecord(const string& Separator = "#//#") const
+	stLoginRegister _GetNewLoginRegister() const
 	{
-		string Line = "";
+		stLoginRegister LoginRegister;
 
-		Line += clsDate::GetNowDateWithTime() + Separator;
-		Line += _UserName + Separator;
-		Line += GetFullName() + Separator;
-		Line += Email + Separator;
-		Line += Phone + Separator;
-		Line += _Password + Separator;
-		Line += to_string(_Permissions);
+		LoginRegister.Time = clsDate::GetNowDateWithTime();
+		LoginRegister.UserName = _UserName;
+		LoginRegister.FullName = GetFullName();
+		LoginRegister.Email = Email;
+		LoginRegister.Phone = Phone;
+		LoginRegister.Password = _Password;
+		LoginRegister.Permissions = _Permissions;
 
-		return Line;
-	}
 
-	static vector <string> _ConvertLoginRecordToUserInfo(string& Record, const string& Separator = "#//#")
-	{
-
-		return clsString::Split(Record, Separator);
+		return LoginRegister;
 
 	}
 
-	static vector <string> _LoadAllRecordsFromFile(const string& FileName = "BankData/LoginRegister.txt")
+	static stLoginRegister _ConvertRecordToLoginRegister(string& Record, const string& Separator = "#//#")
 	{
-		vector <string> vRecords ;
+		vector <string> vRecord = clsString::Split(Record, Separator);
+
+		stLoginRegister LoginRegister;
+
+		LoginRegister.Time = vRecord[0];
+		LoginRegister.UserName = vRecord[1];
+		LoginRegister.FullName = vRecord[2];
+		LoginRegister.Email = vRecord[3];
+		LoginRegister.Phone = vRecord[4];
+		LoginRegister.Password = vRecord[5];
+		LoginRegister.Permissions = stoi(vRecord[6]);
+
+		return LoginRegister;
+
+	}
+
+	static string _ConvertLoginRegisterToRecord(stLoginRegister LoginRegister, const string& Separator = "#//#") 
+	{
+		string Record = "";
+
+		Record += LoginRegister.Time + Separator;
+		Record += LoginRegister.UserName + Separator;
+		Record += LoginRegister.FullName + Separator;
+		Record += LoginRegister.Email + Separator;
+		Record += LoginRegister.Phone + Separator;
+		Record += LoginRegister.Password + Separator;
+		Record += to_string(LoginRegister.Permissions);
+
+		return Record;
+	}
+
+	static vector <stLoginRegister> _LoadAllLoginRegisterFromFile(const string& FileName = "BankData/LoginRegister.txt")
+	{
+		vector <stLoginRegister> vLoginRegisters ;
 
 		fstream File;
 
@@ -265,7 +235,7 @@ private:
 
 				if (Record != "")
 				{
-					vRecords.push_back(Record);
+					vLoginRegisters.push_back(_ConvertRecordToLoginRegister(Record));
 				}
 
 			}
@@ -273,15 +243,9 @@ private:
 			File.close();
 		}
 
-		return vRecords;
+		return vLoginRegisters;
 
 	}
-
-
-
-
-
-
 
 
 
@@ -291,6 +255,11 @@ private:
 public:
 
 
+
+
+
+	// ------------------------------------------------- Constructors -------------------------------------------------------------
+	  
 	clsBankUser(enMode Mode, const string& FirstName, const string& LastName, const string& Email, const string& Phone
 		, const string UserName, const string& Password, int Permissions) : clsPerson(FirstName, LastName, Email, Phone)
 	{
@@ -305,15 +274,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-	// Permissions
+	// -------------------------------------------------- Permissions -----------------------------------------------------------
 
 	enum enPermissions { eAll = 0xFFFFFFFF, eClientsList = 0x01, eAddNewClient = 0x02, eDeleteClient = 0x04
 		, eUpdateClient = 0x08, eFindClient = 0x10, eTransactions = 0x20, eManageUsers = 0x40};
@@ -322,19 +283,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-	//Properities
+	// -------------------------------------------------- Properities ------------------------------------------------------------
 
 	void SetUserName(const string& UserName)
 	{
@@ -375,20 +324,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//Checks Methods
+	// --------------------------------------------------- Checks Methods -------------------------------------------------------
 
 	bool IsEmpty() const
 	{
@@ -408,27 +344,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//Get Ready Objects
+	// -------------------------------------------------- Get Ready Objects ------------------------------------------------------
 
 	static clsBankUser GetAddNewUserObject(const string& UserName)
 	{
@@ -439,24 +355,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//Core Logic Methods
+	// ------------------------------------------------- Core Logic Methods -------------------------------------------------------
 
 	static clsBankUser FindByUserName(const string& UserName, const string& FileName = "BankData/Users.txt"
 		, const string& Separator = "#//#")
@@ -590,33 +489,7 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// Login Register Logic
+	// -------------------------------------------------- Login Register Logic ------------------------------------------------------
 
 	struct stLoginRegister
 	{
@@ -629,34 +502,21 @@ public:
 		int Permissions;
 	};
 
-	void SaveLogin(const string& FileName = "BankData/LoginRegister.txt", const string& Separator = "#//#") const
+	void SaveNewLogin(const string& FileName = "BankData/LoginRegister.txt", const string& Separator = "#//#") const
 	{
 
-		_AddRecordToFile(_ConvertUserInfoToLoginRecord(Separator), FileName);
+		_AddRecordToFile(_ConvertLoginRegisterToRecord(_GetNewLoginRegister(), Separator), FileName);
 
 
 
 	}
 
-	static vector <string> GetAllLoginRecords(const string& FileName = "BankData/LoginRegister.txt")
+	static vector <stLoginRegister> GetAllLoginReristerList(const string& FileName = "BankData/LoginRegister.txt")
 	{
 
-		return _LoadAllRecordsFromFile(FileName);
+		return _LoadAllLoginRegisterFromFile(FileName);
 
 	}
-
-	static vector <string> SplitLoginRecord(string& Record, const string& Separator = "#//#")
-	{
-		return _ConvertLoginRecordToUserInfo(Record, Separator);
-	}
-
-
-
-
-
-
-
-
 
 
 

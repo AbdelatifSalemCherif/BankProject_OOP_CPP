@@ -45,7 +45,7 @@ private:
 
 		}
 
-		CurrentUser.SaveLogin();
+		CurrentUser.SaveNewLogin();
 
 		clsMainScreen::ShowMainMenu();
 
