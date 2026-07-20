@@ -25,6 +25,104 @@ private:
 	float _Rate;
 
 
+	// ------------------------------ Methods help to download and upload clsCurrency objects to file ------------------------------------ 
+
+	static clsCurrency _ConvertRecordToCurrency(const string& Record, const string& Separator = "#//#")
+	{
+
+		vector <string> vRecord = clsString::Split(Record, Separator);
+
+	
+		return clsCurrency(eUpdateMode, vRecord[0], vRecord[1], vRecord[2], stof(vRecord[3]));
+
+	}
+
+	static string _ConvertCurrencyToRecord(const clsCurrency& Currency, const string& Separator = "#//#")
+	{
+
+		string Record = "";		
+
+		Record += Currency._Country + Separator;
+		Record += Currency._CurrencyCode+ Separator;
+		Record += Currency._CurrencyName + Separator;
+		Record += to_string(Currency._Rate);
+
+		return Record;
+
+	}
+
+	vector <clsCurrency> _LoadAllCurrenciesFromFile(const string& FileName = "BankData/Currencies.txt")
+	{
+
+		vector <clsCurrency> vCurrencies;
+
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+
+			string Record = "";
+
+
+			while (getline(File, Record))
+			{
+				vCurrencies.push_back(_ConvertRecordToCurrency(Record));
+			}
+
+
+			File.close();
+		}
+
+
+	}
+
+	static void _SaveAllCurrenciesToFile(const vector <clsCurrency> vCurrencies, const string& FileName = "BankData/Currencies.txt")
+	{
+
+		fstream File;
+
+		File.open(FileName, ios::out);
+
+		if (File.is_open())
+		{
+
+			for (const clsCurrency& Currency : vCurrencies)
+			{
+
+				File << _ConvertCurrencyToRecord(Currency) << "\n";
+
+			}
+
+
+			File.close();
+		}
+
+
+	}
+
+	static void _PushRecordToFile(const string& Record, const string& FileName = "BankData/Currencies.txt")
+	{
+
+		fstream File;
+
+		File.open(FileName, ios::out | ios::app);
+
+
+		if (File.is_open())
+		{
+
+			File << Record << "\n";
+
+			File.close();
+		}
+
+
+	}
+
+
+
 
 public:
 
