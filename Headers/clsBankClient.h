@@ -5,9 +5,10 @@
 #include <vector>
 #include <fstream>
 
-
-#include "clsPerson.h"
 #include "clsString.h"
+#include "clsUtility.h"
+#include "clsPerson.h"
+#include "Global.h"
 
 using namespace std;
 
@@ -36,7 +37,7 @@ private:
 		vector <string> vClient = clsString::Split(Record, Separator, false);
 
 		return clsBankClient(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
-			, vClient[5], stof(vClient[6]));
+			, clsUtility::DecryptWord(vClient[5], 2), stof(vClient[6]));
 
 	}
 
@@ -49,7 +50,7 @@ private:
 		Record += Client.Email + Separator;
 		Record += Client.Phone + Separator;
 		Record += Client._AccountNumber + Separator;
-		Record += Client._PinCode + Separator;
+		Record += clsUtility::EncryptWord(Client._PinCode, 2) + Separator;
 		Record += to_string(Client._Balance);
 
 		return Record;

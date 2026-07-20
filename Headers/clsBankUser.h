@@ -5,9 +5,10 @@
 #include <vector>
 #include <fstream>
 
+#include "clsString.h"
+#include "clsUtility.h"
 #include "Global.h"
 #include "clsPerson.h"
-#include "clsString.h"
 #include "clsDate.h"
 
 
@@ -35,10 +36,10 @@ private:
 
 	static clsBankUser _ConvertRecordToUser(const string& Record, const string& Separator = "#//#")
 	{
-		vector <string> vClient = clsString::Split(Record, Separator, false);
+		vector <string> vUsers = clsString::Split(Record, Separator, false);
 
-		return clsBankUser(eUpdateMode, vClient[0], vClient[1], vClient[2], vClient[3], vClient[4]
-			, vClient[5], stoi(vClient[6]));
+		return clsBankUser(eUpdateMode, vUsers[0], vUsers[1], vUsers[2], vUsers[3], vUsers[4]
+			, clsUtility::DecryptWord(vUsers[5], 2), stoi(vUsers[6]));
 
 	}
 
@@ -51,7 +52,7 @@ private:
 		Record += User.Email + Separator;
 		Record += User.Phone + Separator;
 		Record += User._UserName + Separator;
-		Record += User._Password + Separator;
+		Record += clsUtility::EncryptWord(User._Password, 2) + Separator;
 		Record += to_string(User._Permissions);
 
 		return Record;
@@ -196,7 +197,7 @@ private:
 		LoginRegister.FullName = vRecord[2];
 		LoginRegister.Email = vRecord[3];
 		LoginRegister.Phone = vRecord[4];
-		LoginRegister.Password = vRecord[5];
+		LoginRegister.Password = clsUtility::DecryptWord(vRecord[5], 2);
 		LoginRegister.Permissions = stoi(vRecord[6]);
 
 		return LoginRegister;
@@ -212,7 +213,7 @@ private:
 		Record += LoginRegister.FullName + Separator;
 		Record += LoginRegister.Email + Separator;
 		Record += LoginRegister.Phone + Separator;
-		Record += LoginRegister.Password + Separator;
+		Record += clsUtility::EncryptWord(LoginRegister.Password, 2) + Separator;
 		Record += to_string(LoginRegister.Permissions);
 
 		return Record;

@@ -73,6 +73,33 @@ public:
 
     }
 
+    static string EncryptWord(string Word, int Key)
+    {
+        int Length = Word.length();
+
+        for (int i = 0; i < Length; i++)
+        {
+
+            Word[i] = char(int(Word[i]) + Key);
+
+        }
+
+        return Word;
+    }
+
+    static string DecryptWord(string Word, int Key)
+    {
+        int Length = Word.length();
+
+        for (int i = 0; i < Length; i++)
+        {
+
+            Word[i] = char(int(Word[i]) - Key);
+
+        }
+
+        return Word;
+    }
 
 
 
