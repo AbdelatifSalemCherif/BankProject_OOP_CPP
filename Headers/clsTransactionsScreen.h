@@ -11,6 +11,7 @@
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalanceScreen.h"
 #include "clsTransferScreen.h"
+#include "clsTransferRegisterScreen.h"
 
 using namespace std;
 
@@ -19,7 +20,8 @@ class clsTransactionsScreen : protected clsScreen
 
 private:
 
-	enum enTransactionsMenuOptions { optDeposite = 1, optWithdraw = 2, optTotalBalance = 3, optTransfer = 4, optExit = 5};
+	enum enTransactionsMenuOptions { optDeposite = 1, optWithdraw = 2, optTotalBalance = 3, optTransfer = 4, optTransferRegister = 5,
+		optExit = 6};
 
 	static void _GoBackToTransactionsMenu()
 	{
@@ -47,6 +49,11 @@ private:
 	static void _ShowTransferScreen()
 	{
 		clsTransferScreen::ShowTransferScreen();
+	}
+
+	static void _ShowTransferRegisterScreen()
+	{
+		clsTransferRegisterScreen::ShowTransferRegisterScreen();
 	}
 
 	static void _PerformTransactionsMenuOption(enTransactionsMenuOptions Option)
@@ -98,6 +105,17 @@ private:
 			break;
 		}
 
+		case optTransferRegister:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowTransferRegisterScreen();
+
+			_GoBackToTransactionsMenu();
+
+			break;
+		}
+
 		case optExit:
 		{
 
@@ -131,14 +149,15 @@ public:
 		cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
 		cout << setw(37) << left << "" << "\t[3] Total Balace.\n";
 		cout << setw(37) << left << "" << "\t[4] Transfer.\n";
-		cout << setw(37) << left << "" << "\t[5] Main Menue.\n\n";
+		cout << setw(37) << left << "" << "\t[5] Transfer Register.\n";
+		cout << setw(37) << left << "" << "\t[6] Main Menue.\n\n";
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 
 		cout << setw(37) << left << "";
 		_PerformTransactionsMenuOption((enTransactionsMenuOptions)clsInputSettings::
-			ReadShortInRange(1, 5, "Choose What Do You Want To Do ? [1 to 5] ? "));
+			ReadShortInRange(1, 6, "Choose What Do You Want To Do ? [1 to 6] ? "));
 	}
 
 

@@ -38,14 +38,10 @@ public:
 	static void ShowTransferRegisterScreen()
 	{
 
-		if (!_CheckAccessRights(clsBankUser::prmLoginRegister))
-		{
-			return;
-		}
 
-		vector <clsBankUser::stLoginRegister> vLoginRegister = clsBankUser::GetAllLoginReristerList();
+		vector <clsBankClient::stTransferRegister> vTransferRegister = clsBankClient::GetAllTransferRegisterList();
 
-		_DrawScreenHeader("Login Register Screen", "(" + to_string(vLoginRegister.size()) + ") Logins.");
+		_DrawScreenHeader("Login Register Screen", "(" + to_string(vTransferRegister.size()) + ") Logins.");
 
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
@@ -63,10 +59,10 @@ public:
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
 			"------------------------------------------- " << endl;
 
-		for (clsBankUser::stLoginRegister& LoginRegister : vLoginRegister)
+		for (clsBankClient::stTransferRegister& TransferRegister : vTransferRegister)
 		{
 
-			_PrintLoginRegisterLineOfTable(LoginRegister);
+			_PrintTranferRegisterLineOfTable(TransferRegister);
 		}
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"
