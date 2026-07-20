@@ -241,7 +241,7 @@ public:
 			{
 				clsCurrency Currency = _ConvertRecordToCurrency(Record);
 
-				if (Currency._CurrencyCode == CurrencyCode)
+				if (Currency._CurrencyCode == clsString::ToUpperAllPhrase(CurrencyCode))
 				{
 					File.close();
 
@@ -274,7 +274,7 @@ public:
 			{
 				clsCurrency Currency = _ConvertRecordToCurrency(Record);
 
-				if (Currency._Country == Country)
+				if (clsString::ToUpperAllPhrase(Currency._Country) == clsString::ToUpperAllPhrase(Country))
 				{
 					File.close();
 
