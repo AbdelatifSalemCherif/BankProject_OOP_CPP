@@ -47,7 +47,37 @@ public:
 
 
 	
+	// ----------------------------------------------------- Properties -----------------------------------------------------------------
 
+	string GetCountry() const
+	{
+		return _Country;
+	}
+
+	string GetCurrencyCode() const
+	{
+		return _CurrencyCode;
+	}
+
+	string GetCurrencyName() const
+	{
+		return _CurrencyName;
+	}
+
+	float GetRate() const
+	{
+		return _Rate;
+	}
+
+	void SetRate(float NewRate)
+	{
+
+		_Rate = NewRate;
+
+		//_Update();    ******************************
+	}
+
+	__declspec(property(get = GetRate, put = SetRate)) float Rate;
 
 
 
