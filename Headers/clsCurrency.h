@@ -125,7 +125,7 @@ private:
 
 	// ------------------------------------------------- Ready Objects -------------------------------------------------------------------
 
-	clsCurrency _GetEmptyCurrencyObject()
+	static clsCurrency _GetEmptyCurrencyObject()
 	{
 		return clsCurrency(eEmptyMode, "", "", "", 0);
 	}
@@ -221,6 +221,82 @@ public:
 	}
 
 	
+
+
+	// --------------------------------------------------- Logic Core --------------------------------------------------------------------
+
+	static clsCurrency FindByCode(const string& CurrencyCode, const string& FileName = "BankData/Currencies.txt")
+	{
+
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+
+			string Record = "";
+
+			while (getline(File, Record))
+			{
+				clsCurrency Currency = _ConvertRecordToCurrency(Record);
+
+				if (Currency._CurrencyCode == CurrencyCode)
+				{
+					File.close();
+
+					return Currency;
+				}
+
+			}
+
+
+			File.close();
+		}
+
+
+		return _GetEmptyCurrencyObject();
+
+	}
+
+	static clsCurrency FindByCountry(const string& Country, const string& FileName = "BankData/Currencies.txt")
+	{
+		fstream File;
+
+		File.open(FileName, ios::in);
+
+		if (File.is_open())
+		{
+
+			string Record = "";
+
+			while (getline(File, Record))
+			{
+				clsCurrency Currency = _ConvertRecordToCurrency(Record);
+
+				if (Currency._Country == Country)
+				{
+					File.close();
+
+					return Currency;
+				}
+
+			}
+
+
+			File.close();
+		}
+
+
+		return _GetEmptyCurrencyObject();
+
+	}
+
+
+
+
+
+
 
 };
 
