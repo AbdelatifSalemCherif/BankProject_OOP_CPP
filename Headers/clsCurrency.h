@@ -51,7 +51,7 @@ private:
 
 	}
 
-	vector <clsCurrency> _LoadAllCurrenciesFromFile(const string& FileName = "BankData/Currencies.txt")
+	static vector <clsCurrency> _LoadAllCurrenciesFromFile(const string& FileName = "BankData/Currencies.txt")
 	{
 
 		vector <clsCurrency> vCurrencies;
@@ -123,6 +123,30 @@ private:
 
 
 
+	// --------------------------------------------------- Core Logic --------------------------------------------------------------------
+
+	void _Update()
+	{
+		vector <clsCurrency> _vCurrencuies = _LoadAllCurrenciesFromFile();
+
+		for (clsCurrency& Currency : _vCurrencuies)
+		{
+
+			if (Currency._CurrencyCode == _CurrencyCode)
+			{
+				Currency._Rate = _Rate;
+
+				break;
+			}
+
+		}
+
+		_SaveAllCurrenciesToFile(_vCurrencuies);
+
+	}
+
+
+
 
 public:
 
@@ -172,7 +196,8 @@ public:
 
 		_Rate = NewRate;
 
-		//_Update();    ******************************
+		_Update();
+
 	}
 
 	__declspec(property(get = GetRate, put = SetRate)) float Rate;
