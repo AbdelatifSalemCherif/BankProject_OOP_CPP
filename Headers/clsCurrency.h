@@ -28,6 +28,24 @@ private:
 
 public:
 
+	// --------------------------------------------------- Constructors -----------------------------------------------------------------
+
+	clsCurrency(enMode Mode, const string& Country, const string& CurrencyCode, const string& CurrencyName, float Rate)
+	{
+		_Mode = Mode;
+
+		_Country = Country;
+
+		_CurrencyCode = CurrencyCode;
+
+		_CurrencyName = CurrencyName;
+
+		_Rate = Rate;
+
+	}
+
+
+
 	
 
 
