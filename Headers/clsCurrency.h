@@ -220,7 +220,19 @@ public:
 		return _Mode == eEmptyMode;
 	}
 
-	
+	static bool IsExistByCode(const string& CurrencyCode)
+	{
+
+		return !FindByCode(CurrencyCode).IsEmpty();
+
+	}
+
+	static bool IsExistByCountry(const string& Country)
+	{
+		return !FindByCountry(Country).IsEmpty();
+	}
+
+
 
 
 	// --------------------------------------------------- Logic Core --------------------------------------------------------------------
