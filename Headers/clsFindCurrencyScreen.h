@@ -101,14 +101,19 @@ private:
 	}
 
 
-
-
-
-
-
 public:
 
+	void ShowFindCurrencyScreen()
+	{
 
+		_DrawScreenHeader("Find Currency Screen");
+
+		
+		_PerformFindCurrencyOption((enFindCurrencyOptions)
+			clsInputSettings::ReadShortInRange(1, 2, "\n\nFind By : [1] Country or [2] Code ? "));
+
+
+	}
 
 
 };
