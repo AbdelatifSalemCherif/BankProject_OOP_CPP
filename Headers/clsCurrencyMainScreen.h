@@ -7,6 +7,7 @@
 #include "clsInputSettings.h"
 #include "clsScreen.h"
 #include "clsCurrenciesListScreen.h"
+#include "clsFindCurrencyScreen.h"
 
 
 using namespace std;
@@ -38,7 +39,7 @@ private:
 
 	static void _ShowFindCurrencyScreen()
 	{
-		cout << "\n\tFind Currency Screen will be here...\n";
+		clsFindCurrencyScreen::ShowFindCurrencyScreen();
 	}
 
 	static void _ShowUpdateRateScreen()

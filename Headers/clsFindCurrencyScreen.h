@@ -16,7 +16,7 @@ private:
 
 	enum enFindCurrencyOptions{ optCountry = 1, optCurrencyCode = 2};
 
-	void _PrintCurrencyCard(const clsCurrency& Currency)
+	static void _PrintCurrencyCard(const clsCurrency& Currency)
 {
 
 	cout << "\n\nCurrency Info :" << endl;
@@ -31,7 +31,7 @@ private:
 	cout << "------------------------------------------" << endl;
 }
 
-	void _ShowFindByCountry()
+	static void _ShowFindByCountry()
 	{
 
 
@@ -52,7 +52,7 @@ private:
 
 	}
 
-	void _ShowFindByCode()
+	static void _ShowFindByCode()
 	{
 
 		clsCurrency Currency = clsCurrency::FindByCode(clsInputSettings::ReadString("\n\nPlease Enter Currency Code : "));
@@ -72,7 +72,7 @@ private:
 
 	}
 
-	void _PerformFindCurrencyOption(enFindCurrencyOptions Option)
+	static void _PerformFindCurrencyOption(enFindCurrencyOptions Option)
 	{
 
 		switch (Option)
@@ -103,7 +103,7 @@ private:
 
 public:
 
-	void ShowFindCurrencyScreen()
+	static void ShowFindCurrencyScreen()
 	{
 
 		_DrawScreenHeader("Find Currency Screen");
