@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
+#include "clsOutputSettings.h"
 #include "clsScreen.h"
 
 
@@ -14,7 +15,7 @@ class clsCurrencyMainScreen : protected clsScreen
 private:
 
 	enum enCurrencyMainMenuOptions {
-		eCurrenciesList = 1, eFindCurrency = 2, eUpdateCurrency = 3, eCurencyCalculator = 4, eExit = 5
+		eCurrenciesList = 1, eFindCurrency = 2, eUpdateCurrency = 3, eCurrencyCalculator = 4, eExit = 5
 	};
 
 	static void _GoBackToCurrencyMainMenu() //************************
@@ -48,6 +49,62 @@ private:
 		cout << "\n\tCurrency Calculator Screen will be here...\n";
 	}
 
+	static void _PerformCurrencyMainMenuOption(enCurrencyMainMenuOptions Option)
+	{
+		switch (Option)
+		{
+		case eCurrenciesList:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowCurrenciesListScreen();
+
+			_GoBackToCurrencyMainMenu();
+
+			break;
+		}
+
+		case eFindCurrency:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowFindCurrencyScreen();
+
+			_GoBackToCurrencyMainMenu();
+
+			break;
+		}
+
+		case eUpdateCurrency:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowUpdateCurrencyScreen();
+
+			_GoBackToCurrencyMainMenu();
+
+			break;
+		}
+
+		case eCurrencyCalculator:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowCurrencyCalculatorScreen();
+
+			_GoBackToCurrencyMainMenu();
+
+			break;
+		}
+
+		case eExit:
+		{
+
+			break;
+		}
+
+		}
+	}
 
 
 
