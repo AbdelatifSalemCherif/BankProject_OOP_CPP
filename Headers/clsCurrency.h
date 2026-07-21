@@ -75,6 +75,7 @@ private:
 			File.close();
 		}
 
+		return vCurrencies;
 
 	}
 
