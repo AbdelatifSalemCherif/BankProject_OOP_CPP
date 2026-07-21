@@ -19,13 +19,13 @@ private:
 		eCurrenciesList = 1, eFindCurrency = 2, eUpdateRate = 3, eCurrencyCalculator = 4, eExit = 5
 	};
 
-	static void _GoBackToCurrencyMainMenu() //************************
+	static void _GoBackToCurrencyMainMenu() 
 	{
 		cout << setw(37) << left << "" << "\n\tPress any key to go back to Currency Main Menue...\n";
 
 		system("pause>0");
 
-		//ShowCurrencyMainMenu();
+		ShowCurrencyMainMenu();
 	}
 
 	static void _ShowCurrenciesListScreen()
@@ -112,7 +112,33 @@ private:
 
 public:
 
-	
+	static void ShowCurrencyMainMenu()
+	{
+		clsOutputSettings::RestScreen();
+
+		_DrawScreenHeader("Currency Main Screen");
+
+		cout << endl;
+
+		cout << setw(37) << left << "" << "===================================================================\n\n";
+		cout << setw(37) << left << "" << "\t\t\t\tCurrency Main Menu\n\n";
+		cout << setw(37) << left << "" << "===================================================================\n\n";
+
+		cout << setw(37) << left << "" << "\t[1] Show Currencies List.\n";
+		cout << setw(37) << left << "" << "\t[2] Find Currency.\n";
+		cout << setw(37) << left << "" << "\t[3] Update Rate.\n";
+		cout << setw(37) << left << "" << "\t[4] Currency Calculator.\n";
+		cout << setw(37) << left << "" << "\t[5] Exit.\n\n";
+
+		cout << setw(37) << left << "" << "===================================================================\n\n";
+
+
+		cout << setw(37) << left << "";
+		_PerformCurrencyMainMenuOption((enCurrencyMainMenuOptions)
+			clsInputSettings::ReadShortInRange(1, 5, "Choose What Do You Want To Do ? [1 to 5] ? "));
+
+
+	}
 
 
 
