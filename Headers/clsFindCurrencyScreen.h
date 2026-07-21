@@ -72,7 +72,33 @@ private:
 
 	}
 
+	void _PerformFindCurrencyOption(enFindCurrencyOptions Option)
+	{
 
+		switch (Option)
+		{
+
+		case optCountry:
+		{
+
+			_ShowFindByCountry();
+
+			break;
+		}
+
+		case optCurrencyCode:
+		{
+
+			_ShowFindByCode();
+
+			break;
+		}
+
+
+		}
+
+
+	}
 
 
 
