@@ -40,7 +40,7 @@ public:
 		_DrawScreenHeader("Update Rate Screen");
 
 
-		clsCurrency Currency = clsCurrency::FindByCode(clsInputSettings::ReadString("\n\nPlease Enter Currency Cond : "));
+		clsCurrency Currency = clsCurrency::FindByCode(clsInputSettings::ReadString("\n\nPlease Enter Currency Code : "));
 
 		if (Currency.IsEmpty())
 		{
