@@ -237,7 +237,7 @@ public:
 
 	// --------------------------------------------------- Logic Core --------------------------------------------------------------------
 
-	static clsCurrency FindByCode(const string& CurrencyCode, const string& FileName = "BankData/Currencies.txt")
+	static clsCurrency FindByCode(string CurrencyCode, const string& FileName = "BankData/Currencies.txt")
 	{
 
 		fstream File;
@@ -247,13 +247,15 @@ public:
 		if (File.is_open())
 		{
 
+			CurrencyCode = clsString::ToUpperAllPhrase(CurrencyCode);
+
 			string Record = "";
 
 			while (getline(File, Record))
 			{
 				clsCurrency Currency = _ConvertRecordToCurrency(Record);
 
-				if (Currency._CurrencyCode == clsString::ToUpperAllPhrase(CurrencyCode))
+				if (Currency._CurrencyCode == CurrencyCode)
 				{
 					File.close();
 
@@ -271,7 +273,7 @@ public:
 
 	}
 
-	static clsCurrency FindByCountry(const string& Country, const string& FileName = "BankData/Currencies.txt")
+	static clsCurrency FindByCountry(string Country, const string& FileName = "BankData/Currencies.txt")
 	{
 		fstream File;
 
@@ -280,13 +282,15 @@ public:
 		if (File.is_open())
 		{
 
+			Country = clsString::ToUpperAllPhrase(Country);
+
 			string Record = "";
 
 			while (getline(File, Record))
 			{
 				clsCurrency Currency = _ConvertRecordToCurrency(Record);
 
-				if (clsString::ToUpperAllPhrase(Currency._Country) == clsString::ToUpperAllPhrase(Country))
+				if (clsString::ToUpperAllPhrase(Currency._Country) == Country)
 				{
 					File.close();
 
