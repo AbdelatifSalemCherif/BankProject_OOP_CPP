@@ -160,6 +160,7 @@
     <ClInclude Include="Headers\clsTransferRegisterScreen.h" />
     <ClInclude Include="Headers\clsTransferScreen.h" />
     <ClInclude Include="Headers\clsUpdateClientScreen.h" />
+    <ClInclude Include="Headers\clsUpdateRateScreen.h" />
     <ClInclude Include="Headers\clsUpdateUserScreen.h" />
     <ClInclude Include="Headers\clsUsersListScreen.h" />
     <ClInclude Include="Headers\clsUtility.h" />
