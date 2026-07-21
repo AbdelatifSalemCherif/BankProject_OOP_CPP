@@ -14,6 +14,8 @@ class clsFindCurrencyScreen : protected clsScreen
 
 private:
 
+	enum enFindCurrencyOptions{ optCountry = 1, optCurrencyCode = 2};
+
 	void _PrintCurrencyCard(const clsCurrency& Currency)
 {
 
