@@ -26,6 +26,27 @@ private:
 		//ShowCurrencyMainMenu();
 	}
 
+	static void _ShowCurrenciesListScreen()
+	{
+
+		cout << "\n\tCurrencies List Screen will be here...\n";
+
+	}
+
+	static void _ShowFindCurrencyScreen()
+	{
+		cout << "\n\tFind Currency Screen will be here...\n";
+	}
+
+	static void _ShowUpdateCurrencyScreen()
+	{
+		cout << "\n\tUpdate Currency Screen will be here...\n";
+	}
+
+	static void _ShowCurrencyCalculatorScreen()
+	{
+		cout << "\n\tCurrency Calculator Screen will be here...\n";
+	}
 
 
 
