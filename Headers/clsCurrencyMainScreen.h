@@ -6,6 +6,7 @@
 #include "clsOutputSettings.h"
 #include "clsInputSettings.h"
 #include "clsScreen.h"
+#include "clsCurrenciesListScreen.h"
 
 
 using namespace std;
@@ -31,7 +32,7 @@ private:
 	static void _ShowCurrenciesListScreen()
 	{
 
-		cout << "\n\tCurrencies List Screen will be here...\n";
+		clsCurrenciesListScreen::ShowCurrenciesListScreen();
 
 	}
 
