@@ -309,7 +309,11 @@ public:
 
 	}
 
+	static vector < clsCurrency> GetAllCurrenciesList()
+	{
 
+		return _LoadAllCurrenciesFromFile();
+	}
 
 
 
