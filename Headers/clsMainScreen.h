@@ -15,6 +15,7 @@
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
 #include "clsLoginRegisterScreen.h"
+#include "clsCurrencyMainScreen.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ class clsMainScreen : protected clsScreen
 private:
 
 	enum enMainMenuOptions { eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClientInfo = 4, eFindClient = 5
-		, eTransactions = 6, eManageUsers = 7, eLoginRegister = 8, eExit = 9};
+		, eTransactions = 6, eManageUsers = 7, eLoginRegister = 8, eCurrencyMainMenu = 9, eExit = 10};
 
 	static void _GoBackToMainMenu()
 	{
@@ -72,6 +73,11 @@ private:
 	static void _ShowLoginRegisterScreen()
 	{
 		clsLoginRegisterScreen::ShowLoginRegisterScreen();
+	}
+
+	static void _ShowCurrencyMainScreen()
+	{
+		clsCurrencyMainScreen::ShowCurrencyMainMenu();
 	}
 
 	static void _Logout()
@@ -171,6 +177,17 @@ private:
 			break;
 		}
 
+		case eCurrencyMainMenu:
+		{
+			clsOutputSettings::RestScreen();
+
+			_ShowCurrencyMainScreen();
+
+			_GoBackToMainMenu();
+
+			break;
+		}
+
 		case eExit:
 		{
 			clsOutputSettings::RestScreen();
@@ -208,14 +225,15 @@ public:
 		cout << setw(37) << left << "" << "\t[6] Transactions.\n";
 		cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
 		cout << setw(37) << left << "" << "\t[8] Login Register.\n";
-		cout << setw(37) << left << "" << "\t[9] Exit.\n\n";
+		cout << setw(37) << left << "" << "\t[9] Currency Main Menu.\n";
+		cout << setw(37) << left << "" << "\t[10] Exit.\n\n";
 
 		cout << setw(37) << left << "" << "===================================================================\n\n";
 
 
 		cout << setw(37) << left << "";
 		_PerformMainMenuOption((enMainMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 9, "Choose What Do You Want To Do ? [1 to 9] ? "));
+			clsInputSettings::ReadShortInRange(1, 10, "Choose What Do You Want To Do ? [1 to 10] ? "));
 
 
 	}
