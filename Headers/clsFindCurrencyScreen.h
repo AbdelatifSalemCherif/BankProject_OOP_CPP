@@ -31,6 +31,53 @@ private:
 	cout << "------------------------------------------" << endl;
 }
 
+	void _ShowFindByCountry()
+	{
+
+
+		clsCurrency Currency = clsCurrency::FindByCountry(clsInputSettings::ReadString("\n\nPlease Enter Country Name : "));
+
+		if (Currency.IsEmpty())
+		{
+			cout << "\n\nThis Country Is Incorrect ! Try Again !";
+		}
+		else
+		{
+
+			cout << "\n\nCurrency Found Successfully :-) ";
+
+			_PrintCurrencyCard(Currency);
+		}
+
+
+	}
+
+	void _ShowFindByCode()
+	{
+
+		clsCurrency Currency = clsCurrency::FindByCode(clsInputSettings::ReadString("\n\nPlease Enter Currency Code : "));
+
+		if (Currency.IsEmpty())
+		{
+			cout << "\n\nThis Code Is Incorrect ! Try Again !";
+		}
+		else
+		{
+
+			cout << "\n\nCurrency Found Successfully :-) ";
+
+			_PrintCurrencyCard(Currency);
+		}
+
+
+	}
+
+
+
+
+
+
+
 
 
 public:
