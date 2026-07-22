@@ -42,14 +42,55 @@ private:
 
 	}
 
-	static float _ExchangeToUSD(float Amount, float Rate)
+	static void _PrintCalculationsResult(const clsCurrency& CurrencyFrom, const clsCurrency& CurrencyTo, float Amount)
 	{
-		return Amount/ Rate;
-	}
 
-	static float _ExchangeFromUSD(float Amount, float Rate)
-	{
-		return Amount * Rate;
+
+		if (CurrencyFrom.GetCurrencyCode() == CurrencyTo.GetCurrencyCode())
+		{
+			cout << "\n\nIs The Same Currency !\n\nYour Amount Still = " << Amount << " " << CurrencyFrom.GetCurrencyCode();
+
+			return;
+		}
+
+		cout << "\n\nConvert From :" << endl;
+
+		_PrintCurrencyCard(CurrencyFrom);
+
+		if (CurrencyTo.GetCurrencyCode() == "USD")
+		{
+
+			cout << "\n\n" << Amount << " " << CurrencyFrom.GetCurrencyCode() << " = "
+				<< CurrencyFrom.ConvertToUSD(Amount) << " USD" << endl;
+
+		}
+
+		else if (CurrencyFrom.GetCurrencyCode() == "USD")
+		{
+
+			cout << "\n\n" << Amount << " USD" << " = "
+				<< CurrencyFrom.ConvertToAnotherCurrency(Amount, CurrencyTo) << " " << CurrencyTo.GetCurrencyCode() << endl;
+
+
+		}
+
+		else
+		{
+
+			float AmountInUSD = CurrencyFrom.ConvertToUSD(Amount);
+
+			cout << "\n\n" << Amount << " " << CurrencyFrom.GetCurrencyCode() << " = "
+				<< AmountInUSD << " USD" << endl;
+
+			cout << "\n\nConverting From USD To :" << endl;
+
+			_PrintCurrencyCard(CurrencyTo);
+
+			cout << "\n\n" << Amount << " " << CurrencyFrom.GetCurrencyCode() << " = "
+				<< CurrencyFrom.ConvertToAnotherCurrency(Amount, CurrencyTo) << " " << CurrencyTo.GetCurrencyCode() << endl;
+
+		}
+
 	}
 
 public:
@@ -59,14 +100,15 @@ public:
 	{
 
 		do {
+
 			clsOutputSettings::RestScreen();
 
 			_DrawScreenHeader("Currency Calculator Screen");
 
-			clsCurrency Currency1 = _ReadCurrencyByCode("\n\nPlease Enter Currency 1 Code : "
+			clsCurrency CurrencyFrom = _ReadCurrencyByCode("\n\nPlease Enter Currency 1 Code : "
 				, "\n\nInvalid Code ! Please Enter A Valid One : ");
 
-			clsCurrency Currency2 = _ReadCurrencyByCode("\n\nPlease Enter Currency 2 Code : "
+			clsCurrency CurrencyTo = _ReadCurrencyByCode("\n\nPlease Enter Currency 2 Code : "
 				, "\n\nInvalid Code ! Please Enter A Valid One : ");
 
 
@@ -74,53 +116,7 @@ public:
 				, "\n\nAmount Should Be A Possitive Number ! Please Enter Again : ");
 
 
-			if (Currency1.GetCurrencyCode() == Currency2.GetCurrencyCode())
-			{
-				cout << "\n\nIs The Same Currency !\n\nYour Amount Still = " << Amount << " " << Currency1.GetCurrencyCode();
-			}
-			else
-			{
-
-				cout << "\n\nConvert From :" << endl;
-
-				_PrintCurrencyCard(Currency1);
-
-				if (Currency2.GetCurrencyCode() == "USD")
-				{
-
-					cout << "\n\n" << Amount << " " << Currency1.GetCurrencyCode() << " = "
-						<< _ExchangeToUSD(Amount, Currency1.Rate) << " USD" << endl;
-
-
-				}
-				else if (Currency1.GetCurrencyCode() == "USD")
-				{
-
-					cout << "\n\n" << Amount << " USD" << " = "
-						<< _ExchangeFromUSD(Amount, Currency2.Rate) << " " << Currency2.GetCurrencyCode() << endl;
-
-				}
-				else
-				{
-
-					float AmountInUSD = _ExchangeToUSD(Amount, Currency1.Rate);
-
-					cout << "\n\n" << Amount << " " << Currency1.GetCurrencyCode() << " = "
-						<< AmountInUSD << " USD" << endl;
-
-					cout << "\n\nConverting From USD To :" << endl;
-
-					_PrintCurrencyCard(Currency2);
-
-					cout << "\n\n" << Amount << " " << Currency1.GetCurrencyCode() << " = "
-						<< _ExchangeFromUSD(AmountInUSD, Currency2.Rate) << " " << Currency2.GetCurrencyCode() << endl;
-
-
-				}
-
-			}
-
-
+			_PrintCalculationsResult(CurrencyFrom, CurrencyTo, Amount);
 
 
 		} while (clsInputSettings::ReadYesOrNo("\n\nDo You Want To Perform Another Calculation ? y/n ?"));
