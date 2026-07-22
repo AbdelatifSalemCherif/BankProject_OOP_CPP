@@ -17,8 +17,6 @@ private:
 	static void _PrintCurrencyCard(const clsCurrency& Currency)
 	{
 
-		cout << "\n\nCurrency Info :" << endl;
-
 		cout << "------------------------------------------" << endl;
 
 		cout << "Country       :" << Currency.GetCountry() << endl;
@@ -44,10 +42,19 @@ private:
 
 	}
 
+	static float _ExchangeToUSD(float Amount, float Rate)
+	{
+		return Amount/ Rate;
+	}
+
+	static float _ExchangeFromUSD(float Amount, float Rate)
+	{
+		return Amount * Rate;
+	}
+
 public:
 
 	
-
-
+	
 
 };
