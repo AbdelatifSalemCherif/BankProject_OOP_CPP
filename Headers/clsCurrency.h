@@ -315,9 +315,19 @@ public:
 		return _LoadAllCurrenciesFromFile();
 	}
 
+	float ConvertToUSD(float Amount) const
+	{
 
+		return Amount / _Rate;
 
+	}
 
+	float ConvertToAnotherCurrency(float Amount, const clsCurrency& CurrencyTo) const
+	{
+		
+		return ConvertToUSD(Amount) * CurrencyTo._Rate;
+
+	}
 
 };
 
