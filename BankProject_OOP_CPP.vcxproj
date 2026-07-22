@@ -138,6 +138,7 @@
     <ClInclude Include="Headers\clsClientsListScreen.h" />
     <ClInclude Include="Headers\clsCurrenciesListScreen.h" />
     <ClInclude Include="Headers\clsCurrency.h" />
+    <ClInclude Include="Headers\clsCurrencyCalculatorScreen.h" />
     <ClInclude Include="Headers\clsCurrencyMainScreen.h" />
     <ClInclude Include="Headers\clsDate.h" />
     <ClInclude Include="Headers\clsDeleteClientScreen.h" />
