@@ -112,7 +112,7 @@ public:
 
 					_PrintCurrencyCard(Currency2);
 
-					cout << "\n\n" << AmountInUSD << " USD" << " = "
+					cout << "\n\n" << Amount << " " << Currency1.GetCurrencyCode() << " = "
 						<< _ExchangeFromUSD(AmountInUSD, Currency2.Rate) << " " << Currency2.GetCurrencyCode() << endl;
 
 
@@ -123,7 +123,7 @@ public:
 
 
 
-		} while (clsInputSettings::ReadYesOrNo("\n\nDo You Want To Perform Another Calculation ? y/y ?"));
+		} while (clsInputSettings::ReadYesOrNo("\n\nDo You Want To Perform Another Calculation ? y/n ?"));
 
 	}
 
