@@ -57,10 +57,20 @@ public:
 				"\n\nUpdate Rate :\n------------------------------------\n\nNew Rate : ", "\n\nRate Should Be a Positive Number : ");
 
 
-			cout << "\n\nRate Updated Successfully :-)\n";
+			if (clsInputSettings::ReadYesOrNo("Are You Sure You Want To Update This Rate ? y/n ? "))
+			{
+
+				cout << "\n\nRate Updated Successfully :-)\n";
+
+			}
+			else
+			{
+
+				cout << "\n\nNothig Happened !\n";
+
+			}
 
 			_PrintCurrencyCard(Currency);
-
 
 		}
 
