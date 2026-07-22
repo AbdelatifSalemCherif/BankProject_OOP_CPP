@@ -99,7 +99,7 @@ public:
 
     // number validation
 
-    static int ValidateInteger(int& Number)
+    static int ValidateInteger(int Number)
     {
 
         while (cin.fail())
@@ -116,7 +116,7 @@ public:
         return Number;
     }
 
-    static float ValidateFloat(float& Number)
+    static float ValidateFloat(float Number)
     {
 
         while (cin.fail())
@@ -133,7 +133,7 @@ public:
         return Number;
     }
 
-    static double ValidateDouble(double& Number)
+    static double ValidateDouble(double Number)
     {
 
         while (cin.fail())
@@ -150,7 +150,7 @@ public:
         return Number;
     }
 
-    static short ValidateShort(short& Number)
+    static short ValidateShort(short Number)
     {
 
         while (cin.fail())
@@ -167,7 +167,7 @@ public:
         return Number;
     }
 
-    static long long ValidateLongLong(long long& Number)
+    static long long ValidateLongLong(long long Number)
     {
 
         while (cin.fail())
@@ -184,7 +184,7 @@ public:
         return Number;
     }
 
-    static long double ValidateLongDouble(long double& Number)
+    static long double ValidateLongDouble(long double Number)
     {
 
         while (cin.fail())
@@ -201,7 +201,7 @@ public:
         return Number;
     }
 
-    static bool ValidateBoolian(bool& Boolian)
+    static bool ValidateBoolian(bool Boolian)
     {
         while (cin.fail())
         {
