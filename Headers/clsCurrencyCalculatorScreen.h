@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "clsInputSettings.h"
+#include "clsOutputSettings.h"
 #include "clsScreen.h"
 #include "clsCurrency.h"
 
@@ -28,10 +29,24 @@ private:
 		cout << "------------------------------------------" << endl;
 	}
 
+	static clsCurrency _ReadCurrencyByCode(const string& MessageToUser, const string& ErrorMessage)
+	{
+		clsCurrency Currency = clsCurrency::FindByCode(clsInputSettings::ReadString(MessageToUser));
+
+		while (Currency.IsEmpty())
+		{
+
+			Currency = clsCurrency::FindByCode(clsInputSettings::ReadString(ErrorMessage));
+
+		}
+
+		return Currency;
+
+	}
 
 public:
 
-
+	
 
 
 
