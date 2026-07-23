@@ -61,7 +61,7 @@ public:
 
 
 
-		float Amount = clsInputSettings::ReadFloatInRange(0, SourceClient.Balance,
+		float Amount = clsInputSettings::ReadNumberInRange<float>(0, SourceClient.Balance,
 			"\n\nPlease Enter Transfer Amount ? It Must Be Less Than " + to_string(SourceClient.Balance) + " ? ");
 
 

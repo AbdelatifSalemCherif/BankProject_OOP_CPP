@@ -112,7 +112,7 @@ public:
 				, "\n\nInvalid Code ! Please Enter A Valid One : ");
 
 
-			float Amount = clsInputSettings::ReadPositiveFloat("\n\nPlease Enter Amount To Exchange : "
+			float Amount = clsInputSettings::ReadPositiveNumber<float>("\n\nPlease Enter Amount To Exchange : "
 				, "\n\nAmount Should Be A Possitive Number ! Please Enter Again : ");
 
 

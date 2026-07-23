@@ -13,19 +13,19 @@ class clsInputSettings
 public:
 
 
-    //Check positive numbers
+    // ------------------------------------------------- Check positive numbers --------------------------------------------------------- 
 
-    static bool CheckPostiveInteger(int Number)
+   /* static bool CheckPostiveNumber(int Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveShort(short Number)
+    static bool CheckPostiveNumber(short Number)
     {
         return Number >= 0;
     }
 
-    static bool CheckPostiveFloat(float Number)
+    static bool CheckPostiveNumber(float Number)
     {
         return Number >= 0;
     }
@@ -43,26 +43,24 @@ public:
     static bool CheckPostiveLongDouble(long double Number)
     {
         return Number >= 0;
+    }*/
+
+    template <typename T>
+    static bool CheckPositiveNumber(T Number)
+    {
+        return Number >= 0;
     }
 
 
 
+    // ----------------------------------------------------- Check numbers in range -----------------------------------------------------
 
-
-
-
-
-
-
-
-    //Check numbers in range
-
-    static bool CheckIntegerInRange(int Number, int From, int To)
+    /*static bool CheckNumberInRange(int Number, int From, int To)
     {
         return Number >= From && Number <= To;
     }
 
-    static bool CheckShortInRange(short Number, short From, short To)
+    static bool CheckNumberInRange(short Number, short From, short To)
     {
         return Number >= From && Number <= To;
     }
@@ -85,19 +83,25 @@ public:
     static bool CheckLongDoubleInRange(long double Number, long double From, long double To)
     {
         return Number >= From && Number <= To;
+    }*/
+
+    template <typename T>
+    static bool CheckNumberInRange(T Number, T From, T To)
+    {
+
+        if (From > To)
+        {
+            T Temp = From;
+            From = To;
+            To = Temp;
+        }
+
+        return Number >= From && Number <= To;
     }
 
 
 
-
-
-
-
-
-
-
-
-    // number validation
+    // ------------------------------------------------------- Number Validation --------------------------------------------------------
 
     static int ValidateInteger(int Number)
     {
@@ -217,21 +221,27 @@ public:
         return Boolian;
     }
 
+    template <typename T>
+    static T ValidateNumber(T Number)
+    {
+
+        while (cin.fail())
+        {
+            cin.clear();
+
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            cout << "\aInvalid number, Enter a valid number ?" << endl;
+
+            cin >> Number;
+        }
+
+        return Number;
+    }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    // read variables
+    // -------------------------------------------------- Read Variables ----------------------------------------------------------------
 
     static int ReadInteger(const string& MessageToUser = "\nPlease enter an Integer Number ?\n")
     {
@@ -338,23 +348,24 @@ public:
 
     }
 
+    template <typename T>
+    static T ReadNumber(const string& MessageToUser = "\nPlease enter a Character ?\n")
+    {
+        T Number;
+
+        cout << MessageToUser;
+        cin >> Number;
+
+        Number = ValidateNumber<T>(Number);
+
+        return Number;
+    }
 
 
 
+    // --------------------------------------------- Read Positive Number ---------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-    // read positive number
-
-    static int ReadPositiveInteger(const string& MessageToUser = "\nPlease enter a positive integer ?\n"
+    /*static int ReadPositiveNumber(const string& MessageToUser = "\nPlease enter a positive integer ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         int Number = 0;
@@ -364,7 +375,7 @@ public:
 
         Number = ValidateInteger(Number);
 
-        while (!CheckPostiveInteger(Number))
+        while (!CheckPostiveNumber(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
@@ -376,7 +387,7 @@ public:
         return Number;
     }
 
-    static float ReadPositiveFloat(const string& MessageToUser = "\nPlease enter a positive float ?\n"
+    static float ReadPositiveNumber(const string& MessageToUser = "\nPlease enter a positive float ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         float Number = 0;
@@ -386,7 +397,7 @@ public:
 
         Number = ValidateFloat(Number);
 
-        while (!CheckPostiveFloat(Number))
+        while (!CheckPostiveNumber(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
@@ -398,7 +409,7 @@ public:
         return Number;
     }
 
-    static short ReadPositiveShort(const string& MessageToUser = "\nPlease enter a positive short ?\n"
+    static short ReadPositiveNumber(const string& MessageToUser = "\nPlease enter a positive short ?\n"
         , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
     {
         short Number = 0;
@@ -408,7 +419,7 @@ public:
 
         Number = ValidateShort(Number);
 
-        while (!CheckPostiveShort(Number))
+        while (!CheckPostiveNumber(Number))
         {
             cout << "\a" << ErrorMessage << MessageToUser;
             cin >> Number;
@@ -483,25 +494,37 @@ public:
         }
 
         return Number;
+    }*/
+
+    template <typename T>
+    static T ReadPositiveNumber(const string& MessageToUser = "\nPlease enter a positive Number ?\n"
+        , string ErrorMessage = "\n\nShould be a Positive Number !\n\n")
+    {
+        T Number;
+
+        cout << MessageToUser;
+        cin >> Number;
+
+        Number = ValidateNumber<T>(Number);
+
+        while (!CheckPositiveNumber(Number))
+        {
+            cout << "\n\a" << ErrorMessage;
+            cin >> Number;
+
+            Number = ValidateNumber<T>(Number);
+
+        }
+
+        return Number;
     }
 
 
 
 
+    // ---------------------------------------------- Read Number In Range --------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-    // Read number in range
-
-    static int ReadIntegerInRange(int From, int To, const string& MessageToUser)
+    /*static int ReadNumberInRange(int From, int To, const string& MessageToUser)
     {
         int Number = 0;
 
@@ -510,7 +533,7 @@ public:
 
         Number = ValidateInteger(Number);
 
-        while (!CheckIntegerInRange(Number, From, To))
+        while (!CheckNumberInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
@@ -521,7 +544,7 @@ public:
         return Number;
     }
 
-    static float ReadFloatInRange(float From, float To, const string& MessageToUser)
+    static float ReadNumberInRange(float From, float To, const string& MessageToUser)
     {
         float Number = 0;
 
@@ -541,7 +564,7 @@ public:
         return Number;
     }
 
-    static short ReadShortInRange(short From, short To, const string& MessageToUser)
+    static short ReadNumberInRange(short From, short To, const string& MessageToUser)
     {
         short Number = 0;
 
@@ -550,7 +573,7 @@ public:
 
         Number = ValidateShort(Number);
 
-        while (!CheckShortInRange(Number, From, To))
+        while (!CheckNumberInRange(Number, From, To))
         {
             cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
             cin >> Number;
@@ -618,20 +641,33 @@ public:
         }
 
         return Number;
+    }*/
+
+    template <typename T>
+    static T ReadNumberInRange(T From, T To, const string& MessageToUser)
+    {
+        T Number ;
+
+        cout << MessageToUser;
+        cin >> Number;
+
+        Number = ValidateNumber<T>(Number);
+
+        while (!CheckNumberInRange<T>(Number, From, To))
+        {
+            cout << "\a\n\nShould be Between " << From << " to " << To << endl << endl << MessageToUser;
+            cin >> Number;
+
+            Number = ValidateNumber<T>(Number);
+        }
+
+        return Number;
     }
 
 
 
-  
 
-
-
-
-
-
-
-
-    // special read for yes or no cases from consol
+    // ------------------------------------ special read for yes or no cases from consol -------------------------------------------------
 
     static bool ReadYesOrNo(const string& MessageToUser, bool CleanConsol = false)
     {
@@ -662,22 +698,9 @@ public:
 
 
 
+    // ----------------------------------------------------- Random number in range ------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // Random number in range
-
-    static int RandomIntegerInRange(int From, int To)
+    /*static int RandomIntegerInRange(int From, int To)
     {
         int Number = rand();
 
@@ -716,8 +739,26 @@ public:
         }
 
         return Word;
-    }
+    }*/
 
+    template <typename T>
+
+    static T RandomNumberInRange(T From, T To)
+    {
+
+        T Number = rand();
+
+        if (From > To)
+        {
+
+            T Temp = From;
+            From = To;
+            To = Temp;
+
+        }
+
+        return (Number % (To - From + 1)) + From;
+    }
 
 
 };

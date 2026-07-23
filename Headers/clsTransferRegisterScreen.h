@@ -41,7 +41,7 @@ public:
 
 		vector <clsBankClient::stTransferRegister> vTransferRegister = clsBankClient::GetAllTransferRegisterList();
 
-		_DrawScreenHeader("Login Register Screen", "(" + to_string(vTransferRegister.size()) + ") Logins.");
+		_DrawScreenHeader("Transfer Register Screen", "(" + to_string(vTransferRegister.size()) + ") Logins.");
 
 
 		cout << setw(8) << left << "" << "--------------------------------------------------------------------------------------------"

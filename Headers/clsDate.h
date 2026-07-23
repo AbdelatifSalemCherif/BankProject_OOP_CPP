@@ -71,8 +71,8 @@ public:
 
     static bool IsValideDate(short Year, short Month, short Day)
     {
-        return Year > 0 && clsInputSettings::CheckShortInRange(Month, 1, 12)
-            && clsInputSettings::CheckShortInRange(Day, 1, NumberOfDaysInMonth(Year, Month));
+        return Year > 0 && clsInputSettings::CheckNumberInRange<short>(Month, 1, 12)
+            && clsInputSettings::CheckNumberInRange<short>(Day, 1, NumberOfDaysInMonth(Year, Month));
     }
 
     bool IsValideDate()

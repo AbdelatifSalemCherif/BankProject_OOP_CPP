@@ -139,7 +139,7 @@ public:
 
 		cout << setw(37) << left << "";
 		_PerformCurrencyMainMenuOption((enCurrencyMainMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 5, "Choose What Do You Want To Do ? [1 to 5] ? "));
+			clsInputSettings::ReadNumberInRange(1, 5, "Choose What Do You Want To Do ? [1 to 5] ? "));
 
 
 	}

@@ -233,7 +233,7 @@ public:
 
 		cout << setw(37) << left << "";
 		_PerformMainMenuOption((enMainMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 10, "Choose What Do You Want To Do ? [1 to 10] ? "));
+			clsInputSettings::ReadNumberInRange(1, 10, "Choose What Do You Want To Do ? [1 to 10] ? "));
 
 
 	}

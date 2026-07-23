@@ -198,7 +198,7 @@ private:
 		TransferRegister.Amount = stof(vRecord[3]);
 		TransferRegister.SourceNewBalance = stof(vRecord[4]);
 		TransferRegister.DestinationNewBalance = stof(vRecord[5]);
-		TransferRegister.UserName = Record[6];
+		TransferRegister.UserName = vRecord[6];
 
 		return TransferRegister;
 

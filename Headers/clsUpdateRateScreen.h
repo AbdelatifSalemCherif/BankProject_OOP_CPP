@@ -53,7 +53,7 @@ public:
 			_PrintCurrencyCard(Currency);
 
 
-			Currency.Rate = clsInputSettings::ReadPositiveFloat(
+			Currency.Rate = clsInputSettings::ReadPositiveNumber<float>(
 				"\n\nUpdate Rate :\n------------------------------------\n\nNew Rate : ", "\n\nRate Should Be a Positive Number : ");
 
 

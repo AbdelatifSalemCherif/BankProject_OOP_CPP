@@ -157,7 +157,7 @@ public:
 
 		cout << setw(37) << left << "";
 		_PerformManageUsersMenuOption((enManageUsersMenuOptions)
-			clsInputSettings::ReadShortInRange(1, 6, "Choose What Do You Want To Do ? [1 to 6] ? "));
+			clsInputSettings::ReadNumberInRange(1, 6, "Choose What Do You Want To Do ? [1 to 6] ? "));
 
 
 	}

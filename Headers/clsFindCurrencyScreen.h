@@ -110,7 +110,7 @@ public:
 
 		
 		_PerformFindCurrencyOption((enFindCurrencyOptions)
-			clsInputSettings::ReadShortInRange(1, 2, "\n\nFind By : [1] Country or [2] Code ? "));
+			clsInputSettings::ReadNumberInRange(1, 2, "\n\nFind By : [1] Country or [2] Code ? "));
 
 
 	}
