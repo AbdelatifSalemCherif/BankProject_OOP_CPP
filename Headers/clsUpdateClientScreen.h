@@ -20,7 +20,7 @@ private:
 		Client.Email = clsInputSettings::ReadString("\nPlease enter Email : ");
 		Client.Phone = clsInputSettings::ReadString("\nPlease enter Phone : ");
 		Client.PinCode = clsInputSettings::ReadString("\nPlease enter Pin Code : ");
-		Client.Balance = clsInputSettings::ReadFloat("\nPlease enter Balance : ");
+		Client.Balance = clsInputSettings::ReadNumber<float>("\nPlease enter Balance : ");
 
 	}
 
